@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {MessageDirectionEnum, MessageTypeEnum} from "./comp/interface/common.interface";
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class StoreService {
   constructor() {}
+
   dialogs = [
     {
       id: 1,
@@ -138,9 +140,6 @@ export class StoreService {
     },
   ];
 
-  /**
-   * Лого комп версии
-   */
   logo = {
     id: 'logo',
     logo: 'https://via.placeholder.com/100x100?text=Text'
@@ -171,6 +170,7 @@ export class StoreService {
       icon: 'fas fa-cog'
     }
   ];
+
   MessageMock = [
     {
       content: 'Как твои дела',

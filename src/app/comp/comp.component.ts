@@ -13,7 +13,6 @@ export class CompComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   getNavItems() {
     return this.chatStore.getNavItems();
   }
@@ -21,6 +20,7 @@ export class CompComponent implements OnInit {
   getLogo() {
     return this.chatStore.getLogo();
   }
+
 
   getDialogs() {
     return this.chatStore.getDialogs();
@@ -40,15 +40,4 @@ export class CompComponent implements OnInit {
     }
   }
 }
-/**
- * Метод, который выводит необходимый чат
- * @param content
- */
-// public showChat (content){
-//   switch (content) {
-//     case 'showChat':
-//       return <s-adam-direct message={MessageMock}></s-adam-direct>;
-//     case 'noChat':
-//       return <s-adam-select-chat></s-adam-select-chat>;
-//   }
-// }
+
