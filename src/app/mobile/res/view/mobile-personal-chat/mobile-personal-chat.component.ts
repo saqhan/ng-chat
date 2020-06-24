@@ -5,24 +5,22 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-mobile-personal-chat',
   templateUrl: './mobile-personal-chat.component.html',
-  styleUrls: ['./mobile-personal-chat.component.scss']
+  styleUrls: ['./mobile-personal-chat.component.scss'],
 })
 export class MobilePersonalChatComponent implements OnInit {
+  constructor(private storeMessage: StoreService, private router: Router) {}
 
-  constructor(private storeMessage: StoreService, private router: Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  getMessages() {
+    return this.storeMessage.getMessages();
   }
 
-  // getMessages() {
-  //   return this.storeMessage.getMessages();
-  // }
-
+  // клик по ссылке
   public clickToLink({ detail }) {
-    console.log('clickToLink', detail);
-    if (detail.place === '"showDialogs"') {
+    console.log('clickToLinkBack', detail);
+    if (detail.place === 'showDialogs') {
       this.router.navigate(['mobile']);
     }
   }
-
 }
