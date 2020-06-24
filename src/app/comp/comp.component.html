@@ -5,11 +5,16 @@
         <s-adam-navigate [logo]="getLogo()" [navItems]="getNavItems()"></s-adam-navigate>
       </div>
       <div class="col-3">
+        <s-adam-contacts
+          [dialogs]="getDialogs()"
+          (clickToLink)="clickToLink($event)"></s-adam-contacts>
         <s-adam-contacts [dialogs]="getDialogs()">
         </s-adam-contacts>
       </div>
       <div class="col-5">
         <section class="chat">
+          <s-adam-no-chat *ngIf="getDialogVisible()"></s-adam-no-chat>
+          <s-adam-direct [message]="getMessages()" *ngIf="!getDialogVisible()"></s-adam-direct>
           <s-adam-direct></s-adam-direct>
         </section>
       </div>
@@ -19,3 +24,4 @@
     </div>
   </div>
 </main>
+
