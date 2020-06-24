@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {StoreService} from '../store-servic.service';
-import {Router} from '@angular/router';
+import {StoreService} from "../store-servic.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-comp',
@@ -21,7 +21,23 @@ export class CompComponent implements OnInit {
     return this.chatStore.getLogo();
   }
 
+
   getDialogs() {
     return this.chatStore.getDialogs();
   }
+
+  getMessages() {
+    return this.chatStore.getMessages();
+  }
+
+  getDialogVisible() {
+    return this.chatStore.dialogVisible;
+  }
+
+  public clickToLink({detail}) {
+    if(detail.place === 'showPersonalDialog') {
+      this.chatStore.dialogVisible = false;
+    }
+  }
 }
+
