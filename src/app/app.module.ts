@@ -12,7 +12,7 @@ import { MobilePersonalChatComponent } from './mobile/res/view/mobile-personal-c
     AppComponent,
     CompComponent,
     MobileComponent,
-    MobilePersonalChatComponent
+    MobilePersonalChatComponent,
   ],
   imports: [
     BrowserModule,

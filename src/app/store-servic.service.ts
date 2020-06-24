@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import {MessageDirectionEnum, MessageTypeEnum} from "./comp/interface/common.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -138,106 +138,139 @@ export class StoreService {
     },
   ];
 
-  // MessageMock = [
-  //   {
-  //     content: 'Как твои дела',
-  //     sender: {
-  //       uid: 'test-id-1',
-  //       icon: 'https://via.placeholder.com/60x60?text=User',
-  //       name: 'Сайхан',
-  //       phone: '79291234567',
-  //     },
-  //     type: MessageTypeEnum.text,
-  //     direction: MessageDirectionEnum.toMe,
-  //     time: {
-  //       created: new Date(),
-  //     },
-  //   },
-  //   {
-  //     content: 'https://via.placeholder.com/500',
-  //     sender: {
-  //       uid: 'test-id-2',
-  //       icon: 'https://via.placeholder.com/60x60?text=User',
-  //       name: 'Сайхан',
-  //       phone: '79291234567',
-  //     },
-  //     type: MessageTypeEnum.image,
-  //     direction: MessageDirectionEnum.toMe,
-  //     time: {
-  //       created: new Date(),
-  //     },
-  //   },
-  //   {
-  //     content: 'Нормально',
-  //     sender: {
-  //       uid: 'test-id-2',
-  //       icon: 'https://via.placeholder.com/60x60?text=User',
-  //       name: 'Адам',
-  //       phone: '79291234567',
-  //     },
-  //     type: MessageTypeEnum.text,
-  //     direction: MessageDirectionEnum.fromMe,
-  //     time: {
-  //       created: new Date(),
-  //     },
-  //   },
-  //   {
-  //     content: 'https://via.placeholder.com/500',
-  //     sender: {
-  //       uid: 'test-id-2',
-  //       icon: 'https://via.placeholder.com/60x60?text=User',
-  //       name: 'Адам',
-  //       phone: '79291234567',
-  //     },
-  //     type: MessageTypeEnum.image,
-  //     direction: MessageDirectionEnum.fromMe,
-  //     time: {
-  //       created: new Date(),
-  //     },
-  //   },
-  //   {
-  //     content: 'Где ты?',
-  //     sender: {
-  //       uid: 'test-id-1',
-  //       icon: 'https://via.placeholder.com/60x60?text=User',
-  //       name: 'Сайхан',
-  //       phone: '79291234567',
-  //     },
-  //     type: MessageTypeEnum.text,
-  //     direction: MessageDirectionEnum.toMe,
-  //     time: {
-  //       created: new Date(),
-  //     },
-  //   },
-  //   {
-  //     content: 'Чат пилю',
-  //     sender: {
-  //       uid: 'test-id-2',
-  //       icon: 'https://via.placeholder.com/60x60?text=User',
-  //       name: 'Адам',
-  //       phone: '79291234567',
-  //     },
-  //     type: MessageTypeEnum.text,
-  //     direction: MessageDirectionEnum.fromMe,
-  //     time: {
-  //       created: new Date(),
-  //     },
-  //   },
-  //   {
-  //     content: 'Прикинь, я тоже',
-  //     sender: {
-  //       uid: 'test-id-1',
-  //       icon: 'https://via.placeholder.com/60x60?text=User',
-  //       name: 'Сайхан',
-  //       phone: '79291234567',
-  //     },
-  //     type: MessageTypeEnum.text,
-  //     direction: MessageDirectionEnum.toMe,
-  //     time: {
-  //       created: new Date(),
-  //     },
-  //   },
-  // ];
+  /**
+   * Лого комп версии
+   */
+  logo = {
+    id: 'logo',
+    logo: 'https://via.placeholder.com/100x100?text=Text'
+  };
+
+  /**
+   * Иконки навигации комп версии
+   */
+  navItems = [
+    {
+      id: 1,
+      icon: 'fas fa-comment-alt'
+    },
+    {
+      id: 2,
+      icon: 'fas fa-shopping-bag'
+    },
+    {
+      id: 3,
+      icon: 'fas fa-cart-arrow-down'
+    },
+    {
+      id: 5,
+      icon: 'fas fa-calendar-alt'
+    },
+    {
+      id: 6,
+      icon: 'fas fa-cog'
+    }
+  ];
+  MessageMock = [
+    {
+      content: 'Как твои дела',
+      sender: {
+        uid: 'test-id-1',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
+      },
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.toMe,
+      time: {
+        created: new Date(),
+      },
+    },
+    {
+      content: 'https://via.placeholder.com/500',
+      sender: {
+        uid: 'test-id-2',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
+      },
+      type: MessageTypeEnum.image,
+      direction: MessageDirectionEnum.toMe,
+      time: {
+        created: new Date(),
+      },
+    },
+    {
+      content: 'Нормально',
+      sender: {
+        uid: 'test-id-2',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Адам',
+        phone: '79291234567',
+      },
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.fromMe,
+      time: {
+        created: new Date(),
+      },
+    },
+    {
+      content: 'https://via.placeholder.com/500',
+      sender: {
+        uid: 'test-id-2',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Адам',
+        phone: '79291234567',
+      },
+      type: MessageTypeEnum.image,
+      direction: MessageDirectionEnum.fromMe,
+      time: {
+        created: new Date(),
+      },
+    },
+    {
+      content: 'Где ты?',
+      sender: {
+        uid: 'test-id-1',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
+      },
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.toMe,
+      time: {
+        created: new Date(),
+      },
+    },
+    {
+      content: 'Чат пилю',
+      sender: {
+        uid: 'test-id-2',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Адам',
+        phone: '79291234567',
+      },
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.fromMe,
+      time: {
+        created: new Date(),
+      },
+    },
+    {
+      content: 'Прикинь, я тоже',
+      sender: {
+        uid: 'test-id-1',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
+      },
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.toMe,
+      time: {
+        created: new Date(),
+      },
+    },
+  ];
 
   getDialogs() {
     return this.dialogs;
@@ -247,7 +280,18 @@ export class StoreService {
     return this.categories;
   }
 
-  // getMessages() {
-  //   return this.MessageMock;
-  // }
+  getMessages() {
+    return this.MessageMock;
+  }
+
+  getNavItems() {
+    return this.navItems;
+  }
+
+  getLogo() {
+    return this.logo;
+  }
+
+  dialogVisible = true;
+
 }

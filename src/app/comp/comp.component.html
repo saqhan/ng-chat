@@ -1,1 +1,26 @@
-<p>comp works!</p>
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-1">
+        <s-adam-navigate [logo]="getLogo()" [navItems]="getNavItems()"></s-adam-navigate>
+      </div>
+      <div class="col-3">
+        <s-adam-contacts
+          [dialogs]="getDialogs()"
+          (clickToLink)="clickToLink($event)"
+        >
+        </s-adam-contacts>
+      </div>
+      <div class="col-5">
+        <section class="chat">
+          <s-adam-no-chat *ngIf="getDialogVisible()"></s-adam-no-chat>
+          <s-adam-direct [message]="getMessages()" *ngIf="!getDialogVisible()"></s-adam-direct>
+        </section>
+      </div>
+      <div class="col-3">
+        <s-adam-profile></s-adam-profile>
+      </div>
+    </div>
+  </div>
+</main>
+
