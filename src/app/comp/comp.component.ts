@@ -34,9 +34,20 @@ export class CompComponent implements OnInit {
     return this.chatStore.dialogVisible;
   }
 
+  getProfileVisible() {
+    return this.chatStore.profileVisible;
+  }
+
   public clickToLink({detail}) {
     if(detail.place === 'showPersonalDialog') {
       this.chatStore.dialogVisible = false;
+    }
+  }
+
+  public toggleProfile({detail}) {
+    console.log('adad', detail)
+    if (detail.place === 'userName') {
+      this.chatStore.profileVisible = !this.chatStore.profileVisible;
     }
   }
 }
