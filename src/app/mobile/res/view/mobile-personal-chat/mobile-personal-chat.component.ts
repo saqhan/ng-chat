@@ -22,5 +22,8 @@ export class MobilePersonalChatComponent implements OnInit {
     if (detail.place === 'showDialogs') {
       this.router.navigate(['mobile']);
     }
+    if (detail.place === 'user-name-personal') {
+      this.router.navigate(['profile']);
+    }
   }
 }

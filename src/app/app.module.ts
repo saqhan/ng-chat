@@ -8,6 +8,7 @@ import { MobileComponent } from './mobile/mobile.component';
 import { MobilePersonalChatComponent } from './mobile/res/view/mobile-personal-chat/mobile-personal-chat.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserProfileComponent } from './mobile/res/view/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CompComponent,
     MobileComponent,
     MobilePersonalChatComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,

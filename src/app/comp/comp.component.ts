@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {StoreService} from "../store-servic.service";
-import {Router} from "@angular/router";
+import { StoreService } from '../store-servic.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comp',
   templateUrl: './comp.component.html',
-  styleUrls: ['./comp.component.scss']
+  styleUrls: ['./comp.component.scss'],
 })
 export class CompComponent implements OnInit {
+  constructor(private chatStore: StoreService, private router: Router) {}
 
-  constructor(private chatStore: StoreService, private router: Router) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   getNavItems() {
     return this.chatStore.getNavItems();
   }
@@ -20,7 +18,6 @@ export class CompComponent implements OnInit {
   getLogo() {
     return this.chatStore.getLogo();
   }
-
 
   getDialogs() {
     return this.chatStore.getDialogs();
@@ -34,10 +31,20 @@ export class CompComponent implements OnInit {
     return this.chatStore.dialogVisible;
   }
 
-  public clickToLink({detail}) {
-    if(detail.place === 'showPersonalDialog') {
+  getProfileVisible() {
+    return this.chatStore.profileVisible;
+  }
+
+  public clickToLink({ detail }) {
+    if (detail.place === 'showPersonalDialog') {
       this.chatStore.dialogVisible = false;
     }
   }
-}
 
+  public toggleProfile({ detail }) {
+    console.log('adad', detail);
+    if (detail.place === 'userName') {
+      this.chatStore.profileVisible = !this.chatStore.profileVisible;
+    }
+  }
+}
