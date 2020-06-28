@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {StoreService} from '../../../../store-servic.service';
+import {AnimationService} from '../../../../services/common/animation.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,7 +10,8 @@ import {Router} from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private storeMessage: StoreService, private router: Router,
+              private animSRVC: AnimationService) {}
 
   ngOnInit(): void {
   }
@@ -16,6 +19,7 @@ export class UserProfileComponent implements OnInit {
   public clickToLink({ detail }) {
     console.log('clickToLinkBack', detail);
     if (detail.place === 'showPersonalDialog') {
+      this.animSRVC.slideToRIGHT();
       this.router.navigate(['app-mobile-personal-chat']);
     }
   }
