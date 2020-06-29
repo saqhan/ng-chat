@@ -294,4 +294,6 @@ export class StoreService {
 
   dialogVisible = true;
 
+  profileVisible = false;
+
 }

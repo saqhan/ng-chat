@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store-servic.service';
 import { Router } from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {state, transition, trigger} from '@angular/animations';
+import {AnimationService} from '../services/common/animation.service';
 
 @Component({
   selector: 'app-mobile',
@@ -10,7 +9,8 @@ import {state, transition, trigger} from '@angular/animations';
   styleUrls: ['./mobile.component.scss'],
 })
 export class MobileComponent implements OnInit {
-  constructor(private storeMessage: StoreService, private router: Router) {}
+  constructor(private storeMessage: StoreService, private router: Router,
+              private animSRVC: AnimationService) {}
   // массив данных личного чата
   dialogs = this.storeMessage.getDialogs();
 
@@ -40,8 +40,8 @@ export class MobileComponent implements OnInit {
   public clickToLink({ detail }) {
     console.log('clickToLink', detail);
     if (detail.place === 'showPersonalDialog') {
+      this.animSRVC.slideToLEFT();
       this.router.navigate(['app-mobile-personal-chat']);
     }
   }
-
 }

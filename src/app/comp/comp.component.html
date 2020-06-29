@@ -7,18 +7,22 @@
       <div class="col-3">
         <s-adam-contacts
           [dialogs]="getDialogs()"
-          (clickToLink)="clickToLink($event)"
+          (clickToLink)="clickToLink($event)"></s-adam-contacts>
         <s-adam-contacts [dialogs]="getDialogs()">
         </s-adam-contacts>
       </div>
-      <div class="col-5">
+      <div class="col">
         <section class="chat">
           <s-adam-no-chat *ngIf="getDialogVisible()"></s-adam-no-chat>
-          <s-adam-direct [message]="getMessages()" *ngIf="!getDialogVisible()"></s-adam-direct>
-          <s-adam-direct></s-adam-direct>
+          <s-adam-direct
+            (clickOnUsername)="toggleProfile($event)"
+            [message]="getMessages()"
+            *ngIf="!getDialogVisible()"
+          >
+          </s-adam-direct>
         </section>
       </div>
-      <div class="col-3">
+      <div class="col-3" *ngIf="getProfileVisible()">
         <s-adam-profile></s-adam-profile>
       </div>
     </div>
