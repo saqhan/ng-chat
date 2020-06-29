@@ -33,7 +33,7 @@ export class MobileComponent implements OnInit {
         ? this.storeMessage
             .getDialogs()
             .filter((item) => item.category === detail.item.id)
-        : this.storeMessage.getDialogs());
+        : this.storeMessage.getDialogs() );
   }
 
   // клик по ссылке
