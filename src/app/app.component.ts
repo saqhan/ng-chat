@@ -28,7 +28,6 @@ export class AppComponent {
   constructor(private animSRVC: AnimationService) {}
 
   getAnimation() {
-    console.log(this.animSRVC.getCurrentAnimation());
     return this.animSRVC.getCurrentAnimation();
   }
 }
