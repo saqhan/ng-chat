@@ -21,7 +21,7 @@ export class ModuleComponent implements OnInit {
 
   // массив данных для диалогов
   getDialogs() {
-    return this.storeMessage.getDialogs();
+    return this.dialogs;
   }
   // клик по ссылке
   public clickToLink({ detail }) {

@@ -10,6 +10,8 @@ import { MobilePersonalChatComponent } from './mobile/res/view/mobile-personal-c
 import { UserProfileComponent } from './mobile/res/view/user-profile/user-profile.component';
 import {AnimationService} from './services/common/animation.service';
 import { ModuleComponent } from './module/module.component';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { ModuleComponent } from './module/module.component';
     UserProfileComponent,
     ModuleComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, MatSliderModule, MatSidenavModule],
   providers: [AnimationService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

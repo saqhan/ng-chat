@@ -281,7 +281,6 @@ export class StoreService {
   getDialogs() {
     return this.dialogs;
   }
-
   getCategories() {
     return this.categories;
   }
