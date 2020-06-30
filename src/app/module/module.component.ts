@@ -21,11 +21,10 @@ export class ModuleComponent implements OnInit {
 
   // массив данных для диалогов
   getDialogs() {
-    return this.dialogs;
+    return this.storeMessage.getDialogs();
   }
   // клик по ссылке
   public clickToLink({ detail }) {
     console.log('clickToLink', detail);
-
   }
 }
