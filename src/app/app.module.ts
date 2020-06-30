@@ -9,6 +9,7 @@ import { MobileComponent } from './mobile/mobile.component';
 import { MobilePersonalChatComponent } from './mobile/res/view/mobile-personal-chat/mobile-personal-chat.component';
 import { UserProfileComponent } from './mobile/res/view/user-profile/user-profile.component';
 import {AnimationService} from './services/common/animation.service';
+import { ModuleComponent } from './module/module.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {AnimationService} from './services/common/animation.service';
     MobileComponent,
     MobilePersonalChatComponent,
     UserProfileComponent,
+    ModuleComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
   providers: [AnimationService],

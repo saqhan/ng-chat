@@ -9,8 +9,11 @@ import {AnimationService} from '../services/common/animation.service';
   styleUrls: ['./mobile.component.scss'],
 })
 export class MobileComponent implements OnInit {
-  constructor(private storeMessage: StoreService, private router: Router,
-              private animSRVC: AnimationService) {}
+  constructor(
+    private storeMessage: StoreService,
+    private router: Router,
+    private animSRVC: AnimationService
+  ) {}
   // массив данных личного чата
   dialogs = this.storeMessage.getDialogs();
 

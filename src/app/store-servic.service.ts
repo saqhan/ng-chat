@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import {MessageDirectionEnum, MessageTypeEnum} from "./comp/interface/common.interface";
-
+import {
+  MessageDirectionEnum,
+  MessageTypeEnum,
+} from './comp/interface/common.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoreService {
   constructor() {}
+
+  dialogVisible = true;
+
+  profileVisible = false;
 
   dialogs = [
     {
@@ -142,7 +148,7 @@ export class StoreService {
 
   logo = {
     id: 'logo',
-    logo: 'https://via.placeholder.com/100x100?text=Text'
+    logo: 'https://via.placeholder.com/100x100?text=Text',
   };
 
   /**
@@ -151,24 +157,24 @@ export class StoreService {
   navItems = [
     {
       id: 1,
-      icon: 'fas fa-comment-alt'
+      icon: 'fas fa-comment-alt',
     },
     {
       id: 2,
-      icon: 'fas fa-shopping-bag'
+      icon: 'fas fa-shopping-bag',
     },
     {
       id: 3,
-      icon: 'fas fa-cart-arrow-down'
+      icon: 'fas fa-cart-arrow-down',
     },
     {
       id: 5,
-      icon: 'fas fa-calendar-alt'
+      icon: 'fas fa-calendar-alt',
     },
     {
       id: 6,
-      icon: 'fas fa-cog'
-    }
+      icon: 'fas fa-cog',
+    },
   ];
 
   MessageMock = [
@@ -291,9 +297,4 @@ export class StoreService {
   getLogo() {
     return this.logo;
   }
-
-  dialogVisible = true;
-
-  profileVisible = false;
-
 }
