@@ -281,6 +281,9 @@ export class StoreService {
   getDialogs() {
     return this.dialogs;
   }
+  getPersonalMessage() {
+    return this.MessageMock;
+  }
   getCategories() {
     return this.categories;
   }
