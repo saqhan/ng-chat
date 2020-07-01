@@ -23,6 +23,10 @@ export class ModuleComponent implements OnInit {
   getDialogs() {
     return this.dialogs;
   }
+  // массив данных личного чата
+  getPersonalMessage() {
+    return this.storeMessage.getPersonalMessage();
+  }
   // клик по ссылке
   public clickToLink({ detail }) {
     console.log('clickToLink', detail);
