@@ -1,5 +1,5 @@
 <s-saqhan-chat-app
   [messages]="getDialogs()"
-  [personalMessage]="getPersonalMessage()"
+  [personalMessage]="getPersonalMessage$() | async"
   (clickToLink)="clickToLink($event)"
 ></s-saqhan-chat-app>
