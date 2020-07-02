@@ -47,6 +47,10 @@ export class MobileComponent implements OnInit {
       this.animSRVC.slideToLEFT();
       this.router.navigate(['app-mobile-personal-chat']);
     }
+    if (detail.place === 'contacts') {
+      this.animSRVC.slideToLEFT();
+      this.router.navigate(['contacts']);
+    }
     if (detail.place === 'menu-bar') {
       console.log('menu-bar');
     }
