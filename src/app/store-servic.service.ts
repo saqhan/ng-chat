@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import {
-  Message,
-  MessageDirectionEnum,
-  MessageTypeEnum,
-} from './comp/interface/common.interface';
+
 import {BehaviorSubject, Observable} from "rxjs";
 import {take} from "rxjs/operators";
+import {Message, MessageDirectionEnum} from "stencil-chat";
+import {MessageTypeEnum} from "./comp/interface/common.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -182,14 +180,14 @@ export class StoreService {
 
   /*;
   * */
-  public MessageMock = [
+  public MessageMock: Message[] = [
     {
-      content: 'Как твои дела',
+      content: "Привет, как дела?",
       sender: {
-        uid: 'test-id-1',
-        icon: 'https://via.placeholder.com/60x60?text=User',
-        name: 'Сайхан',
-        phone: '79291234567',
+        uid: "test-id-1",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Сайхан",
+        phone: "79291234567",
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.toMe,
@@ -198,40 +196,101 @@ export class StoreService {
       },
     },
     {
-      content: 'https://via.placeholder.com/500',
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       sender: {
-        uid: 'test-id-2',
-        icon: 'https://via.placeholder.com/60x60?text=User',
-        name: 'Сайхан',
-        phone: '79291234567',
+        uid: "test-id-1",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Сайхан",
+        phone: "79291234567",
+      },
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.toMe,
+      time: {
+        created: new Date(),
+      },
+    },
+    {
+      content: "Олег подключился к чату",
+      sender: {
+        uid: '',
+        icon: '',
+        name: '',
+        phone: '',
+      },
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.center,
+      time: {
+        created: new Date(),
+      },
+    },
+    {
+      content: "https://via.placeholder.com/500",
+      sender: {
+        uid: "test-id-2",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Сайхан",
+        phone: "79291234567",
       },
       type: MessageTypeEnum.image,
       direction: MessageDirectionEnum.toMe,
       time: {
         created: new Date(),
+        delivery: new Date(),
+        read: new Date(),
       },
     },
     {
-      content: 'Нормально',
+      content: 1593606947701,
       sender: {
-        uid: 'test-id-2',
-        icon: 'https://via.placeholder.com/60x60?text=User',
-        name: 'Адам',
-        phone: '79291234567',
+        uid: '',
+        icon: '',
+        name: '',
+        phone: '',
       },
-      type: MessageTypeEnum.text,
-      direction: MessageDirectionEnum.fromMe,
+      type: MessageTypeEnum.date,
+      direction: MessageDirectionEnum.center,
       time: {
         created: new Date(),
       },
     },
     {
-      content: 'https://via.placeholder.com/500',
+      content: "Все гуд!",
       sender: {
-        uid: 'test-id-2',
-        icon: 'https://via.placeholder.com/60x60?text=User',
-        name: 'Адам',
-        phone: '79291234567',
+        uid: "test-id-2",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Адам",
+        phone: "79291234567",
+      },
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.fromMe,
+      time: {
+        created: new Date(),
+        delivery: new Date(),
+        read: new Date(),
+      },
+    },
+    {
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss",
+      sender: {
+        uid: "test-id-2",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Адам",
+        phone: "79291234567",
+      },
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.fromMe,
+      time: {
+        created: new Date(),
+        read: new Date(),
+      },
+    },
+    {
+      content: "https://via.placeholder.com/500",
+      sender: {
+        uid: "test-id-2",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Адам",
+        phone: "79291234567",
       },
       type: MessageTypeEnum.image,
       direction: MessageDirectionEnum.fromMe,
@@ -240,12 +299,12 @@ export class StoreService {
       },
     },
     {
-      content: 'Где ты?',
+      content: "Где ты?",
       sender: {
-        uid: 'test-id-1',
-        icon: 'https://via.placeholder.com/60x60?text=User',
-        name: 'Сайхан',
-        phone: '79291234567',
+        uid: "test-id-1",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Сайхан",
+        phone: "79291234567",
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.toMe,
@@ -254,12 +313,12 @@ export class StoreService {
       },
     },
     {
-      content: 'Чат пилю',
+      content: "Чат пилю",
       sender: {
-        uid: 'test-id-2',
-        icon: 'https://via.placeholder.com/60x60?text=User',
-        name: 'Адам',
-        phone: '79291234567',
+        uid: "test-id-2",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Адам",
+        phone: "79291234567",
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.fromMe,
@@ -268,12 +327,12 @@ export class StoreService {
       },
     },
     {
-      content: 'Прикинь, я тоже',
+      content: "Прикинь, я тоже",
       sender: {
-        uid: 'test-id-1',
-        icon: 'https://via.placeholder.com/60x60?text=User',
-        name: 'Сайхан',
-        phone: '79291234567',
+        uid: "test-id-1",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Сайхан",
+        phone: "79291234567",
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.toMe,
