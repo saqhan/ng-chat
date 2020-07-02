@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import {Message, MessageDirectionEnum, MessageTypeEnum} from 'stencil-chat';
+import { Message, MessageDirectionEnum, MessageTypeEnum } from 'stencil-chat';
 
 @Injectable({
   providedIn: 'root',
@@ -155,7 +155,7 @@ export class StoreService {
     {
       id: 1,
       img: 'https://via.placeholder.com/300x300?text=User',
-      name: 'Randolph Newman',
+      name: 'R',
       mess: 'rebuild finished',
       time: {
         created: new Date(),
@@ -184,7 +184,8 @@ export class StoreService {
       },
       category: 'work',
       online: true,
-    },  {
+    },
+    {
       id: 4,
       img: 'https://via.placeholder.com/300x300?text=User',
       name: 'Isaac Jack King',
@@ -282,7 +283,7 @@ export class StoreService {
       },
       category: 'work',
       online: true,
-    }
+    },
   ];
 
   /**
@@ -313,7 +314,7 @@ export class StoreService {
 
   /*;
    * */
-  public MessageMock  = [
+  public MessageMock = [
     {
       content: 'Привет, как дела?',
       sender: {
@@ -329,7 +330,8 @@ export class StoreService {
       },
     },
     {
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       sender: {
         uid: 'test-id-1',
         icon: 'https://via.placeholder.com/60x60?text=User',
@@ -403,7 +405,8 @@ export class StoreService {
       },
     },
     {
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss',
       sender: {
         uid: 'test-id-2',
         icon: 'https://via.placeholder.com/60x60?text=User',
@@ -475,9 +478,6 @@ export class StoreService {
     },
   ];
 
-  /**
-   *
-   * */
   private messages$: BehaviorSubject<Message[]> = new BehaviorSubject(
     this.MessageMock
   );
@@ -485,9 +485,7 @@ export class StoreService {
   getDialogs() {
     return this.dialogs;
   }
-  /**
-   * @deprecated use - getMessage$
-   * */
+
   getPersonalMessage() {
     return this.MessageMock;
   }

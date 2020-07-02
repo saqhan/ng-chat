@@ -16,12 +16,11 @@ export class ContactsComponent implements OnInit {
   ) {}
   // get contacts array
 
-  contacts = this.storeMessage.getContacts;
+  contacts = this.storeMessage.getContacts();
   ngOnInit(): void {}
 
-
   public getContacts() {
-    return this.storeMessage.contacts;
+    return this.contacts;
   }
   // клик по ссылке
   public clickToLink({ detail }) {
@@ -35,7 +34,13 @@ export class ContactsComponent implements OnInit {
     }
   }
 
-  public searchContact(e){
-    console.log('searchContact',  e.currentTarget.querySelector('input').value);
+  public searchContact(e) {
+    console.log('searchContact', e.currentTarget.querySelector('input').value);
+    return (this.contacts =
+      e.currentTarget.querySelector('input').value !== ''
+        ? this.storeMessage
+          .getContacts()
+          .filter((item) => item.name.includes(e.currentTarget.querySelector('input').value) )
+        : this.storeMessage.getContacts() );
   }
 }
