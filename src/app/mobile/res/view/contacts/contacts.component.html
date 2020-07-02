@@ -1,6 +1,7 @@
 <div class="contacts-list-wrapper">
   <contacts-list-header
     (clickToLink)="clickToLink($event)"
+    (searchContact)="searchContact($event)"
   ></contacts-list-header>
   <contacts-list-body
     [contacts]="getContacts()"

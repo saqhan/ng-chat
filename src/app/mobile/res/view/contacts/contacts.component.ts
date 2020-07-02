@@ -34,4 +34,8 @@ export class ContactsComponent implements OnInit {
       this.router.navigate(['app-mobile-personal-chat']);
     }
   }
+
+  public searchContact(e){
+    console.log('searchContact',  e.currentTarget.querySelector('input').value);
+  }
 }

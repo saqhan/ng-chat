@@ -7,5 +7,5 @@
     (clickToLink)="clickToLink($event)"
     [messageMock]="getMessages()"
   ></personal-message>
-  <personal-footer (clickToLink)="clickToLink($event)"></personal-footer>
+  <personal-footer [theme]="mobileTheme" (clickToLink)="clickToLink($event)"></personal-footer>
 </div>
