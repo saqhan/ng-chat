@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import {MessageDirectionEnum, MessageTypeEnum} from "./comp/interface/common.interface";
-
+import {
+  Message,
+  MessageDirectionEnum,
+  MessageTypeEnum,
+} from './comp/interface/common.interface';
+import {BehaviorSubject, Observable} from "rxjs";
+import {take} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +13,11 @@ import {MessageDirectionEnum, MessageTypeEnum} from "./comp/interface/common.int
 export class StoreService {
   constructor() {}
 
-  dialogs = [
+  public dialogVisible = true;
+
+  public profileVisible = false;
+
+  public dialogs = [
     {
       id: 1,
       img: 'https://via.placeholder.com/300x300?text=User',
@@ -121,7 +130,7 @@ export class StoreService {
     },
   ];
 
-  categories = [
+  public categories = [
     {
       name: 'All',
       id: 'all',
@@ -140,38 +149,40 @@ export class StoreService {
     },
   ];
 
-  logo = {
+  public logo = {
     id: 'logo',
-    logo: 'https://via.placeholder.com/100x100?text=Text'
+    logo: 'https://via.placeholder.com/100x100?text=Text',
   };
 
   /**
    * Иконки навигации комп версии
    */
-  navItems = [
+  public navItems = [
     {
       id: 1,
-      icon: 'fas fa-comment-alt'
+      icon: 'fas fa-comment-alt',
     },
     {
       id: 2,
-      icon: 'fas fa-shopping-bag'
+      icon: 'fas fa-shopping-bag',
     },
     {
       id: 3,
-      icon: 'fas fa-cart-arrow-down'
+      icon: 'fas fa-cart-arrow-down',
     },
     {
       id: 5,
-      icon: 'fas fa-calendar-alt'
+      icon: 'fas fa-calendar-alt',
     },
     {
       id: 6,
-      icon: 'fas fa-cog'
-    }
+      icon: 'fas fa-cog',
+    },
   ];
 
-  MessageMock = [
+  /*;
+  * */
+  public MessageMock = [
     {
       content: 'Как твои дела',
       sender: {
@@ -272,10 +283,52 @@ export class StoreService {
     },
   ];
 
+
+  /**
+   *
+   * */
+  private messages$: BehaviorSubject<Message[]> = new BehaviorSubject(this.MessageMock);
+
   getDialogs() {
     return this.dialogs;
   }
-
+  /**
+   * @deprecated use - getMessage$
+   * */
+  getPersonalMessage() {
+    return this.MessageMock;
+  }
+  public getMessage$(): Observable<Message[]> {
+    return this.messages$;
+  }
+  public sendMessage(message: Message) {
+    this.messages$.pipe(take(1))
+      .subscribe(
+        (messages) => {
+          messages.push(message);
+          this.messages$.next([...messages]);
+        }
+      );
+  }
+  public sendTestTextMessage (content: string)
+  {
+    this.sendMessage(
+      {
+        content: content,
+        sender: {
+          uid: 'test-id-1',
+          icon: 'https://via.placeholder.com/60x60?text=User',
+          name: 'Сайхан',
+          phone: '79291234567',
+        },
+        type: MessageTypeEnum.text,
+        direction: MessageDirectionEnum.toMe,
+        time: {
+          created: new Date(),
+        },
+      },
+    )
+  }
   getCategories() {
     return this.categories;
   }
@@ -291,9 +344,4 @@ export class StoreService {
   getLogo() {
     return this.logo;
   }
-
-  dialogVisible = true;
-
-  profileVisible = false;
-
 }

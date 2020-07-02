@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store-servic.service';
 import { Router } from '@angular/router';
-import {AnimationService} from '../services/common/animation.service';
+import { AnimationService } from '../services/common/animation.service';
 
 @Component({
   selector: 'app-mobile',
@@ -9,8 +9,12 @@ import {AnimationService} from '../services/common/animation.service';
   styleUrls: ['./mobile.component.scss'],
 })
 export class MobileComponent implements OnInit {
-  constructor(private storeMessage: StoreService, private router: Router,
-              private animSRVC: AnimationService) {}
+  showFiller = false;
+  constructor(
+    private storeMessage: StoreService,
+    private router: Router,
+    private animSRVC: AnimationService
+  ) {}
   // массив данных личного чата
   dialogs = this.storeMessage.getDialogs();
 
@@ -42,6 +46,9 @@ export class MobileComponent implements OnInit {
     if (detail.place === 'showPersonalDialog') {
       this.animSRVC.slideToLEFT();
       this.router.navigate(['app-mobile-personal-chat']);
+    }
+    if (detail.place === 'menu-bar') {
+      console.log('menu-bar');
     }
   }
 }
