@@ -5,6 +5,7 @@ import {MobileComponent} from './mobile/mobile.component';
 import {MobilePersonalChatComponent} from './mobile/res/view/mobile-personal-chat/mobile-personal-chat.component';
 import {UserProfileComponent} from './mobile/res/view/user-profile/user-profile.component';
 import {ModuleComponent} from './module/module.component';
+import {ContactsComponent} from './mobile/res/view/contacts/contacts.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'mobile',
     component: MobileComponent,
+  },
+
+  {
+    path: 'contacts',
+    component: ContactsComponent,
   },
   {
     path: 'profile',

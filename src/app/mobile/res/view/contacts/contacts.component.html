@@ -1,0 +1,13 @@
+<div class="contacts-list-wrapper">
+  <contacts-list-header
+    (clickToLink)="clickToLink($event)"
+    (searchContact)="searchContact($event)"
+  ></contacts-list-header>
+  <contacts-list-body
+    [contacts]="getContacts()"
+    (clickToLink)="clickToLink($event)"
+  ></contacts-list-body>
+  <m-chat-footer
+    (clickToLink)="clickToLink($event)"
+  ></m-chat-footer>
+</div>

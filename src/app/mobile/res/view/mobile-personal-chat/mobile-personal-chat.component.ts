@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../../../store-servic.service';
 import { Router } from '@angular/router';
-import {AnimationService} from '../../../../services/common/animation.service';
+import { AnimationService } from '../../../../services/common/animation.service';
 
 @Component({
   selector: 'app-mobile-personal-chat',
@@ -9,8 +9,13 @@ import {AnimationService} from '../../../../services/common/animation.service';
   styleUrls: ['./mobile-personal-chat.component.scss'],
 })
 export class MobilePersonalChatComponent implements OnInit {
-  constructor(private storeMessage: StoreService, private router: Router,
-              private animSRVC: AnimationService) {}
+  constructor(
+    private storeMessage: StoreService,
+    private router: Router,
+    private animSRVC: AnimationService
+  ) {}
+
+  mobileTheme = 'mobile';
 
   ngOnInit(): void {}
 
@@ -30,4 +35,5 @@ export class MobilePersonalChatComponent implements OnInit {
       this.router.navigate(['profile']);
     }
   }
+
 }

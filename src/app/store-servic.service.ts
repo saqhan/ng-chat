@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {take} from "rxjs/operators";
 import {Message, MessageDirectionEnum, MessageTypeEnum} from "stencil-chat";
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -151,6 +152,141 @@ export class StoreService {
     logo: 'https://via.placeholder.com/100x100?text=Text',
   };
 
+  public contacts = [
+    {
+      id: 1,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'R',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 2,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Harry Sutton',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 3,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Matthew Jake Sanchez',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 4,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Isaac Jack King',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 5,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Joseph Samuel Johnson',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 6,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Mike Vazovski',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 7,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Dominic Mason',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 8,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Blake David',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 9,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Joseph Samuel Johnson',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 10,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Alejandro Kyle Jenkins',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 11,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Hunter Joshua Coleman',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+    {
+      id: 12,
+      img: 'https://via.placeholder.com/300x300?text=User',
+      name: 'Jordan Isaiah Martinez',
+      mess: 'rebuild finished',
+      time: {
+        created: new Date(),
+      },
+      category: 'work',
+      online: true,
+    },
+  ];
+
   /**
    * Иконки навигации комп версии
    */
@@ -177,16 +313,14 @@ export class StoreService {
     },
   ];
 
-  /*;
-  * */
-  public MessageMock: Message[] = [
+  public MessageMock = [
     {
-      content: "Привет, как дела?",
+      content: 'Привет, как дела?',
       sender: {
-        uid: "test-id-1",
-        icon: "https://via.placeholder.com/60x60?text=User",
-        name: "Сайхан",
-        phone: "79291234567",
+        uid: 'test-id-1',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.toMe,
@@ -195,12 +329,13 @@ export class StoreService {
       },
     },
     {
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       sender: {
-        uid: "test-id-1",
-        icon: "https://via.placeholder.com/60x60?text=User",
-        name: "Сайхан",
-        phone: "79291234567",
+        uid: 'test-id-1',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.toMe,
@@ -209,7 +344,7 @@ export class StoreService {
       },
     },
     {
-      content: "Олег подключился к чату",
+      content: 'Олег подключился к чату',
       sender: {
         uid: '',
         icon: '',
@@ -223,12 +358,12 @@ export class StoreService {
       },
     },
     {
-      content: "https://via.placeholder.com/500",
+      content: 'https://via.placeholder.com/500',
       sender: {
-        uid: "test-id-2",
-        icon: "https://via.placeholder.com/60x60?text=User",
-        name: "Сайхан",
-        phone: "79291234567",
+        uid: 'test-id-2',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
       },
       type: MessageTypeEnum.image,
       direction: MessageDirectionEnum.toMe,
@@ -253,12 +388,12 @@ export class StoreService {
       },
     },
     {
-      content: "Все гуд!",
+      content: 'Все гуд!',
       sender: {
-        uid: "test-id-2",
-        icon: "https://via.placeholder.com/60x60?text=User",
-        name: "Адам",
-        phone: "79291234567",
+        uid: 'test-id-2',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Адам',
+        phone: '79291234567',
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.fromMe,
@@ -269,12 +404,13 @@ export class StoreService {
       },
     },
     {
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss",
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss',
       sender: {
-        uid: "test-id-2",
-        icon: "https://via.placeholder.com/60x60?text=User",
-        name: "Адам",
-        phone: "79291234567",
+        uid: 'test-id-2',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Адам',
+        phone: '79291234567',
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.fromMe,
@@ -284,12 +420,12 @@ export class StoreService {
       },
     },
     {
-      content: "https://via.placeholder.com/500",
+      content: 'https://via.placeholder.com/500',
       sender: {
-        uid: "test-id-2",
-        icon: "https://via.placeholder.com/60x60?text=User",
-        name: "Адам",
-        phone: "79291234567",
+        uid: 'test-id-2',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Адам',
+        phone: '79291234567',
       },
       type: MessageTypeEnum.image,
       direction: MessageDirectionEnum.fromMe,
@@ -298,12 +434,12 @@ export class StoreService {
       },
     },
     {
-      content: "Где ты?",
+      content: 'Где ты?',
       sender: {
-        uid: "test-id-1",
-        icon: "https://via.placeholder.com/60x60?text=User",
-        name: "Сайхан",
-        phone: "79291234567",
+        uid: 'test-id-1',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.toMe,
@@ -312,12 +448,12 @@ export class StoreService {
       },
     },
     {
-      content: "Чат пилю",
+      content: 'Чат пилю',
       sender: {
-        uid: "test-id-2",
-        icon: "https://via.placeholder.com/60x60?text=User",
-        name: "Адам",
-        phone: "79291234567",
+        uid: 'test-id-2',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Адам',
+        phone: '79291234567',
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.fromMe,
@@ -326,12 +462,12 @@ export class StoreService {
       },
     },
     {
-      content: "Прикинь, я тоже",
+      content: 'Прикинь, я тоже',
       sender: {
-        uid: "test-id-1",
-        icon: "https://via.placeholder.com/60x60?text=User",
-        name: "Сайхан",
-        phone: "79291234567",
+        uid: 'test-id-1',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
       },
       type: MessageTypeEnum.text,
       direction: MessageDirectionEnum.toMe,
@@ -341,18 +477,14 @@ export class StoreService {
     },
   ];
 
-
-  /**
-   *
-   * */
-  private messages$: BehaviorSubject<Message[]> = new BehaviorSubject(this.MessageMock);
+  private messages$: BehaviorSubject<Message[]> = new BehaviorSubject(
+    this.MessageMock
+  );
 
   getDialogs() {
     return this.dialogs;
   }
-  /**
-   * @deprecated use - getMessage$
-   * */
+
   getPersonalMessage() {
     return this.MessageMock;
   }
@@ -360,33 +492,29 @@ export class StoreService {
     return this.messages$;
   }
   public sendMessage(message: Message) {
-    this.messages$.pipe(take(1))
-      .subscribe(
-        (messages) => {
-          messages.push(message);
-          this.messages$.next([...messages]);
-        }
-      );
+    this.messages$.pipe(take(1)).subscribe((messages) => {
+      messages.push(message);
+      this.messages$.next([...messages]);
+    });
   }
-  public sendTestTextMessage (content: string)
-  {
-    this.sendMessage(
-      {
-        content: content,
-        sender: {
-          uid: 'test-id-1',
-          icon: 'https://via.placeholder.com/60x60?text=User',
-          name: 'Сайхан',
-          phone: '79291234567',
-        },
-        type: MessageTypeEnum.text,
-        direction: MessageDirectionEnum.toMe,
-        time: {
-          created: new Date(),
-        },
+
+  public sendTestTextMessage(content: string) {
+    this.sendMessage({
+      content,
+      sender: {
+        uid: 'test-id-1',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
       },
-    )
+      type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.toMe,
+      time: {
+        created: new Date(),
+      },
+    });
   }
+
   getCategories() {
     return this.categories;
   }
@@ -401,5 +529,9 @@ export class StoreService {
 
   getLogo() {
     return this.logo;
+  }
+
+  getContacts() {
+    return this.contacts;
   }
 }

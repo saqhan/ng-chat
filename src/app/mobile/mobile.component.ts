@@ -37,7 +37,7 @@ export class MobileComponent implements OnInit {
         ? this.storeMessage
             .getDialogs()
             .filter((item) => item.category === detail.item.id)
-        : this.storeMessage.getDialogs());
+        : this.storeMessage.getDialogs() );
   }
 
   // клик по ссылке
@@ -46,6 +46,10 @@ export class MobileComponent implements OnInit {
     if (detail.place === 'showPersonalDialog') {
       this.animSRVC.slideToLEFT();
       this.router.navigate(['app-mobile-personal-chat']);
+    }
+    if (detail.place === 'contacts') {
+      this.animSRVC.slideToLEFT();
+      this.router.navigate(['contacts']);
     }
     if (detail.place === 'menu-bar') {
       console.log('menu-bar');
