@@ -40,7 +40,7 @@ export class ContactsComponent implements OnInit {
       e.currentTarget.querySelector('input').value !== ''
         ? this.storeMessage
           .getContacts()
-          .filter((item) => item.name.includes(e.currentTarget.querySelector('input').value) )
+          .filter((item) => item.name.toLowerCase().includes(e.currentTarget.querySelector('input').value.toLowerCase()) )
         : this.storeMessage.getContacts() );
   }
 }
