@@ -23,18 +23,22 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 })
 export class CompComponent implements OnInit {
   constructor(private chatStore: StoreService, private router: Router) {}
+  // get contacts array
+
+  dialogs = this.chatStore.getDialogs();
 
   ngOnInit(): void {}
+
+  public getDialogs() {
+    return this.dialogs;
+  }
+
   getNavItems() {
     return this.chatStore.getNavItems();
   }
 
   getLogo() {
     return this.chatStore.getLogo();
-  }
-
-  getDialogs() {
-    return this.chatStore.getDialogs();
   }
 
   getMessages() {
@@ -59,6 +63,20 @@ export class CompComponent implements OnInit {
     if (detail.place === 'userName') {
       this.chatStore.profileVisible = !this.chatStore.profileVisible;
     }
+  }
+
+  /**
+   * Поиск контактов
+   * */
+
+  public searchContact(e) {
+    console.log('searchContact', e.currentTarget.querySelector('input').value);
+    return (this.dialogs =
+      e.currentTarget.querySelector('input').value !== ''
+        ? this.chatStore
+          .getDialogs()
+          .filter((item) => item.name.toLowerCase().includes(e.currentTarget.querySelector('input').value.toLowerCase()) )
+        : this.chatStore.getDialogs());
   }
 
 }
