@@ -4,6 +4,7 @@
 .container {
   max-width: 1280px;
   width: 100%;
+  overflow: hidden;
 }
 .main-wrapper {
   background-color: #ebeff6;
@@ -24,4 +25,10 @@ main {
 }
 .white-col {
   background-color: #fdfdfd;
+}
+.chat-messages {
+  padding: 40px 20px;
+  overflow-y: auto;
+  height: 80vh;
+  position: relative;
 }

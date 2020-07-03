@@ -30,7 +30,7 @@
 
           </section>
         </div>
-        <div class="col-3" *ngIf="getProfileVisible()">
+        <div class="col-3" @flyInOut *ngIf="getProfileVisible()">
           <s-adam-profile></s-adam-profile>
         </div>
       </div>

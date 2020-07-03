@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 
 import {BehaviorSubject, Observable} from "rxjs";
 import {take} from "rxjs/operators";
-import {Message, MessageDirectionEnum} from "stencil-chat";
-import {MessageTypeEnum} from "./comp/interface/common.interface";
+import {Message, MessageDirectionEnum, MessageTypeEnum} from "stencil-chat";
 
 @Injectable({
   providedIn: 'root',
