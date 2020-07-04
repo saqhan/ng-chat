@@ -1,3 +1,4 @@
+
 <div class="main-wrapper">
   <main>
     <div class="container">
@@ -22,6 +23,7 @@
               <s-adam-personal-header
                 [message]="getMessages()"
                 (clickOnUsername)="toggleProfile($event)"
+                (clickOnSearchMessage)="searchMessage($event)"
               >
               </s-adam-personal-header>
               <div class="chat-messages">

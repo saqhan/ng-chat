@@ -37,7 +37,7 @@ export class MobileComponent implements OnInit {
         ? this.storeMessage
             .getDialogs()
             .filter((item) => item.category === detail.item.id)
-        : this.storeMessage.getDialogs() );
+        : this.storeMessage.getDialogs());
   }
 
   // клик по ссылке
@@ -54,5 +54,23 @@ export class MobileComponent implements OnInit {
     if (detail.place === 'menu-bar') {
       console.log('menu-bar');
     }
+  }
+
+  // Поиск контактов
+
+  public searchContact(e) {
+    console.log('searchContact', e.currentTarget.querySelector('input').value);
+    return (this.dialogs =
+      e.currentTarget.querySelector('input').value !== ''
+        ? this.storeMessage
+            .getContacts()
+            .filter((item) =>
+              item.name
+                .toLowerCase()
+                .includes(
+                  e.currentTarget.querySelector('input').value.toLowerCase()
+                )
+            )
+        : this.storeMessage.getContacts());
   }
 }

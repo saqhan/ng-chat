@@ -27,9 +27,9 @@ export class ModuleComponent implements OnInit {
         console.log(
           '',
           `Тестовое сообщение ${i}`
-        )
+        );
       }
-    )
+    );
   }
 
   // массив данных для диалогов
@@ -37,9 +37,7 @@ export class ModuleComponent implements OnInit {
     return this.dialogs;
   }
 
-  /**
-   *
-   * */
+  //
   getPersonalMessage$(): Observable<Message[]> {
     // return this.storeMessage.getPersonalMessage();
     return this.storeMessage.getMessage$();
