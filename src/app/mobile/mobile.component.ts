@@ -58,19 +58,16 @@ export class MobileComponent implements OnInit {
 
   // Поиск контактов
 
-  public searchContact(e) {
-    console.log('searchContact', e.currentTarget.querySelector('input').value);
+  public searchContact({ detail }) {
+    // console.log('searchContact', detail.data);
     return (this.dialogs =
-      e.currentTarget.querySelector('input').value !== ''
-        ? this.storeMessage
-            .getContacts()
-            .filter((item) =>
-              item.name
-                .toLowerCase()
-                .includes(
-                  e.currentTarget.querySelector('input').value.toLowerCase()
-                )
-            )
+      detail.data !== '' && detail.data !== null
+        ? this.dialogs.filter((item) => {
+            return typeof item.name === 'string'
+              ? item.name.toLowerCase().includes(detail.data.toLowerCase())
+              : false;
+          })
         : this.storeMessage.getContacts());
   }
+
 }
