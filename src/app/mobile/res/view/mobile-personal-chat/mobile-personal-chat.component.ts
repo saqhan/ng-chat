@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../../../store-servic.service';
 import { Router } from '@angular/router';
 import { AnimationService } from '../../../../services/common/animation.service';
-import {type} from "os";
+// import {type} from "os";
 
 @Component({
   selector: 'app-mobile-personal-chat',
@@ -40,22 +40,15 @@ export class MobilePersonalChatComponent implements OnInit {
   }
   // Поиск контактов
 
-  public searchContact(e) {
-    console.log('searchMessage 1 ', e);
+  public searchContact({ detail }) {
+    // console.log('searchMessage 1 ', detail.data);
     return (this.messages =
-      e.currentTarget.querySelector('input').value !== ''
-        ? this.storeMessage
-          .getMessages()
-          .filter((item) => {
-            console.log(
-              'searchContact 2 ',
-              item
-            );
-            return (typeof item.content === 'string')
-              ? (item.content).toLowerCase().includes(e.currentTarget.querySelector('input').value.toLowerCase())
+      detail.data !== '' && detail.data !== null
+        ? this.messages.filter((item) => {
+            return typeof item.content === 'string'
+              ? item.content.toLowerCase().includes(detail.data.toLowerCase())
               : false;
-          } )
-        : this.storeMessage.getMessages() );
+          })
+        : this.storeMessage.getMessages());
   }
-
 }
