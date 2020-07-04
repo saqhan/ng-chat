@@ -1,32 +1,41 @@
-<main>
-  <div class="container">
-    <div class="row">
-      <div class="col-1">
-        
-        <s-adam-navigate [logo]="getLogo()" [navItems]="getNavItems()"></s-adam-navigate>
-      </div>
-      <div class="col-3">
-        <s-adam-contacts
-          [dialogs]="getDialogs()"
-          (clickToLink)="clickToLink($event)"></s-adam-contacts>
-        <s-adam-contacts [dialogs]="getDialogs()">
-        </s-adam-contacts>
-      </div>
-      <div class="col">
-        <section class="chat">
-          <s-adam-no-chat *ngIf="getDialogVisible()"></s-adam-no-chat>
-          <s-adam-direct
-            (clickOnUsername)="toggleProfile($event)"
-            [message]="getMessages()"
-            *ngIf="!getDialogVisible()"
-          >
-          </s-adam-direct>
-        </section>
-      </div>
-      <div class="col-3" *ngIf="getProfileVisible()">
-        <s-adam-profile></s-adam-profile>
+
+<div class="main-wrapper">
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-1 white-col">
+          <s-adam-navigate [logo]="getLogo()" [navItems]="getNavItems()"></s-adam-navigate>
+        </div>
+        <div class="col-3">
+          <s-adam-contacts
+            [dialogs]="getDialogs()"
+            (clickToLink)="clickToLink($event)"></s-adam-contacts>
+          <s-adam-contacts [dialogs]="getDialogs()">
+          </s-adam-contacts>
+        </div>
+        <div class="col white-col">
+          <section class="chat">
+            <s-adam-no-chat *ngIf="getDialogVisible()"></s-adam-no-chat>
+            <div class="direct-comp" *ngIf="!getDialogVisible()">
+              <s-adam-personal-header [message]="getMessages()" (clickOnUsername)="toggleProfile($event)">
+              </s-adam-personal-header>
+              <div class="chat-messages" >
+                <div *ngFor="let message of getMessages()">
+                  <message-from [message]="message">
+                  </message-from>
+                </div>
+
+              </div>
+              <personal-footer></personal-footer>
+            </div>
+
+          </section>
+        </div>
+        <div class="col-3" @flyInOut *ngIf="getProfileVisible()">
+          <s-adam-profile></s-adam-profile>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
+</div>
 

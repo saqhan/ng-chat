@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject, Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { Message, MessageDirectionEnum, MessageTypeEnum } from 'stencil-chat';
+
+import {BehaviorSubject, Observable} from 'rxjs';
+import {take} from 'rxjs/operators';
+import {Message, MessageDirectionEnum, MessageTypeEnum} from 'stencil-chat';
 
 @Injectable({
   providedIn: 'root',
@@ -313,8 +314,9 @@ export class StoreService {
   ];
 
   /*;
-   * */
-  public MessageMock = [
+
+  * */
+  public MessageMock: Message[] = [
     {
       content: 'Привет, как дела?',
       sender: {
@@ -330,8 +332,8 @@ export class StoreService {
       },
     },
     {
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       sender: {
         uid: 'test-id-1',
         icon: 'https://via.placeholder.com/60x60?text=User',
@@ -345,6 +347,7 @@ export class StoreService {
       },
     },
     {
+
       content: 'Олег подключился к чату',
       sender: {
         uid: '',
@@ -405,8 +408,7 @@ export class StoreService {
       },
     },
     {
-      content:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss',
       sender: {
         uid: 'test-id-2',
         icon: 'https://via.placeholder.com/60x60?text=User',

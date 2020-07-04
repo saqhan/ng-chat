@@ -1,12 +1,34 @@
+* {
+  padding: 0;
+}
 .container {
   max-width: 1280px;
   width: 100%;
+  overflow: hidden;
+}
+.main-wrapper {
+  background-color: #ebeff6;
+  height: 100vh;
+  position: relative;
 }
 main {
   height: 95vh;
   overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100% ;
 }
 .chat {
   position: relative;
   height: 95vh;
+}
+.white-col {
+  background-color: #fdfdfd;
+}
+.chat-messages {
+  padding: 40px 20px;
+  overflow-y: auto;
+  height: 80vh;
+  position: relative;
 }
