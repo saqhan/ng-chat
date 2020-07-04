@@ -18,10 +18,11 @@
         <div class="col white-col">
           <section class="chat">
             <s-adam-no-chat *ngIf="getDialogVisible()"></s-adam-no-chat>
-            <div class="direct-comp" *ngIf="!getDialogVisible()">
+            <div class="direct-comp" @flyInOut *ngIf="!getDialogVisible()">
               <s-adam-personal-header
                 [message]="getMessages()"
                 (clickOnUsername)="toggleProfile($event)"
+                (clickOnSearchMessage)=""
               >
               </s-adam-personal-header>
               <div class="chat-messages">

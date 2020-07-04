@@ -475,6 +475,20 @@ export class StoreService {
         created: new Date(),
       },
     },
+    {
+      content: "",
+      sender: {
+        uid: "test-id-1",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Сайхан",
+        phone: "79291234567",
+      },
+      type: MessageTypeEnum.loading,
+      direction: MessageDirectionEnum.toMe,
+      time: {
+        created: new Date(),
+      },
+    },
   ];
 
   private messages$: BehaviorSubject<Message[]> = new BehaviorSubject(

@@ -27,6 +27,8 @@ export class CompComponent implements OnInit {
 
   dialogs = this.chatStore.getDialogs();
 
+  messages = this.chatStore.getMessages();
+
   ngOnInit(): void {}
 
   public getDialogs() {
@@ -78,5 +80,16 @@ export class CompComponent implements OnInit {
           .filter((item) => item.name.toLowerCase().includes(e.currentTarget.querySelector('input').value.toLowerCase()) )
         : this.chatStore.getDialogs());
   }
+
+  // public searchMessage(e) {
+  //   console.log('searchContact', e.currentTarget.querySelector('input').value);
+  //   return (this.messages =
+  //     e.currentTarget.querySelector('input').value !== ''
+  //       ? this.chatStore
+  //         .getMessages()
+  //         .filter((item) => item.content.toLowerCase().includes(e.currentTarget.querySelector('input').value.toLowerCase()) )
+  //       : this.chatStore.getDialogs());
+  // }
+  // }
 
 }
