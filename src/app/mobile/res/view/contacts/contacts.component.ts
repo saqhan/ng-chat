@@ -4,49 +4,43 @@ import { Router } from '@angular/router';
 import { AnimationService } from '../../../../services/common/animation.service';
 
 @Component({
-  selector: 'app-mobile-personal-chat',
-  templateUrl: './mobile-personal-chat.component.html',
-  styleUrls: ['./mobile-personal-chat.component.scss'],
+  selector: 'app-contacts',
+  templateUrl: './contacts.component.html',
+  styleUrls: ['./contacts.component.scss'],
 })
-export class MobilePersonalChatComponent implements OnInit {
+export class ContactsComponent implements OnInit {
   constructor(
     private storeMessage: StoreService,
     private router: Router,
     private animSRVC: AnimationService
   ) {}
+  // get contacts array
 
-  mobileTheme = 'mobile';
-
-  messages = this.storeMessage.getMessages();
-
+  contacts = this.storeMessage.getContacts();
   ngOnInit(): void {}
 
-  getMessages() {
-    return this.messages;
+  public getContacts() {
+    return this.contacts;
   }
-
   // клик по ссылке
   public clickToLink({ detail }) {
-    console.log('clickToLinkBack', detail);
     if (detail.place === 'showDialogs') {
       this.animSRVC.slideToRIGHT();
       this.router.navigate(['mobile']);
     }
-    if (detail.place === 'user-name-personal') {
+    if (detail.place === 'clickToContact') {
       this.animSRVC.slideToLEFT();
-      this.router.navigate(['profile']);
+      this.router.navigate(['app-mobile-personal-chat']);
     }
   }
-  // Поиск контактов
 
   public searchContact(e) {
-    console.log('searchMessage', e.currentTarget.querySelector('input').value);
-    return (this.messages =
+    console.log('searchContact', e.currentTarget.querySelector('input').value);
+    return (this.contacts =
       e.currentTarget.querySelector('input').value !== ''
         ? this.storeMessage
           .getContacts()
           .filter((item) => item.name.toLowerCase().includes(e.currentTarget.querySelector('input').value.toLowerCase()) )
         : this.storeMessage.getContacts() );
   }
-
 }

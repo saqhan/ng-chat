@@ -47,8 +47,30 @@ export class MobileComponent implements OnInit {
       this.animSRVC.slideToLEFT();
       this.router.navigate(['app-mobile-personal-chat']);
     }
+    if (detail.place === 'contacts') {
+      this.animSRVC.slideToLEFT();
+      this.router.navigate(['contacts']);
+    }
     if (detail.place === 'menu-bar') {
       console.log('menu-bar');
     }
+  }
+
+  // Поиск контактов
+
+  public searchContact(e) {
+    console.log('searchContact', e.currentTarget.querySelector('input').value);
+    return (this.dialogs =
+      e.currentTarget.querySelector('input').value !== ''
+        ? this.storeMessage
+            .getContacts()
+            .filter((item) =>
+              item.name
+                .toLowerCase()
+                .includes(
+                  e.currentTarget.querySelector('input').value.toLowerCase()
+                )
+            )
+        : this.storeMessage.getContacts());
   }
 }

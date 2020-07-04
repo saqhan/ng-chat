@@ -1,4 +1,12 @@
-<mobile-personal
-  (clickToLink)="clickToLink($event)"
-  [messageMock]="getMessages()"
-></mobile-personal>
+<div class="personal-wrapper">
+  <personal-header
+    (clickToLink)="clickToLink($event)"
+    (searchContact)="searchContact($event)"
+    [messageMock]="getMessages()"
+  ></personal-header>
+  <personal-message
+    (clickToLink)="clickToLink($event)"
+    [messageMock]="getMessages()"
+  ></personal-message>
+  <personal-footer [theme]="mobileTheme" (clickToLink)="clickToLink($event)"></personal-footer>
+</div>

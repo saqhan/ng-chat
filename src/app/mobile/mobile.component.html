@@ -1,8 +1,14 @@
-  <mobile-dialogs
+
+<div class="m-chat-wrapper">
+  <m-chat-header
     [categories]="getCategories()"
-    [dialogs]="getDialogs()"
     (clickToLink)="clickToLink($event)"
     (clickToCategory)="clickToCategory($event)"
-  ></mobile-dialogs>
-
-
+    (searchContact)="searchContact($event)"
+  ></m-chat-header>
+  <m-chat-dialogs
+    [dialogs]="getDialogs()"
+    (clickToLink)="clickToLink($event)"
+  ></m-chat-dialogs>
+  <m-chat-footer (clickToLink)="clickToLink($event)"></m-chat-footer>
+</div>

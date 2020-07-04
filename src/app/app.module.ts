@@ -12,6 +12,7 @@ import {AnimationService} from './services/common/animation.service';
 import { ModuleComponent } from './module/module.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { ContactsComponent } from './mobile/res/view/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MobilePersonalChatComponent,
     UserProfileComponent,
     ModuleComponent,
+    ContactsComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, MatSliderModule, MatSidenavModule],
   providers: [AnimationService],

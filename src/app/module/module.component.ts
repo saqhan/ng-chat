@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../store-servic.service';
 import { Router } from '@angular/router';
 import { AnimationService } from '../services/common/animation.service';
-import {interval, Observable} from "rxjs";
-import {Message} from "../comp/interface/common.interface";
+
+
+import {interval, Observable} from 'rxjs';
+import {Message} from 'stencil-chat';
 
 @Component({
   selector: 'app-module',
@@ -27,9 +29,9 @@ export class ModuleComponent implements OnInit {
         console.log(
           '',
           `Тестовое сообщение ${i}`
-        )
+        );
       }
-    )
+    );
   }
 
   // массив данных для диалогов
@@ -37,9 +39,7 @@ export class ModuleComponent implements OnInit {
     return this.dialogs;
   }
 
-  /**
-   *
-   * */
+  //
   getPersonalMessage$(): Observable<Message[]> {
     // return this.storeMessage.getPersonalMessage();
     return this.storeMessage.getMessage$();
