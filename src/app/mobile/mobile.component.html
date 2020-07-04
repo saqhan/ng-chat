@@ -4,6 +4,7 @@
     [categories]="getCategories()"
     (clickToLink)="clickToLink($event)"
     (clickToCategory)="clickToCategory($event)"
+    (searchContact)="searchContact($event)"
   ></m-chat-header>
   <m-chat-dialogs
     [dialogs]="getDialogs()"

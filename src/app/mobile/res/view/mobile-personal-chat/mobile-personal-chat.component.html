@@ -1,6 +1,7 @@
 <div class="personal-wrapper">
   <personal-header
     (clickToLink)="clickToLink($event)"
+    (searchContact)="searchContact($event)"
     [messageMock]="getMessages()"
   ></personal-header>
   <personal-message

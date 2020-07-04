@@ -17,10 +17,12 @@ export class MobilePersonalChatComponent implements OnInit {
 
   mobileTheme = 'mobile';
 
+  messages = this.storeMessage.getMessages();
+
   ngOnInit(): void {}
 
   getMessages() {
-    return this.storeMessage.getMessages();
+    return this.messages;
   }
 
   // клик по ссылке
@@ -34,6 +36,17 @@ export class MobilePersonalChatComponent implements OnInit {
       this.animSRVC.slideToLEFT();
       this.router.navigate(['profile']);
     }
+  }
+  // Поиск контактов
+
+  public searchContact(e) {
+    console.log('searchMessage', e.currentTarget.querySelector('input').value);
+    return (this.messages =
+      e.currentTarget.querySelector('input').value !== ''
+        ? this.storeMessage
+          .getContacts()
+          .filter((item) => item.name.toLowerCase().includes(e.currentTarget.querySelector('input').value.toLowerCase()) )
+        : this.storeMessage.getContacts() );
   }
 
 }
