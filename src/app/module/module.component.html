@@ -1,5 +1,21 @@
-<s-saqhan-chat-app
-  [messages]="getDialogs()"
-  [personalMessage]="getPersonalMessage$() | async"
-  (clickToLink)="clickToLink($event)"
-></s-saqhan-chat-app>
+<!--<s-saqhan-chat-app-->
+<!--  [messages]="getDialogs()"-->
+<!--  [personalMessage]="getPersonalMessage$() | async"-->
+<!--  (clickToLink)="clickToLink($event)"-->
+<!--&gt;</s-saqhan-chat-app>-->
+
+<div class="wrapper-modal">
+  <div class="wrapper-chat" *ngIf="moduleVisible">
+    <module-header (onClose)="closeModule()"></module-header>
+    <s-saqhan-chat-form-search (searchContact)="searchDialogs($event)"></s-saqhan-chat-form-search>
+    <div class="chat-wrap">
+      <s-saqhan-chat-users [messages]="getDialogs()"(personalMessage)="getPersonalMessage()" ></s-saqhan-chat-users>
+    </div>
+    <s-saqhan-chat-add-question></s-saqhan-chat-add-question>
+  </div>
+  <btn-wrapper
+    (clickToShowChat)="toggleShowModule($event)"
+    (showChat)="getModuleVisible()"
+  ></btn-wrapper>
+</div>
+

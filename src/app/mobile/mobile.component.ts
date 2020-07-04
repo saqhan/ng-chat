@@ -69,5 +69,18 @@ export class MobileComponent implements OnInit {
           })
         : this.storeMessage.getContacts());
   }
+  // Поиск контактов
 
+  // public searchContact({detail}) {
+  //   console.log('searchMessage 1 ', detail.data);
+  //   return (this.messages =
+  //     detail.data !== '' && detail.data !== null
+  //       ? this.messages
+  //         .filter((item) => {
+  //           return (typeof item.content === 'string' )
+  //             ? (item.content).toLowerCase().includes(detail.data.toLowerCase())
+  //             : false;
+  //         } )
+  //       : this.storeMessage.getMessages() );
+  // }
 }
