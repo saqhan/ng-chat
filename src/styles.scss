@@ -1,13 +1,11 @@
-
-@import '~@angular/material/theming';
-
+@import "~@angular/material/theming";
 
 @import "~bootstrap/dist/css/bootstrap-grid.min.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap");
 
 * {
-  font-family: 'Open sans';
+  font-family: "Open sans";
   padding: 0;
   margin: 0;
 }
@@ -34,14 +32,17 @@
   overflow: auto;
 }
 
-
 .module .personal-message {
   padding: 20px 0px;
   height: calc(100vh - 370px);
   overflow: auto;
 }
 
-
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
