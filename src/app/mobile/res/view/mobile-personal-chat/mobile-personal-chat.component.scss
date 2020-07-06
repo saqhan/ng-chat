@@ -3,6 +3,12 @@
   overflow: auto;
 }
 
+.personal-message {
+  padding: 20px 0px;
+  height: calc(100vh - 185px);
+  overflow: auto;
+}
+
 .personal-wrapper .footer-wrapper {
   border-radius: 20px 20px 0px 0px;
 }

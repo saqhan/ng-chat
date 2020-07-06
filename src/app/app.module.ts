@@ -13,6 +13,7 @@ import { ModuleComponent } from './module/module.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ContactsComponent } from './mobile/res/view/contacts/contacts.component';
+import { ModuleDialogsComponent } from './module/res/view/module-dialogs/module-dialogs.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ContactsComponent } from './mobile/res/view/contacts/contacts.component
     UserProfileComponent,
     ModuleComponent,
     ContactsComponent,
+    ModuleDialogsComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, MatSliderModule, MatSidenavModule],
   providers: [AnimationService],

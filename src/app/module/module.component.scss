@@ -1,0 +1,66 @@
+.wrapper-modal {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  position: fixed;
+  top: 2%;
+  right: 2%;
+  z-index: 999;
+}
+
+.wrapper-chat {
+  box-shadow: 0 0 10px 1px #828282;
+  border-radius: 5px;
+  width: 400px;
+  overflow: hidden;
+  height: calc(100vh - 135px);
+  background-color: #fff;
+}
+
+.chat-wrap {
+  width: 100%;
+  height: calc(100vh - 300px);
+  overflow: auto;
+  padding-top: 15px;
+}
+
+.personal-wrapper .personal-message {
+  padding: 20px 0px;
+  height: calc(100vh - 185px);
+  overflow: auto;
+}
+
+.personal-wrapper {
+  height: calc(100vh - 60px);
+  overflow: auto;
+}
+
+.personal-wrapper .personal-message {
+
+}
+
+/*Полоса прокрутки*/
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 5px;
+  border-radius: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(108, 108, 108, 0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(106, 106, 106, 0.4);
+}
