@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
 import {BehaviorSubject, Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
 import {Message, MessageDirectionEnum, MessageTypeEnum} from 'stencil-chat';
@@ -150,6 +149,10 @@ export class StoreService {
   public logo = {
     id: 'logo',
     logo: 'https://via.placeholder.com/100x100?text=Text',
+  };
+
+  public titleModule = {
+    title: 'Модульный чат'
   };
 
   public contacts = [
@@ -313,9 +316,7 @@ export class StoreService {
     },
   ];
 
-  /*;
 
-  * */
   public MessageMock: Message[] = [
     {
       content: 'Привет, как дела?',
@@ -332,7 +333,6 @@ export class StoreService {
       },
     },
     {
-
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit',
       sender: {
         uid: 'test-id-1',
@@ -347,7 +347,6 @@ export class StoreService {
       },
     },
     {
-
       content: 'Олег подключился к чату',
       sender: {
         uid: '',
@@ -408,6 +407,7 @@ export class StoreService {
       },
     },
     {
+
       content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss',
       sender: {
         uid: 'test-id-2',
@@ -473,6 +473,20 @@ export class StoreService {
         phone: '79291234567',
       },
       type: MessageTypeEnum.text,
+      direction: MessageDirectionEnum.toMe,
+      time: {
+        created: new Date(),
+      },
+    },
+    {
+      content: "",
+      sender: {
+        uid: 'test-id-1',
+        icon: 'https://via.placeholder.com/60x60?text=User',
+        name: 'Сайхан',
+        phone: '79291234567',
+      },
+      type: MessageTypeEnum.loading,
       direction: MessageDirectionEnum.toMe,
       time: {
         created: new Date(),

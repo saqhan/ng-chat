@@ -34,13 +34,30 @@ export class ContactsComponent implements OnInit {
     }
   }
 
-  public searchContact(e) {
-    console.log('searchContact', e.currentTarget.querySelector('input').value);
+  public searchContact({ detail }) {
+    // console.log('searchContact', detail.data);
     return (this.contacts =
-      e.currentTarget.querySelector('input').value !== ''
-        ? this.storeMessage
-          .getContacts()
-          .filter((item) => item.name.toLowerCase().includes(e.currentTarget.querySelector('input').value.toLowerCase()) )
-        : this.storeMessage.getContacts() );
+      detail.data !== '' && detail.data !== null
+        ? this.contacts.filter((item) => {
+            return typeof item.name === 'string'
+              ? item.name.toLowerCase().includes(detail.data.toLowerCase())
+              : false;
+          })
+        : this.storeMessage.getContacts());
   }
+
+  // Поиск контактов
+
+  // public searchContact({detail}) {
+  //   console.log('searchMessage 1 ', detail.data);
+  //   return (this.messages =
+  //     detail.data !== '' && detail.data !== null
+  //       ? this.messages
+  //         .filter((item) => {
+  //           return (typeof item.content === 'string' )
+  //             ? (item.content).toLowerCase().includes(detail.data.toLowerCase())
+  //             : false;
+  //         } )
+  //       : this.storeMessage.getMessages() );
+  // }
 }
