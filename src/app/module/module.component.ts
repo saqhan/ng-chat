@@ -20,7 +20,7 @@ export class ModuleComponent implements OnInit {
   dialogs = this.storeMessage.getDialogs();
   personalMessage = this.storeMessage.getPersonalMessage();
 
-  showChat = true;
+  showChat = false;
   mobileTheme = 'mobile';
 
   messages = this.storeMessage.getMessages();
