@@ -22,7 +22,7 @@
   width: 100%;
   height: calc(100vh - 300px);
   overflow: auto;
-  padding-top: 15px;
+  padding: 10px 15px;
 }
 
 .personal-wrapper .personal-message {
@@ -33,13 +33,41 @@
 
 .personal-wrapper {
   height: calc(100vh - 60px);
-  overflow: auto;
+  //overflow: auto;
 }
 
 .personal-wrapper .personal-message {
 
 }
 
+
+
+@media (max-width: 414px) {
+.wrapper-chat {
+  width: 414px;
+  height: 100vh;
+}
+  .wrapper-modal {
+    top: 0%;
+    right: 0%;
+    max-width: 414px;
+  }
+  .chat-wrap {
+    height: calc(100vh - 165px);
+  }
+}
+
+@media (max-width: 375px) {
+  .wrapper-chat {
+    max-width: 375px;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrapper-chat {
+    max-width: 320px;
+  }
+}
 /*Полоса прокрутки*/
 
 /* Let's get this party started */
