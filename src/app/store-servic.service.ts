@@ -151,6 +151,10 @@ export class StoreService {
     logo: 'https://via.placeholder.com/100x100?text=Text',
   };
 
+  public titleModule = {
+    title: 'Модульный чат'
+  };
+
   public contacts = [
     {
       id: 1,

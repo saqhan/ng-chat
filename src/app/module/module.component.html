@@ -5,18 +5,32 @@
 <!--&gt;</s-saqhan-chat-app>-->
 
 <div class="wrapper-modal">
-  <div class="wrapper-chat" *ngIf="moduleVisible">
+  <div class="wrapper-chat" *ngIf="showChat">
     <div [ngSwitch]="selectChat()">
       <div *ngSwitchCase="1">
-        <module-header (onClose)="closeModule()"></module-header>
-        <s-saqhan-chat-form-search (searchContact)="searchDialogs($event)"></s-saqhan-chat-form-search>
+        <module-header
+          [titleModule]="getTitleModule()"
+          (close)="closeModule($event)"
+        ></module-header>
+        <s-saqhan-chat-form-search
+          (searchContact)="searchDialogs($event)"
+          (clickToLink)="clickToLink($event)"
+        ></s-saqhan-chat-form-search>
         <div class="chat-wrap">
-          <s-saqhan-chat-users [messages]="getDialogs()"(personalMessage)="getPersonalMessage()" ></s-saqhan-chat-users>
+          <s-saqhan-chat-users
+            [messages]="getDialogs()"
+            (personalMessage)="getPersonalMessage()"
+            (clickToLink)="clickToLink($event)"
+          ></s-saqhan-chat-users>
         </div>
         <s-saqhan-chat-add-question></s-saqhan-chat-add-question>
       </div>
       <div *ngSwitchCase="2">
         <div class="personal-wrapper">
+          <module-header
+            [titleModule]="getTitleModule()"
+            (onClose)="closeModule($event)"
+          ></module-header>
           <personal-header
             (clickToLink)="clickToLink($event)"
             (searchContact)="searchContact($event)"
@@ -26,8 +40,19 @@
             (clickToLink)="clickToLink($event)"
             [messageMock]="getMessages()"
           ></personal-message>
-          <personal-footer [theme]="mobileTheme" (clickToLink)="clickToLink($event)"></personal-footer>
+          <personal-footer
+            [theme]="mobileTheme"
+            (clickToLink)="clickToLink($event)"
+          ></personal-footer>
         </div>
+      </div>
+      <div *ngSwitchCase="3">
+        <module-header
+          [titleModule]="getTitleModule()"
+          (onClose)="closeModule($event)"
+        ></module-header>
+        <s-saqhan-chat-files-wrapper (clickToLink)="clickToLink($event)">
+        </s-saqhan-chat-files-wrapper>
       </div>
     </div>
   </div>
@@ -36,4 +61,3 @@
     (showChat)="getModuleVisible()"
   ></btn-wrapper>
 </div>
-

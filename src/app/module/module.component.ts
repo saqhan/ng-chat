@@ -20,25 +20,29 @@ export class ModuleComponent implements OnInit {
   dialogs = this.storeMessage.getDialogs();
   personalMessage = this.storeMessage.getPersonalMessage();
 
-  moduleVisible = true;
+  showChat = true;
   mobileTheme = 'mobile';
 
   messages = this.storeMessage.getMessages();
 
-  selectClick = 2;
+  selectClick = 1;
   getMessages() {
     return this.messages;
   }
 
-  public selectChat() {
-    return (this.selectClick = 2);
-  }
+  public selectChat = () => this.selectClick;
 
   // клик по ссылке
   public clickToLink({ detail }) {
     console.log('clickToLink', detail.place);
     if (detail.place === 'showDialogs') {
-      return (this.selectClick = 1);
+      return this.selectClick = 1;
+    }
+    if (detail.place === 'showPersonalDialog') {
+      return this.selectClick = 2;
+    }
+    if (detail.place === 'showFile') {
+      return this.selectClick = 3;
     }
   }
 
@@ -59,23 +63,27 @@ export class ModuleComponent implements OnInit {
   }
 
   getModuleVisible() {
-    return this.moduleVisible;
+    return this.showChat;
   }
 
-  public closeModule() {
-    this.moduleVisible = false;
+  public closeModule(item) {
+    console.log(item);
+    this.showChat = false;
   }
   public toggleShowModule({ detail }) {
     if (detail.place === 'toggleShowChat') {
-      return (this.moduleVisible = !this.moduleVisible);
+      return (this.showChat = !this.showChat);
     }
+  }
+
+  public getTitleModule(){
+    return this.storeMessage.titleModule;
   }
 
   getPersonalMessage$(): Observable<Message[]> {
     // return this.storeMessage.getPersonalMessage();
     return this.storeMessage.getMessage$();
   }
-
 
   // public searchContact({ detail }) {
   //   console.log('searchContact', detail.data);
