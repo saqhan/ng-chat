@@ -42,7 +42,6 @@ export class MobileComponent implements OnInit {
 
   // клик по ссылке
   public clickToLink({ detail }) {
-    console.log('clickToLink', detail);
     if (detail.place === 'showPersonalDialog') {
       this.animSRVC.slideToLEFT();
       this.router.navigate(['app-mobile-personal-chat']);

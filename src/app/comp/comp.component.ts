@@ -40,32 +40,62 @@ export class CompComponent implements OnInit {
     return this.dialogs;
   }
 
+  /**
+   * Иконки навигации
+   */
   getNavItems() {
     return this.chatStore.getNavItems();
   }
 
+  /**
+   * Лого
+   */
   getLogo() {
     return this.chatStore.getLogo();
   }
 
+  /**
+   * Сообщения
+   */
   getMessages() {
     return this.messages;
   }
 
+  /**
+   * Стейт для переключения на личный чат
+   */
   getDialogVisible() {
     return this.chatStore.dialogVisible;
   }
 
+  /**
+   * Категории диалогов
+   */
+  getCategories() {
+    return this.chatStore.getCategories();
+  }
+
+  /**
+   * Стейт для переключения личного профиля
+   */
   getProfileVisible() {
     return this.chatStore.profileVisible;
   }
 
+  /**
+   * Функция для показа личной переписки
+   * @param detail
+   */
   public clickToLink({ detail }) {
     if (detail.place === 'showPersonalDialog') {
       this.chatStore.dialogVisible = false;
     }
   }
 
+  /**
+   * Показ профиля юзера
+   * @param detail
+   */
   public toggleProfile({ detail }) {
     if (detail.place === 'userName') {
       this.chatStore.profileVisible = !this.chatStore.profileVisible;
@@ -75,7 +105,6 @@ export class CompComponent implements OnInit {
   /**
    * Поиск контактов
    * */
-
   public searchContact({ detail }) {
     return (this.dialogs =
       detail.data !== '' && detail.data !== null
@@ -89,7 +118,10 @@ export class CompComponent implements OnInit {
         : this.chatStore.getDialogs());
   }
 
-  // Поиск контактов
+  /**
+   * Поиск сообщений
+   * @param detail
+   */
   public searchMessage({ detail }) {
     console.log('searchMessage 1 ', detail.data);
     return (this.messages =
@@ -101,4 +133,18 @@ export class CompComponent implements OnInit {
           })
         : this.chatStore.getMessages());
   }
+
+  /**
+   *   клик по кнопке категорий для фильтрации диалогов
+   */
+  public clickToCategory({ detail }) {
+    console.log(detail)
+    return (this.dialogs =
+      detail.item.id !== 'all'
+        ? this.chatStore
+          .getDialogs()
+          .filter((item) => item.category === detail.item.id)
+        : this.chatStore.getDialogs());
+  }
 }
+
