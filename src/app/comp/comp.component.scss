@@ -27,9 +27,9 @@ main {
   background-color: #fdfdfd;
 }
 .chat-messages {
-  padding: 40px 20px;
-  overflow-y: auto;
-  height: 80vh;
-  position: relative;
+    padding: 40px 20px;
+    overflow-y: auto;
+    height: calc(100vh - 168px);
+    position: relative;
 }
 
