@@ -30,15 +30,10 @@ export class CompComponent implements OnInit {
   constructor(private chatStore: StoreService, private router: Router) {}
   // get contacts array
 
-  dialogs = this.chatStore.getDialogs();
 
   messages = this.chatStore.getMessages();
 
   ngOnInit(): void {}
-
-  public getDialogs() {
-    return this.dialogs;
-  }
 
   /**
    * Иконки навигации
@@ -69,13 +64,6 @@ export class CompComponent implements OnInit {
   }
 
   /**
-   * Категории диалогов
-   */
-  getCategories() {
-    return this.chatStore.getCategories();
-  }
-
-  /**
    * Стейт для переключения личного профиля
    */
   getProfileVisible() {
@@ -102,21 +90,7 @@ export class CompComponent implements OnInit {
     }
   }
 
-  /**
-   * Поиск контактов
-   * */
-  public searchContact({ detail }) {
-    return (this.dialogs =
-      detail.data !== '' && detail.data !== null
-        ? this.dialogs.filter((item) => {
-            return typeof item.name === 'string'
-              ? item.name
-                  .toLocaleLowerCase()
-                  .includes(detail.data.toLowerCase())
-              : false;
-          })
-        : this.chatStore.getDialogs());
-  }
+
 
   /**
    * Поиск сообщений
@@ -134,17 +108,6 @@ export class CompComponent implements OnInit {
         : this.chatStore.getMessages());
   }
 
-  /**
-   *   клик по кнопке категорий для фильтрации диалогов
-   */
-  public clickToCategory({ detail }) {
-    console.log(detail)
-    return (this.dialogs =
-      detail.item.id !== 'all'
-        ? this.chatStore
-          .getDialogs()
-          .filter((item) => item.category === detail.item.id)
-        : this.chatStore.getDialogs());
-  }
+
 }
 

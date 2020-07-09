@@ -1,0 +1,53 @@
+.contacts-column {
+  background-color: #f7f8f9;
+  padding: 20px 20px 0 20px;
+  height: 100vh;
+}
+.contacts {
+  overflow-y: auto;
+  height: calc(100vh - 129px);
+  padding-bottom: 20px;
+}
+.dialog {
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+  padding: 20px 10px;
+  cursor: pointer;
+}
+.dialog:hover {
+  background-color: white;
+}
+.dialog:active {
+  background-color: white;
+}
+.dialog-photo {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  margin-right: 15px;
+}
+.dialog-message-caption {
+  font-weight: 700;
+  font-size: 13px;
+}
+.dialog-message-text {
+  font-size: 12px;
+  color: gray;
+}
+.message-time {
+  font-size: 10px;
+  margin-left: auto;
+  color: lightgray;
+}
+::-webkit-scrollbar { /* chrome based */
+  width: 0px; /* ширина scrollbar'a */
+  background: transparent; /* опционально */
+}
+input::-moz-placeholder {
+  color: #979eab;
+}
+input::-webkit-input-placeholder {
+  color: #979eab;
+}
