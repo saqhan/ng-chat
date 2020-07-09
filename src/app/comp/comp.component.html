@@ -11,11 +11,11 @@
         </div>
         <div class="col-3">
           <s-adam-contacts
-            [dialogs]="getDialogs()"
+            [dialogs]="dialogs"
             (clickToLink)="clickToLink($event)"
             (searchContact)="searchContact($event)"
             [categories]="getCategories()"
-            (clickToCategory)="clickToCategory($event)"
+            (clickToCategory)="clickToCategory($event.detail)"
           ></s-adam-contacts>
         </div>
         <div class="col white-col">

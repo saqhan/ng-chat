@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreService } from '../store-servic.service';
+import { StoreService } from '../store-service.service';
 import { Router } from '@angular/router';
 import {
   animate,
@@ -8,6 +8,9 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import {Observable} from "rxjs";
+import {ChatCategoryInterface, ChatDialogInterface} from "../services/api-layer/res/interface/common.interface";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-comp',
@@ -27,18 +30,34 @@ import {
   ],
 })
 export class CompComponent implements OnInit {
-  constructor(private chatStore: StoreService, private router: Router) {}
   // get contacts array
 
-  dialogs = this.chatStore.getDialogs();
+  /**
+   * */
+  public dialogs$: Observable<ChatDialogInterface[]>;
 
-  messages = this.chatStore.getMessages();
+  /**
+   * */
+  private dialogs: ChatDialogInterface[] = [];
+  private allDialogs: ChatDialogInterface[] = [];
 
-  ngOnInit(): void {}
+  /**
+   * */
+  public messages = this.chatStore.getMessages();
 
-  public getDialogs() {
-    return this.dialogs;
+  constructor(private chatStore: StoreService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.chatStore.getDialogs().subscribe(
+      (dataFromSever) => {
+        this.allDialogs = this.dialogs =  dataFromSever;
+      }
+    )
   }
+
+  // public getDialogs() {
+  //   return this.dialogs$;
+  // }
 
   /**
    * Иконки навигации
@@ -105,17 +124,18 @@ export class CompComponent implements OnInit {
   /**
    * Поиск контактов
    * */
-  public searchContact({ detail }) {
-    return (this.dialogs =
-      detail.data !== '' && detail.data !== null
-        ? this.dialogs.filter((item) => {
-            return typeof item.name === 'string'
-              ? item.name
-                  .toLocaleLowerCase()
-                  .includes(detail.data.toLowerCase())
-              : false;
-          })
-        : this.chatStore.getDialogs());
+  public searchContact({ detail }): void {
+    if (detail.data !== '' && detail.data !== null) {
+      this.dialogs = this.allDialogs.filter((item) => {
+        return typeof item.name === 'string'
+          ? item.name
+            .toLocaleLowerCase()
+            .includes(detail.data.toLowerCase())
+          : false;
+      })
+    } else {
+      this.dialogs = this.allDialogs;
+    }
   }
 
   /**
@@ -137,14 +157,13 @@ export class CompComponent implements OnInit {
   /**
    *   клик по кнопке категорий для фильтрации диалогов
    */
-  public clickToCategory({ detail }) {
-    console.log(detail)
-    return (this.dialogs =
-      detail.item.id !== 'all'
-        ? this.chatStore
-          .getDialogs()
-          .filter((item) => item.category === detail.item.id)
-        : this.chatStore.getDialogs());
+  public clickToCategory( input: ChatCategoryInterface) {
+    console.log('clickToCategory', {input});
+    if (input?.id !== 'all') {
+      this.dialogs = this.allDialogs.filter((item) => item.category === input.id)
+    } else {
+      this.dialogs = this.allDialogs;
+    }
   }
 }
 
