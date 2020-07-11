@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {StoreService} from "../../../../store-service.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
-import {
-  ChatCategoryInterface,
-  ChatDialogInterface
-} from "../../../../services/api-layer/res/interface/common.interface";
+import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
 
 @Component({
   selector: 'app-comp-contacts',
@@ -32,7 +29,6 @@ export class CompContactsComponent implements OnInit {
       }
     )
   }
-
 
   /**
    * Категории диалогов

@@ -29,14 +29,8 @@ import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
   ],
 })
 export class CompComponent implements OnInit {
-  // get contacts array
 
-  /**
-   * */
-  private allDialogs: ChatDialogInterface[] = [];
 
-  /**
-   * */
   public messages = this.chatStore.getMessages();
 
 
@@ -100,7 +94,6 @@ export class CompComponent implements OnInit {
       this.chatStore.profileVisible = !this.chatStore.profileVisible;
     }
   }
-
 
   /**
    * Поиск сообщений
