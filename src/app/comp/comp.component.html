@@ -10,13 +10,8 @@
           ></s-adam-navigate>
         </div>
         <div class="col-3">
-          <s-adam-contacts
-            [dialogs]="getDialogs()"
-            (clickToLink)="clickToLink($event)"
-            (searchContact)="searchContact($event)"
-            [categories]="getCategories()"
-            (clickToCategory)="clickToCategory($event)"
-          ></s-adam-contacts>
+          <app-comp-contacts>
+          </app-comp-contacts>
         </div>
         <div class="col white-col">
           <section class="chat">
