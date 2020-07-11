@@ -21,6 +21,7 @@ export interface ChatContactInterface {
   id: string | number,
   img: string,
   name: string,
+  mess: string,
   time: {
     created: Date,
   },
