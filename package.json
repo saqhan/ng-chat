@@ -23,11 +23,7 @@
     "@angular/router": "~9.1.11",
     "animejs": "^3.2.0",
     "rxjs": "~6.5.4",
-<<<<<<< HEAD
-    "stencil-chat": "^0.5.9",
-=======
     "stencil-chat": "^0.6.1",
->>>>>>> master
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },
