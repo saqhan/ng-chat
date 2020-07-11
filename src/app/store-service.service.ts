@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
-
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
-import {Message, MessageDirectionEnum, MessageTypeEnum} from 'stencil-chat';
-import {CategoriesMock, ContactsMock, DialogsMock, MessageMock} from "./mock";
+import {CategoriesMock, ContactsMock, MessageMock} from "./mock";
+import {ApiLayerService} from "./services/api-layer/api-layer.service";
 import {
   ChatCategoryInterface,
   ChatContactInterface,
-  ChatDialogInterface
-} from "./services/api-layer/res/interface/common.interface";
-import {ApiLayerService} from "./services/api-layer/api-layer.service";
+  ChatMessage,
+  ChatMessageDirectionEnum,
+  ChatMessageTypeEnum
+} from "stencil-chat";
 
 @Injectable({
   providedIn: 'root',
@@ -70,9 +70,9 @@ export class StoreService {
   /**
    *
    * */
-  private messages: Message[] = MessageMock;
+  private messages: ChatMessage[] = MessageMock;
 
-  private messages$: BehaviorSubject<Message[]> = new BehaviorSubject(
+  private messages$: BehaviorSubject<ChatMessage[]> = new BehaviorSubject(
     this.messages
   );
 
@@ -89,10 +89,10 @@ export class StoreService {
   getPersonalMessage() {
     return this.messages;
   }
-  public getMessage$(): Observable<Message[]> {
+  public getMessage$(): Observable<ChatMessage[]> {
     return this.messages$;
   }
-  public sendMessage(message: Message) {
+  public sendMessage(message: ChatMessage) {
     this.messages$.pipe(take(1)).subscribe((messages) => {
       messages.push(message);
       this.messages$.next([...messages]);
@@ -108,8 +108,8 @@ export class StoreService {
         name: 'Сайхан',
         phone: '79291234567',
       },
-      type: MessageTypeEnum.text,
-      direction: MessageDirectionEnum.toMe,
+      type: ChatMessageTypeEnum.text,
+      direction: ChatMessageDirectionEnum.toMe,
       time: {
         created: new Date(),
       },

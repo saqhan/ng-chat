@@ -32,12 +32,13 @@ export class MobileComponent implements OnInit {
 
   // клик по кнопке категорий для фильтрации диалогов
   public clickToCategory({ detail }) {
-    return (this.dialogs =
-      detail.item.id !== 'all'
-        ? this.storeMessage
-            .getDialogs()
-            .filter((item) => item.category === detail.item.id)
-        : this.storeMessage.getDialogs());
+    // return (this.dialogs =
+    //   detail.item.id !== 'all'
+    //     ? this.storeMessage
+    //         .getDialogs()
+    //         .filter((item) => item.category === detail.item.id)
+    //     : this.storeMessage.getDialogs());
+    return [];
   }
 
   // клик по ссылке
@@ -59,14 +60,15 @@ export class MobileComponent implements OnInit {
 
   public searchContact({ detail }) {
     // console.log('searchContact', detail.data);
-    return (this.dialogs =
-      detail.data !== '' && detail.data !== null
-        ? this.dialogs.filter((item) => {
-            return typeof item.name === 'string'
-              ? item.name.toLowerCase().includes(detail.data.toLowerCase())
-              : false;
-          })
-        : this.storeMessage.getContacts());
+    // return (this.dialogs =
+    //   detail.data !== '' && detail.data !== null
+    //     ? this.dialogs.filter((item) => {
+    //         return typeof item.name === 'string'
+    //           ? item.name.toLowerCase().includes(detail.data.toLowerCase())
+    //           : false;
+    //       })
+    //     : this.storeMessage.getContacts());
+    return [];
   }
   // Поиск контактов
 

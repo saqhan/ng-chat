@@ -9,8 +9,7 @@ import {
   trigger,
 } from '@angular/animations';
 import {Observable} from "rxjs";
-import {ChatCategoryInterface, ChatDialogInterface} from "../services/api-layer/res/interface/common.interface";
-import {tap} from "rxjs/operators";
+import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
 
 @Component({
   selector: 'app-comp',
@@ -38,7 +37,7 @@ export class CompComponent implements OnInit {
 
   /**
    * */
-  private dialogs: ChatDialogInterface[] = [];
+  public dialogs: ChatDialogInterface[] = [];
   private allDialogs: ChatDialogInterface[] = [];
 
   /**
