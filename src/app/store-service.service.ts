@@ -135,4 +135,7 @@ export class StoreService {
   getContacts() {
     return this.contacts;
   }
+
+  compThemeClass = 'comp';
+
 }

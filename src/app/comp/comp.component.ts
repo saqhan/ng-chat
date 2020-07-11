@@ -29,34 +29,16 @@ import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
   ],
 })
 export class CompComponent implements OnInit {
-  // get contacts array
 
-  /**
-   * */
-  public dialogs$: Observable<ChatDialogInterface[]>;
 
-  /**
-   * */
-  public dialogs: ChatDialogInterface[] = [];
-  private allDialogs: ChatDialogInterface[] = [];
-
-  /**
-   * */
   public messages = this.chatStore.getMessages();
+
 
   constructor(private chatStore: StoreService, private router: Router) {}
 
   ngOnInit(): void {
-    this.chatStore.getDialogs().subscribe(
-      (dataFromSever) => {
-        this.allDialogs = this.dialogs =  dataFromSever;
-      }
-    )
-  }
 
-  // public getDialogs() {
-  //   return this.dialogs$;
-  // }
+  }
 
   /**
    * Иконки навигации
@@ -87,13 +69,6 @@ export class CompComponent implements OnInit {
   }
 
   /**
-   * Категории диалогов
-   */
-  getCategories() {
-    return this.chatStore.getCategories();
-  }
-
-  /**
    * Стейт для переключения личного профиля
    */
   getProfileVisible() {
@@ -121,23 +96,6 @@ export class CompComponent implements OnInit {
   }
 
   /**
-   * Поиск контактов
-   * */
-  public searchContact({ detail }): void {
-    if (detail.data !== '' && detail.data !== null) {
-      this.dialogs = this.allDialogs.filter((item) => {
-        return typeof item.name === 'string'
-          ? item.name
-            .toLocaleLowerCase()
-            .includes(detail.data.toLowerCase())
-          : false;
-      })
-    } else {
-      this.dialogs = this.allDialogs;
-    }
-  }
-
-  /**
    * Поиск сообщений
    * @param detail
    */
@@ -153,16 +111,6 @@ export class CompComponent implements OnInit {
         : this.chatStore.getMessages());
   }
 
-  /**
-   *   клик по кнопке категорий для фильтрации диалогов
-   */
-  public clickToCategory( input: ChatCategoryInterface) {
-    console.log('clickToCategory', {input});
-    if (input?.id !== 'all') {
-      this.dialogs = this.allDialogs.filter((item) => item.category === input.id)
-    } else {
-      this.dialogs = this.allDialogs;
-    }
-  }
+
 }
 
