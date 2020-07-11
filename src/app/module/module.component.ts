@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { StoreService } from '../store-service.service';
-import { Router } from '@angular/router';
-import { AnimationService } from '../services/common/animation.service';
-import { interval, Observable } from 'rxjs';
-import { Message } from 'stencil-chat';
+import {Component, OnInit} from '@angular/core';
+import {StoreService} from '../store-service.service';
+import {Router} from '@angular/router';
+import {AnimationService} from '../services/common/animation.service';
+import {Observable} from 'rxjs';
+import {ChatMessage} from "stencil-chat";
 
 @Component({
   selector: 'app-module',
@@ -45,7 +45,7 @@ export class ModuleComponent implements OnInit {
     return this.storeMessage.titleModule;
   }
 
-  getPersonalMessage$(): Observable<Message[]> {
+  getPersonalMessage$(): Observable<ChatMessage[]> {
     // return this.storeMessage.getPersonalMessage();
     return this.storeMessage.getMessage$();
   }

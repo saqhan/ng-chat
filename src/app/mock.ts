@@ -1,9 +1,8 @@
-import {Message, MessageDirectionEnum, MessageTypeEnum} from "stencil-chat";
 import {
   ChatCategoryInterface,
   ChatContactInterface,
-  ChatDialogInterface
-} from "./services/api-layer/res/interface/common.interface";
+  ChatDialogInterface, ChatMessage, ChatMessageDirectionEnum, ChatMessageTypeEnum,
+} from "stencil-chat";
 
 export const DialogsMock: ChatDialogInterface[] = [
   {
@@ -145,6 +144,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     time: {
       created: new Date(),
     },
+    mess: 'n',
     category: 'work',
     online: true,
   },
@@ -152,7 +152,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 2,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Harry Sutton',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -163,7 +163,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 3,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Matthew Jake Sanchez',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -174,7 +174,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 4,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Isaac Jack King',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -185,7 +185,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 5,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Joseph Samuel Johnson',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -196,7 +196,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 6,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Mike Vazovski',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -207,7 +207,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 7,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Dominic Mason',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -218,7 +218,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 8,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Blake David',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -229,7 +229,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 9,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Joseph Samuel Johnson',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -240,7 +240,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 10,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Alejandro Kyle Jenkins',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -251,7 +251,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 11,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Hunter Joshua Coleman',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -262,7 +262,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     id: 12,
     img: 'https://via.placeholder.com/300x300?text=User',
     name: 'Jordan Isaiah Martinez',
-    // mess: 'rebuild finished',
+    mess: 'rebuild finished',
     time: {
       created: new Date(),
     },
@@ -271,7 +271,7 @@ export const ContactsMock: ChatContactInterface[] =  [
   },
 ]
 
-export const MessageMock: Message[] = [
+export const MessageMock: ChatMessage[] = [
   {
     content: 'Привет, как дела?',
     sender: {
@@ -280,8 +280,8 @@ export const MessageMock: Message[] = [
       name: 'Сайхан',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.text,
-    direction: MessageDirectionEnum.toMe,
+    type: ChatMessageTypeEnum.text,
+    direction: ChatMessageDirectionEnum.toMe,
     time: {
       created: new Date(),
     },
@@ -294,8 +294,8 @@ export const MessageMock: Message[] = [
       name: 'Сайхан',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.text,
-    direction: MessageDirectionEnum.toMe,
+    type: ChatMessageTypeEnum.text,
+    direction: ChatMessageDirectionEnum.toMe,
     time: {
       created: new Date(),
     },
@@ -308,8 +308,8 @@ export const MessageMock: Message[] = [
       name: '',
       phone: '',
     },
-    type: MessageTypeEnum.text,
-    direction: MessageDirectionEnum.center,
+    type: ChatMessageTypeEnum.text,
+    direction: ChatMessageDirectionEnum.center,
     time: {
       created: new Date(),
     },
@@ -322,8 +322,8 @@ export const MessageMock: Message[] = [
       name: 'Сайхан',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.image,
-    direction: MessageDirectionEnum.toMe,
+    type: ChatMessageTypeEnum.image,
+    direction: ChatMessageDirectionEnum.toMe,
     time: {
       created: new Date(),
       delivery: new Date(),
@@ -338,8 +338,8 @@ export const MessageMock: Message[] = [
       name: '',
       phone: '',
     },
-    type: MessageTypeEnum.date,
-    direction: MessageDirectionEnum.center,
+    type: ChatMessageTypeEnum.date,
+    direction: ChatMessageDirectionEnum.center,
     time: {
       created: new Date(),
     },
@@ -352,8 +352,8 @@ export const MessageMock: Message[] = [
       name: 'Адам',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.text,
-    direction: MessageDirectionEnum.fromMe,
+    type: ChatMessageTypeEnum.text,
+    direction: ChatMessageDirectionEnum.fromMe,
     time: {
       created: new Date(),
       delivery: new Date(),
@@ -369,8 +369,8 @@ export const MessageMock: Message[] = [
       name: 'Адам',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.text,
-    direction: MessageDirectionEnum.fromMe,
+    type: ChatMessageTypeEnum.text,
+    direction: ChatMessageDirectionEnum.fromMe,
     time: {
       created: new Date(),
       read: new Date(),
@@ -384,8 +384,8 @@ export const MessageMock: Message[] = [
       name: 'Адам',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.image,
-    direction: MessageDirectionEnum.fromMe,
+    type: ChatMessageTypeEnum.image,
+    direction: ChatMessageDirectionEnum.fromMe,
     time: {
       created: new Date(),
     },
@@ -398,8 +398,8 @@ export const MessageMock: Message[] = [
       name: 'Сайхан',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.text,
-    direction: MessageDirectionEnum.toMe,
+    type: ChatMessageTypeEnum.text,
+    direction: ChatMessageDirectionEnum.toMe,
     time: {
       created: new Date(),
     },
@@ -412,8 +412,8 @@ export const MessageMock: Message[] = [
       name: 'Адам',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.text,
-    direction: MessageDirectionEnum.fromMe,
+    type: ChatMessageTypeEnum.text,
+    direction: ChatMessageDirectionEnum.fromMe,
     time: {
       created: new Date(),
     },
@@ -426,8 +426,8 @@ export const MessageMock: Message[] = [
       name: 'Сайхан',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.text,
-    direction: MessageDirectionEnum.toMe,
+    type: ChatMessageTypeEnum.text,
+    direction: ChatMessageDirectionEnum.toMe,
     time: {
       created: new Date(),
     },
@@ -440,8 +440,8 @@ export const MessageMock: Message[] = [
       name: 'Сайхан',
       phone: '79291234567',
     },
-    type: MessageTypeEnum.loading,
-    direction: MessageDirectionEnum.toMe,
+    type: ChatMessageTypeEnum.loading,
+    direction: ChatMessageDirectionEnum.toMe,
     time: {
       created: new Date(),
     },

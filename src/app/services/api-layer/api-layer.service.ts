@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {ChatDialogInterface} from "./res/interface/common.interface";
 import {Observable, of} from "rxjs";
 import {DialogsMock} from "../../mock";
 import {delay} from "rxjs/operators";
+import {ChatDialogInterface} from "stencil-chat";
 
 @Injectable({
   providedIn: 'root'
