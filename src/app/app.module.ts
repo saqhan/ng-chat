@@ -14,6 +14,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ContactsComponent } from './mobile/res/view/contacts/contacts.component';
 import { ModuleDialogsComponent } from './module/res/view/module-dialogs/module-dialogs.component';
+import { CompContactsComponent } from './comp/res/view/comp-contacts/comp-contacts.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ModuleDialogsComponent } from './module/res/view/module-dialogs/module-
     ModuleComponent,
     ContactsComponent,
     ModuleDialogsComponent,
+    CompContactsComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, MatSliderModule, MatSidenavModule],
   providers: [AnimationService],
