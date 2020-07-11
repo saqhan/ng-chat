@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {StoreService} from "../../../../store-servic.service";
+import {StoreService} from "../../../../store-service.service";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {
+  ChatCategoryInterface,
+  ChatDialogInterface
+} from "../../../../services/api-layer/res/interface/common.interface";
 
 @Component({
   selector: 'app-comp-contacts',
@@ -9,12 +14,25 @@ import {Router} from "@angular/router";
 })
 export class CompContactsComponent implements OnInit {
 
+  /**
+   * */
+  public dialogs$: Observable<ChatDialogInterface[]>;
+
+  /**
+   * */
+  private dialogs: ChatDialogInterface[] = [];
+  private allDialogs: ChatDialogInterface[] = [];
+
   constructor(private chatStore: StoreService, private router: Router) { }
 
   ngOnInit(): void {
+    this.chatStore.getDialogs().subscribe(
+      (dataFromSever) => {
+        this.allDialogs = this.dialogs =  dataFromSever;
+      }
+    )
   }
 
-  dialogs = this.chatStore.getDialogs();
 
   /**
    * Категории диалогов
@@ -24,36 +42,42 @@ export class CompContactsComponent implements OnInit {
   }
 
   public getDialogs() {
-    return this.dialogs;
+    return this.dialogs$;
   }
+
+
+  public compTheme() {
+    return this.chatStore.compThemeClass;
+  }
+
 
   /**
    * Поиск контактов
    * */
-  public searchContact({ detail }) {
-    return (this.dialogs =
-      detail.data !== '' && detail.data !== null
-        ? this.dialogs.filter((item) => {
-          return typeof item.name === 'string'
-            ? item.name
-              .toLocaleLowerCase()
-              .includes(detail.data.toLowerCase())
-            : false;
-        })
-        : this.chatStore.getDialogs());
+  public searchContact({ detail }): void {
+    if (detail.data !== '' && detail.data !== null) {
+      this.dialogs = this.allDialogs.filter((item) => {
+        return typeof item.name === 'string'
+          ? item.name
+            .toLocaleLowerCase()
+            .includes(detail.data.toLowerCase())
+          : false;
+      })
+    } else {
+      this.dialogs = this.allDialogs;
+    }
   }
 
   /**
    *   клик по кнопке категорий для фильтрации диалогов
    */
-  public clickToCategory({ detail }) {
-    console.log(detail)
-    return (this.dialogs =
-      detail.item.id !== 'all'
-        ? this.chatStore
-          .getDialogs()
-          .filter((item) => item.category === detail.item.id)
-        : this.chatStore.getDialogs());
+  public clickToCategory( input: ChatCategoryInterface) {
+    console.log('clickToCategory', {input});
+    if (input?.id !== 'all') {
+      this.dialogs = this.allDialogs.filter((item) => item.category === input.id)
+    } else {
+      this.dialogs = this.allDialogs;
+    }
   }
 
 }

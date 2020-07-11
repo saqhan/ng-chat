@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreService } from '../store-servic.service';
+import { StoreService } from '../store-service.service';
 import { Router } from '@angular/router';
 import {
   animate,
@@ -8,6 +8,9 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import {Observable} from "rxjs";
+import {ChatCategoryInterface, ChatDialogInterface} from "../services/api-layer/res/interface/common.interface";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-comp',
@@ -27,13 +30,21 @@ import {
   ],
 })
 export class CompComponent implements OnInit {
-  constructor(private chatStore: StoreService, private router: Router) {}
   // get contacts array
 
 
-  messages = this.chatStore.getMessages();
 
-  ngOnInit(): void {}
+
+  /**
+   * */
+  public messages = this.chatStore.getMessages();
+
+
+  constructor(private chatStore: StoreService, private router: Router) {}
+
+  ngOnInit(): void {
+
+  }
 
   /**
    * Иконки навигации
@@ -89,7 +100,6 @@ export class CompComponent implements OnInit {
       this.chatStore.profileVisible = !this.chatStore.profileVisible;
     }
   }
-
 
 
   /**

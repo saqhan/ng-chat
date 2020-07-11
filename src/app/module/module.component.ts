@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreService } from '../store-servic.service';
+import { StoreService } from '../store-service.service';
 import { Router } from '@angular/router';
 import { AnimationService } from '../services/common/animation.service';
 import { interval, Observable } from 'rxjs';

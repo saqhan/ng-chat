@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {StoreService} from '../../../../store-servic.service';
+import {StoreService} from '../../../../store-service.service';
 import {AnimationService} from '../../../../services/common/animation.service';
 
 @Component({

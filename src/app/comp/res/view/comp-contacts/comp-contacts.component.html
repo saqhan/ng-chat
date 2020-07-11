@@ -1,7 +1,7 @@
 <div class="contacts-column">
   <s-adam-search-contact></s-adam-search-contact>
   <dialog-categories [categories]="getCategories()"></dialog-categories>
-  <div class="contacts" *ngFor="let dialog of getDialogs()">
-    <dialog-card ></dialog-card>
+  <div class="contacts" *ngFor="let mess of getDialogs()">
+    <dialog-card [theme]="compTheme()" ></dialog-card>
   </div>
 </div>
