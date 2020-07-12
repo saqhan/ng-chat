@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {StoreService} from '../store-service.service';
-import {Router} from '@angular/router';
-import {AnimationService} from '../services/common/animation.service';
-import {Observable} from 'rxjs';
-import {ChatMessage} from "stencil-chat";
+import { Component, OnInit } from '@angular/core';
+import { StoreService } from '../store-service.service';
+import { Router } from '@angular/router';
+import { AnimationService } from '../services/common/animation.service';
+import { Observable } from 'rxjs';
+import {ChatMessage} from 'stencil-chat';
 
 @Component({
   selector: 'app-module',
@@ -16,7 +16,6 @@ export class ModuleComponent implements OnInit {
     private router: Router,
     private animSRVC: AnimationService
   ) {}
-
 
   getMessages() {
     return this.storeMessage.getMessages();
