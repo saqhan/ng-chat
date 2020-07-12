@@ -3,7 +3,7 @@
   <dialog-categories (clickToCategory)="clickToCategory($event.detail)" [categories]="categories"></dialog-categories>
   <div class="contacts" >
     <div *ngFor="let dialog of dialogs">
-      <dialog-card [theme]="compTheme()" [mess]="dialog" ></dialog-card>
+      <dialog-card (clickToDialog)="toggleChat()" [theme]="compTheme()" [mess]="dialog" ></dialog-card>
     </div>
   </div>
 </div>
