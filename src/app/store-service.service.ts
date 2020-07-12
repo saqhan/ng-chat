@@ -15,7 +15,7 @@ import {
   providedIn: 'root',
 })
 export class StoreService {
-  public dialogVisible = 'noChat';
+  public dialogVisible = false;
 
   public profileVisible = false;
 

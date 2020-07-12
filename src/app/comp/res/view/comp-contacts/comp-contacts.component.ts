@@ -82,8 +82,8 @@ export class CompContactsComponent implements OnInit {
   }
 
   public toggleChat() {
-    console.log('showChat')
-    this.chatStore.dialogVisible = 'showChat';
+    console.log(this.chatStore.dialogVisible)
+    this.chatStore.dialogVisible = true;
   }
 
 }

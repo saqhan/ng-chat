@@ -75,6 +75,8 @@ export class CompComponent implements OnInit {
     return this.chatStore.dialogVisible;
   }
 
+
+
   // /**
   //  * Функция для показа личной переписки
   //  * @param detail
