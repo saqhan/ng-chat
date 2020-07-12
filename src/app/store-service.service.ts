@@ -5,7 +5,7 @@ import {CategoriesMock, ContactsMock, MessageMock} from "./mock";
 import {ApiLayerService} from "./services/api-layer/api-layer.service";
 import {
   ChatCategoryInterface,
-  ChatContactInterface,
+  ChatContactInterface, ChatDialogInterface,
   ChatMessage,
   ChatMessageDirectionEnum,
   ChatMessageTypeEnum
@@ -25,7 +25,7 @@ export class StoreService {
 
   /**
    * */
-  public categories: ChatCategoryInterface[] = CategoriesMock;
+  // public categories: ChatCategoryInterface[] = CategoriesMock;
 
   public logo = {
     id: 'logo',
@@ -116,8 +116,12 @@ export class StoreService {
     });
   }
 
-  getCategories() {
-    return this.categories;
+  /**
+   * */
+  public getCategories (): Observable<ChatCategoryInterface[]> {
+      return this.apiLayerService.getCategories(
+        ''
+      )
   }
 
   getMessages() {
@@ -138,4 +142,31 @@ export class StoreService {
 
   compThemeClass = 'comp';
 
+  /**
+   * Поиск контактов
+   * */
+  public searchContact({ detail }): void {
+    // if (detail.data !== '' && detail.data !== null) {
+    //   this.dialogs = this.allDialogs.filter((item) => {
+    //     return typeof item.name === 'string'
+    //       ? item.name
+    //         .toLocaleLowerCase()
+    //         .includes(detail.data.toLowerCase())
+    //       : false;
+    //   })
+    // } else {
+    //   this.dialogs = this.allDialogs;
+    // }
+  }
+
+  /**
+   *
+   */
+  public filterChatsByCategory(input: ChatCategoryInterface , allDialogs: ChatDialogInterface[]) {
+    if (input?.id !== 'all') {
+      return allDialogs.filter((item) => item.category === input.id)
+    } else {
+      return allDialogs;
+    }
+  }
 }

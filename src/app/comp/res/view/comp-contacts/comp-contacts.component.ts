@@ -1,44 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {StoreService} from "../../../../store-service.service";
 import {Router} from "@angular/router";
-import {Observable} from "rxjs";
 import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
 
 @Component({
   selector: 'app-comp-contacts',
   templateUrl: './comp-contacts.component.html',
-  styleUrls: ['./comp-contacts.component.scss']
+  styleUrls: ['./comp-contacts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompContactsComponent implements OnInit {
 
   /**
    * */
-  public dialogs$: Observable<ChatDialogInterface[]>;
+  // public dialogs$: Observable<ChatDialogInterface[]>;
 
   /**
    * */
-  private dialogs: ChatDialogInterface[] = [];
+  public dialogs: ChatDialogInterface[] = [];
+
+  /**
+   * */
+  public categories: ChatCategoryInterface[] = [];
+
+  /**
+   * */
   private allDialogs: ChatDialogInterface[] = [];
 
-  constructor(private chatStore: StoreService, private router: Router) { }
+  constructor(
+    private chatStore: StoreService,
+    private router: Router,
+    private cdRef: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     this.chatStore.getDialogs().subscribe(
       (dataFromSever) => {
-        this.allDialogs = this.dialogs =  dataFromSever;
+        this.allDialogs = this.dialogs = dataFromSever;
+        this.cdRef.markForCheck();
       }
     )
-  }
-
-  /**
-   * Категории диалогов
-   */
-  public getCategories() {
-    return this.chatStore.getCategories();
-  }
-
-  public getDialogs() {
-    return this.dialogs$;
+    this.chatStore.getCategories().subscribe(
+      (dataFromSever) => {
+        this.categories = dataFromSever;
+        this.cdRef.markForCheck();
+      }
+    )
   }
 
 
@@ -68,12 +75,10 @@ export class CompContactsComponent implements OnInit {
    *   клик по кнопке категорий для фильтрации диалогов
    */
   public clickToCategory( input: ChatCategoryInterface) {
-    console.log('clickToCategory', {input});
-    if (input?.id !== 'all') {
-      this.dialogs = this.allDialogs.filter((item) => item.category === input.id)
-    } else {
-      this.dialogs = this.allDialogs;
-    }
+    this.dialogs = this.chatStore.filterChatsByCategory(
+      input,
+      this.allDialogs
+    )
   }
 
 }

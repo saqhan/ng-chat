@@ -1,59 +1,78 @@
-import { Component, OnInit } from '@angular/core';
-import { StoreService } from '../store-service.service';
-import { Router } from '@angular/router';
-import { AnimationService } from '../services/common/animation.service';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {StoreService} from '../store-service.service';
+import {Router} from '@angular/router';
+import {AnimationService} from '../services/common/animation.service';
+import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
+import {ChatClickToLinkEmit, ChatLinkTypeEnum} from "../../../../stencil-chat/src";
 
 @Component({
   selector: 'app-mobile',
   templateUrl: './mobile.component.html',
   styleUrls: ['./mobile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MobileComponent implements OnInit {
   showFiller = false;
+
+  /**
+   * */
+  public dialogs: ChatDialogInterface[] = [];
+
+  /**
+   * */
+  private allDialogs: ChatDialogInterface[] = [];
+
+  /**
+   * */
+  public categories: ChatCategoryInterface[] = [];
+
+
   constructor(
     private storeMessage: StoreService,
     private router: Router,
-    private animSRVC: AnimationService
+    private animSRVC: AnimationService,
+    private cdRef: ChangeDetectorRef
   ) {}
-  // массив данных личного чата
-  dialogs = this.storeMessage.getDialogs();
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.storeMessage.getDialogs().subscribe(
+      (dataFromSever) => {
+        this.allDialogs = this.dialogs =  dataFromSever;
+        this.cdRef.markForCheck();
+      }
+    )
 
-  // массив данных для диалогов
-  getDialogs() {
-    return this.dialogs;
-  }
-
-  // получаем категории
-  getCategories() {
-    return this.storeMessage.getCategories();
+    this.storeMessage.getCategories().subscribe(
+      (dataFromSever) => {
+        this.categories = dataFromSever;
+        this.cdRef.markForCheck();
+      }
+    )
   }
 
   // клик по кнопке категорий для фильтрации диалогов
-  public clickToCategory({ detail }) {
-    // return (this.dialogs =
-    //   detail.item.id !== 'all'
-    //     ? this.storeMessage
-    //         .getDialogs()
-    //         .filter((item) => item.category === detail.item.id)
-    //     : this.storeMessage.getDialogs());
-    return [];
+  public clickToCategory( input: ChatCategoryInterface) {
+    this.dialogs = this.storeMessage.filterChatsByCategory(
+      input,
+      this.allDialogs
+    )
   }
 
   // клик по ссылке
-  public clickToLink({ detail }) {
-    if (detail.place === 'showPersonalDialog') {
-      this.animSRVC.slideToLEFT();
-      this.router.navigate(['app-mobile-personal-chat']);
-    }
-    if (detail.place === 'contacts') {
-      this.animSRVC.slideToLEFT();
-      this.router.navigate(['contacts']);
-    }
-    if (detail.place === 'menu-bar') {
-      console.log('menu-bar');
-    }
+  public clickToLink(detail: ChatClickToLinkEmit ) {
+    this.animSRVC.slideToLEFT();
+    this.router.navigate(['app-mobile-personal-chat']);
+    // if (detail.place === ChatLinkTypeEnum.showPersonalDialog) {
+    //   this.animSRVC.slideToLEFT();
+    //   this.router.navigate(['app-mobile-personal-chat']);
+    // }
+    // if (detail.place === ChatLinkTypeEnum.contacts) {
+    //   this.animSRVC.slideToLEFT();
+    //   this.router.navigate(['contacts']);
+    // }
+    // if (detail.place === 'menu-bar') {
+    //   console.log('menu-bar');
+    // }
   }
 
   // Поиск контактов
