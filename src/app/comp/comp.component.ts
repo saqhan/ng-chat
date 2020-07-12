@@ -91,17 +91,15 @@ export class CompComponent implements OnInit {
    * Показ профиля юзера
    * @param detail
    */
-  public toggleProfile({ detail }) {
-    if (detail.place === 'userName') {
+  public visibleProfile() {
       this.chatStore.profileVisible = !this.chatStore.profileVisible;
     }
-  }
 
   /**
    * Поиск сообщений
    * @param detail
    */
-  public searchMessage({ detail }) {
+  public searchPersonalMessage({ detail }) {
     console.log('searchMessage 1 ', detail.data);
     return (this.messages =
       detail.data !== '' && detail.data !== null

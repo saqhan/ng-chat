@@ -48,16 +48,14 @@ export class CompContactsComponent implements OnInit {
     )
   }
 
-
   public compTheme() {
     return this.chatStore.compThemeClass;
   }
 
-
   /**
    * Поиск контактов
    * */
-  public searchContact({ detail }): void {
+  public searchDialogs({ detail }): void {
     if (detail.data !== '' && detail.data !== null) {
       this.dialogs = this.allDialogs.filter((item) => {
         return typeof item.name === 'string'
