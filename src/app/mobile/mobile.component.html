@@ -1,14 +1,16 @@
 
 <div class="m-chat-wrapper">
   <m-chat-header
-    [categories]="getCategories()"
-    (clickToLink)="clickToLink($event)"
-    (clickToCategory)="clickToCategory($event)"
+    [categories]="categories"
+    (clickToLink)="clickToLink($event.detail)"
+    (clickToCategory)="clickToCategory($event.detail)"
     (searchContact)="searchContact($event)"
   ></m-chat-header>
   <m-chat-dialogs
-    [dialogs]="getDialogs()"
-    (clickToLink)="clickToLink($event)"
+    [dialogs]="dialogs"
+    (clickToLink)="clickToLink($event.detail)"
+    (clickToCategory)="clickToCategory($event.detail)"
+    (clickToDialog)="clickToDialog($event.detail)"
   ></m-chat-dialogs>
   <m-chat-footer (clickToLink)="clickToLink($event)"></m-chat-footer>
 </div>
