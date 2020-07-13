@@ -8,8 +8,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import {Observable} from "rxjs";
-import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
+import { Observable } from 'rxjs';
+import { ChatCategoryInterface, ChatDialogInterface } from 'stencil-chat';
 
 @Component({
   selector: 'app-comp',
@@ -29,16 +29,11 @@ import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
   ],
 })
 export class CompComponent implements OnInit {
-
-
   public messages = this.chatStore.getMessages();
-
 
   constructor(private chatStore: StoreService, private router: Router) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   /**
    * Иконки навигации
@@ -75,25 +70,13 @@ export class CompComponent implements OnInit {
     return this.chatStore.dialogVisible;
   }
 
-
-
-  // /**
-  //  * Функция для показа личной переписки
-  //  * @param detail
-  //  */
-  // public clickToLink({ detail }) {
-  //   if (detail.place === 'showPersonalDialog') {
-  //     this.chatStore.dialogVisible = false;
-  //   }
-  // }
-
   /**
    * Показ профиля юзера
    * @param detail
    */
   public visibleProfile() {
-      this.chatStore.profileVisible = !this.chatStore.profileVisible;
-    }
+    this.chatStore.profileVisible = !this.chatStore.profileVisible;
+  }
 
   /**
    * Поиск сообщений
@@ -111,6 +94,10 @@ export class CompComponent implements OnInit {
         : this.chatStore.getMessages());
   }
 
-
+  /**
+   * Сброс поика сообщений
+   */
+  public resetMessagesFilter() {
+    this.messages = this.chatStore.getMessages()
+  }
 }
-
