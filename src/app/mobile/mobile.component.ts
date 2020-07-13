@@ -75,18 +75,20 @@ export class MobileComponent implements OnInit {
   }
 
   // Поиск контактов
+  public cancelSearchPersonal() {
+    this.dialogs = this.allDialogs;
+  }
 
-  public searchContact({ detail }) {
-    // console.log('searchContact', detail.data);
-    // return (this.dialogs =
-    //   detail.data !== '' && detail.data !== null
-    //     ? this.dialogs.filter((item) => {
-    //         return typeof item.name === 'string'
-    //           ? item.name.toLowerCase().includes(detail.data.toLowerCase())
-    //           : false;
-    //       })
-    //     : this.storeMessage.getContacts());
-    return [];
+  public searchDialogs({ detail }): void {
+    if (detail !== '' && detail !== null) {
+      this.dialogs = this.allDialogs.filter((item) => {
+        return typeof item.name === 'string'
+          ? item.name.toLocaleLowerCase().includes(detail.toLowerCase())
+          : false;
+      });
+    } else {
+      this.dialogs = this.allDialogs;
+    }
   }
 
   // on click dialog
@@ -114,14 +116,14 @@ export class MobileComponent implements OnInit {
     this.animSRVC.slideToLEFT();
     this.router.navigate(['mobile']);
   }
-  public clickToShowContacts(){
+  public clickToShowContacts() {
     this.animSRVC.slideToLEFT();
     this.router.navigate(['contacts']);
   }
-  public clickToShowMenuBar(){
-    console.log('clickToShowMenuBar')
+  public clickToShowMenuBar() {
+    console.log('clickToShowMenuBar');
   }
-  public clickToAddDialog(){
+  public clickToAddDialog() {
     console.log('clickToAddDialog');
   }
 }

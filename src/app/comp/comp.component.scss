@@ -27,9 +27,12 @@ main {
   background-color: #fdfdfd;
 }
 .chat-messages {
-    padding: 40px 20px;
-    overflow-y: auto;
-    height: calc(100vh - 168px);
-    position: relative;
+  padding: 40px 20px;
+  overflow-y: auto;
+  height: calc(100vh - 168px);
+  position: relative;
 }
-
+::-webkit-scrollbar { /* chrome based */
+  width: 0px; /* ширина scrollbar'a */
+  background: transparent; /* опционально */
+}

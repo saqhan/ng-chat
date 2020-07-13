@@ -4,6 +4,7 @@
     (clickToShowDialogs)="clickToShowDialogs()"
     (clickToUserProfile)="clickToUserProfile()"
     (searchPersonalMessages)="searchPersonalMessages($event)"
+    (cancelSearchPersonal)="cancelSearchPersonal()"
     [message]="getMessages()"
   ></personal-header>
   <personal-message [message]="getMessages()"></personal-message>

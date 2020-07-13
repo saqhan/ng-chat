@@ -26,6 +26,10 @@ export class MobilePersonalChatComponent implements OnInit {
     return this.messages;
   }
 
+  public cancelSearchPersonal() {
+    this.messages = this.storeMessage.getMessages();
+  }
+
   public clickToShowDialogs() {
     this.animSRVC.slideToRIGHT();
     this.router.navigate(['mobile']);
