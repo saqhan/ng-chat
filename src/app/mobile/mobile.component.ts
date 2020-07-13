@@ -2,8 +2,9 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 import {StoreService} from '../store-service.service';
 import {Router} from '@angular/router';
 import {AnimationService} from '../services/common/animation.service';
-import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
-import {ChatClickToLinkEmit, ChatLinkTypeEnum} from "../../../../stencil-chat/src";
+import {ChatCategoryInterface, ChatDialogInterface, ChatClickToLinkEmit} from "stencil-chat";
+// import {ChatClickToLinkEmit} from "stencil-chat";
+// import {ChatClickToLinkEmit, ChatLinkTypeEnum} from "../../../../stencil-chat/src";
 
 @Component({
   selector: 'app-mobile',
@@ -88,6 +89,11 @@ export class MobileComponent implements OnInit {
     //       })
     //     : this.storeMessage.getContacts());
     return [];
+  }
+
+  public clickToDialog ($event)
+  {
+
   }
   // Поиск контактов
 
