@@ -18,7 +18,7 @@ export class MobilePersonalChatComponent implements OnInit {
 
   mobileTheme = 'mobile';
 
-  messages = this.storeMessage.getMessages();
+  public messages = this.storeMessage.getMessages();
 
   ngOnInit(): void {}
 
@@ -51,6 +51,21 @@ export class MobilePersonalChatComponent implements OnInit {
 
   public searchContact({ detail }) {
     // console.log('searchMessage 1 ', detail.data);
+    return (this.messages =
+      detail.data !== '' && detail.data !== null
+        ? this.messages.filter((item) => {
+            return typeof item.content === 'string'
+              ? item.content.toLowerCase().includes(detail.data.toLowerCase())
+              : false;
+          })
+        : this.storeMessage.getMessages());
+  }
+
+  /*
+   * Поиск сообщений
+   */
+  public searchPersonalMessages({ detail }) {
+    console.log('searchPersonalMessages', detail.data);
     return (this.messages =
       detail.data !== '' && detail.data !== null
         ? this.messages.filter((item) => {

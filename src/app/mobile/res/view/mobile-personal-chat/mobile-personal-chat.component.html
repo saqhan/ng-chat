@@ -3,10 +3,9 @@
     (searchContact)="searchContact($event)"
     (clickToShowDialogs)="clickToShowDialogs()"
     (clickToUserProfile)="clickToUserProfile()"
+    (searchPersonalMessages)="searchPersonalMessages($event)"
     [message]="getMessages()"
   ></personal-header>
-  <personal-message
-    [message]="getMessages()"
-  ></personal-message>
-  <personal-footer [theme]="mobileTheme" ></personal-footer>
+  <personal-message [message]="getMessages()"></personal-message>
+  <personal-footer [theme]="mobileTheme"></personal-footer>
 </div>
