@@ -1,13 +1,16 @@
 <div class="contacts-list-wrapper">
   <contacts-list-header
-    (clickToLink)="clickToLink($event)"
+    (clickToShowDialogs)="clickToShowDialogs()"
     (searchContact)="searchContact($event)"
   ></contacts-list-header>
   <contacts-list-body
     [contacts]="getContacts()"
-    (clickToLink)="clickToLink($event)"
+    (clickToContact)="clickToContact($event)"
+
   ></contacts-list-body>
   <m-chat-footer
-    (clickToLink)="clickToLink($event)"
+    (clickToShowDialogs)="clickToShowDialogs()"
+    (clickToShowContacts)="clickToShowContacts()"
+    (clickToShowMenuBar)="clickToShowMenuBar()"
   ></m-chat-footer>
 </div>

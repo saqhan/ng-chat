@@ -1,7 +1,4 @@
-
-
-
-.personal-wrapper  {
+.personal-wrapper {
   height: calc(100vh - 60px);
   overflow: auto;
 }
@@ -11,4 +8,17 @@
 }
 .personal-wrapper .personal-footer .footer-wrapper {
   border-radius: 15px 15px 0px 0px;
+}
+
+.m-chat-dialogs {
+  padding: 20px 30px 0px;
+  border-bottom: 1px solid #ccc;
+  height: calc(100vh - 135px);
+  overflow: auto;
+}
+
+@media (max-width: 414px) {
+  .m-chat-dialogs {
+    padding: 20px 15px 0px;
+  }
 }

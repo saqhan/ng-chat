@@ -26,6 +26,16 @@ export class MobilePersonalChatComponent implements OnInit {
     return this.messages;
   }
 
+  public clickToShowDialogs() {
+    this.animSRVC.slideToRIGHT();
+    this.router.navigate(['mobile']);
+  }
+
+  public clickToUserProfile() {
+    this.animSRVC.slideToLEFT();
+    this.router.navigate(['profile']);
+  }
+
   // клик по ссылке
   public clickToLink({ detail }) {
     console.log('clickToLinkBack', detail);

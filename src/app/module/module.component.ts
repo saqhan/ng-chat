@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { StoreService } from '../store-service.service';
 import { Router } from '@angular/router';
 import { AnimationService } from '../services/common/animation.service';
 import { Observable } from 'rxjs';
-import {ChatMessage} from 'stencil-chat';
+import {ChatCategoryInterface, ChatDialogInterface, ChatMessage} from 'stencil-chat';
 
 @Component({
   selector: 'app-module',
@@ -14,31 +14,35 @@ export class ModuleComponent implements OnInit {
   constructor(
     private storeMessage: StoreService,
     private router: Router,
-    private animSRVC: AnimationService
+    private animSRVC: AnimationService,
+    private cdRef: ChangeDetectorRef
   ) {}
 
-  getMessages() {
-    return this.storeMessage.getMessages();
+  public dialogs: ChatDialogInterface[] = [];
+
+  public categories: ChatCategoryInterface[] = [];
+
+  private allDialogs: ChatDialogInterface[] = [];
+
+  public messages = this.storeMessage.getMessages();
+
+  public getMessages() {
+    return this.messages;
   }
 
   ngOnInit(): void {
-    // interval(5000).subscribe((i) => {
-    //   this.storeMessage.sendTestTextMessage(`Тестовое сообщение ${i}`);
-    //   console.log('', `Тестовое сообщение ${i}`);
-    // });
+    this.storeMessage.getDialogs().subscribe((dataFromSever) => {
+      this.allDialogs = this.dialogs = dataFromSever;
+      this.cdRef.markForCheck();
+    });
+
+    this.storeMessage.getCategories().subscribe((dataFromSever) => {
+      this.categories = dataFromSever;
+      this.cdRef.markForCheck();
+    });
   }
 
-  // массив данных для диалогов
-  getDialogs() {
-    return this.storeMessage.getDialogs();
-  }
-  getCategories() {
-    return this.storeMessage.getCategories();
-  }
 
-  getPersonalMessage() {
-    return this.storeMessage.getPersonalMessage();
-  }
 
   public getTitleModule() {
     return this.storeMessage.titleModule;

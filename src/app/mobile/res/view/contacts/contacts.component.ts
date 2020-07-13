@@ -22,6 +22,24 @@ export class ContactsComponent implements OnInit {
   public getContacts() {
     return this.contacts;
   }
+  public clickToShowDialogs() {
+    this.animSRVC.slideToRIGHT();
+    this.router.navigate(['mobile']);
+  }
+  public clickToShowContacts(){
+    this.animSRVC.slideToLEFT();
+    this.router.navigate(['contacts']);
+  }
+  public clickToShowMenuBar(){
+    console.log('clickToShowMenuBar');
+  }
+
+  public clickToContact($event) {
+    console.log('clickToContact', $event);
+    this.animSRVC.slideToLEFT();
+    this.router.navigate(['app-mobile-personal-chat']);
+  }
+
   // клик по ссылке
   public clickToLink({ detail }) {
     if (detail.place === 'showDialogs') {

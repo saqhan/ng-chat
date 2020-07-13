@@ -1,16 +1,19 @@
-
 <div class="m-chat-wrapper">
   <m-chat-header
     [categories]="categories"
     (clickToLink)="clickToLink($event.detail)"
     (clickToCategory)="clickToCategory($event.detail)"
-    (searchContact)="searchContact($event)"
+    (clickToAddDialog)="clickToAddDialog()"
+    (searchDialogs)="searchContact($event)"
   ></m-chat-header>
-  <m-chat-dialogs
-    [dialogs]="dialogs"
-    (clickToLink)="clickToLink($event.detail)"
-    (clickToCategory)="clickToCategory($event.detail)"
-    (clickToDialog)="clickToDialog($event.detail)"
-  ></m-chat-dialogs>
-  <m-chat-footer (clickToLink)="clickToLink($event)"></m-chat-footer>
+  <div class="m-chat-dialogs">
+    <div *ngFor="let dialog of dialogs">
+      <dialog-card (clickToDialog)="clickToDialog($event)" [mess]="dialog"></dialog-card>
+    </div>
+  </div>
+  <m-chat-footer
+    (clickToShowDialogs)="clickToShowDialogs()"
+    (clickToShowContacts)="clickToShowContacts()"
+    (clickToShowMenuBar)="clickToShowMenuBar()"
+  ></m-chat-footer>
 </div>
