@@ -15,7 +15,7 @@ import {
   providedIn: 'root',
 })
 export class StoreService {
-  public dialogVisible = true;
+  public dialogVisible = false;
 
   public profileVisible = false;
 

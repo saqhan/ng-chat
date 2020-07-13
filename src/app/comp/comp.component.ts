@@ -62,13 +62,6 @@ export class CompComponent implements OnInit {
   }
 
   /**
-   * Стейт для переключения на личный чат
-   */
-  getDialogVisible() {
-    return this.chatStore.dialogVisible;
-  }
-
-  /**
    * Стейт для переключения личного профиля
    */
   getProfileVisible() {
@@ -76,30 +69,37 @@ export class CompComponent implements OnInit {
   }
 
   /**
-   * Функция для показа личной переписки
-   * @param detail
+   * Стейт для переключения личного на личный чат
    */
-  public clickToLink({ detail }) {
-    if (detail.place === 'showPersonalDialog') {
-      this.chatStore.dialogVisible = false;
-    }
+  getDialogVisible() {
+    return this.chatStore.dialogVisible;
   }
+
+
+
+  // /**
+  //  * Функция для показа личной переписки
+  //  * @param detail
+  //  */
+  // public clickToLink({ detail }) {
+  //   if (detail.place === 'showPersonalDialog') {
+  //     this.chatStore.dialogVisible = false;
+  //   }
+  // }
 
   /**
    * Показ профиля юзера
    * @param detail
    */
-  public toggleProfile({ detail }) {
-    if (detail.place === 'userName') {
+  public visibleProfile() {
       this.chatStore.profileVisible = !this.chatStore.profileVisible;
     }
-  }
 
   /**
    * Поиск сообщений
    * @param detail
    */
-  public searchMessage({ detail }) {
+  public searchPersonalMessage({ detail }) {
     console.log('searchMessage 1 ', detail.data);
     return (this.messages =
       detail.data !== '' && detail.data !== null
