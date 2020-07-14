@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { CategoriesMock, ContactsMock, MessageMock } from './mock';
+import {CategoriesMock, ContactsMock, MessageMock, Writing} from './mock';
 import { ApiLayerService } from './services/api-layer/api-layer.service';
 import {
   ChatCategoryInterface,
@@ -9,7 +9,7 @@ import {
   ChatDialogInterface,
   ChatMessage,
   ChatMessageDirectionEnum,
-  ChatMessageTypeEnum,
+  ChatMessageTypeEnum, ChatWritingUserInterface,
 } from 'stencil-chat';
 
 @Injectable({
@@ -42,6 +42,11 @@ export class StoreService {
    *
    * */
   public contacts: ChatContactInterface[] = ContactsMock;
+
+  /**
+   *
+   */
+  public writing: ChatWritingUserInterface[] = Writing;
 
   /**
    * Иконки навигации комп версии
