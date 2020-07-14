@@ -59,7 +59,7 @@ export class CompContactsComponent implements OnInit {
   /**
    *   клик по кнопке категорий для фильтрации диалогов
    */
-  public clickToCategory(input: ChatCategoryInterface) {
+    public clickToCategory(input: ChatCategoryInterface) {
     this.dialogs = this.chatStore.filterChatsByCategory(input, this.allDialogs);
   }
 
