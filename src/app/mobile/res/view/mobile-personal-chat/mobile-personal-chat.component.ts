@@ -18,12 +18,34 @@ export class MobilePersonalChatComponent implements OnInit {
 
   mobileTheme = 'mobile';
 
-  messages = this.storeMessage.getMessages();
+  public showInputSearch = false;
+  public showDropDown = false;
+
+  public messages = this.storeMessage.getMessages();
 
   ngOnInit(): void {}
 
   getMessages() {
     return this.messages;
+  }
+
+  public onClickMenuDots() {
+    this.showDropDown = !this.showDropDown;
+  }
+
+  public turnOffShowInputSearch() {
+    this.showInputSearch = false;
+  }
+  /**
+   * переключение показа инпута поиски в личных сообщениях
+   * */
+  public toggleShowInputSearch() {
+    this.showInputSearch = !this.showInputSearch;
+    this.showDropDown = false;
+  }
+
+  public cancelSearchPersonal() {
+    this.messages = this.storeMessage.getMessages();
   }
 
   public clickToShowDialogs() {
@@ -51,6 +73,21 @@ export class MobilePersonalChatComponent implements OnInit {
 
   public searchContact({ detail }) {
     // console.log('searchMessage 1 ', detail.data);
+    return (this.messages =
+      detail.data !== '' && detail.data !== null
+        ? this.messages.filter((item) => {
+            return typeof item.content === 'string'
+              ? item.content.toLowerCase().includes(detail.data.toLowerCase())
+              : false;
+          })
+        : this.storeMessage.getMessages());
+  }
+
+  /*
+   * Поиск сообщений
+   */
+  public searchPersonalMessages({ detail }) {
+    console.log('searchPersonalMessages', detail.data);
     return (this.messages =
       detail.data !== '' && detail.data !== null
         ? this.messages.filter((item) => {

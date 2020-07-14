@@ -1,9 +1,13 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { StoreService } from '../store-service.service';
 import { Router } from '@angular/router';
 import { AnimationService } from '../services/common/animation.service';
 import { Observable } from 'rxjs';
-import {ChatCategoryInterface, ChatDialogInterface, ChatMessage} from 'stencil-chat';
+import {
+  ChatCategoryInterface,
+  ChatDialogInterface,
+  ChatMessage,
+} from 'stencil-chat';
 
 @Component({
   selector: 'app-module',
@@ -32,17 +36,17 @@ export class ModuleComponent implements OnInit {
 
   ngOnInit(): void {
     this.storeMessage.getDialogs().subscribe((dataFromSever) => {
-      this.allDialogs = this.dialogs = dataFromSever;
+      this.dialogs = dataFromSever;
+      console.log('this.dialogs', this.dialogs);
       this.cdRef.markForCheck();
     });
 
     this.storeMessage.getCategories().subscribe((dataFromSever) => {
       this.categories = dataFromSever;
+      console.log('this.categories', this.categories);
       this.cdRef.markForCheck();
     });
   }
-
-
 
   public getTitleModule() {
     return this.storeMessage.titleModule;

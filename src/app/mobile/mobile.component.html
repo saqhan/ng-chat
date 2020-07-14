@@ -1,10 +1,10 @@
 <div class="m-chat-wrapper">
   <m-chat-header
     [categories]="categories"
-    (clickToLink)="clickToLink($event.detail)"
     (clickToCategory)="clickToCategory($event.detail)"
     (clickToAddDialog)="clickToAddDialog()"
-    (searchDialogs)="searchContact($event)"
+    (cancelSearchPersonal)="cancelSearchPersonal()"
+    (searchDialogs)="searchDialogs($event)"
   ></m-chat-header>
   <div class="m-chat-dialogs">
     <div *ngFor="let dialog of dialogs">

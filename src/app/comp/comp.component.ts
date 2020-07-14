@@ -98,6 +98,6 @@ export class CompComponent implements OnInit {
    * Сброс поика сообщений
    */
   public resetMessagesFilter() {
-    this.messages = this.chatStore.getMessages()
+    this.messages = this.chatStore.getMessages();
   }
 }
