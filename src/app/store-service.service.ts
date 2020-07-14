@@ -33,7 +33,7 @@ export class StoreService {
   };
 
   public titleModule = {
-    title: 'Модульный чат'
+    title: 'Модульный чат',
   };
 
   /**
@@ -76,14 +76,10 @@ export class StoreService {
     this.messages
   );
 
-  constructor(
-    private apiLayerService: ApiLayerService
-  ) {}
+  constructor(private apiLayerService: ApiLayerService) {}
 
   getDialogs() {
-    return this.apiLayerService.getDialogs(
-      ''
-    )
+    return this.apiLayerService.getDialogs('');
   }
 
   getPersonalMessage() {
@@ -118,10 +114,8 @@ export class StoreService {
 
   /**
    * */
-  public getCategories (): Observable<ChatCategoryInterface[]> {
-      return this.apiLayerService.getCategories(
-        ''
-      )
+  public getCategories(): Observable<ChatCategoryInterface[]> {
+    return this.apiLayerService.getCategories('');
   }
 
   getMessages() {
@@ -159,12 +153,16 @@ export class StoreService {
     // }
   }
 
+
   /**
    *
    */
-  public filterChatsByCategory(input: ChatCategoryInterface , allDialogs: ChatDialogInterface[]) {
+  public filterChatsByCategory(
+    input: ChatCategoryInterface,
+    allDialogs: ChatDialogInterface[]
+  ) {
     if (input?.id !== 'all') {
-      return allDialogs.filter((item) => item.category === input.id)
+      return allDialogs.filter((item) => item.category === input.id);
     } else {
       return allDialogs;
     }

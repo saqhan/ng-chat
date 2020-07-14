@@ -1,12 +1,12 @@
 <div class="personal-wrapper">
   <personal-header
-    (clickToLink)="clickToLink($event)"
     (searchContact)="searchContact($event)"
-    [messageMock]="getMessages()"
+    (clickToShowDialogs)="clickToShowDialogs()"
+    (clickToUserProfile)="clickToUserProfile()"
+    (searchPersonalMessages)="searchPersonalMessages($event)"
+    (cancelSearchPersonal)="cancelSearchPersonal()"
+    [message]="getMessages()"
   ></personal-header>
-  <personal-message
-    (clickToLink)="clickToLink($event)"
-    [messageMock]="getMessages()"
-  ></personal-message>
-  <personal-footer [theme]="mobileTheme" (clickToLink)="clickToLink($event)"></personal-footer>
+  <personal-message [message]="getMessages()"></personal-message>
+  <personal-footer [theme]="mobileTheme"></personal-footer>
 </div>
