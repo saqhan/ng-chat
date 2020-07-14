@@ -24,7 +24,7 @@
     "animejs": "^3.2.0",
     "npm": "^6.14.6",
     "rxjs": "~6.5.4",
-    "stencil-chat": "^0.8.6",
+    "stencil-chat": "^0.8.7",
     "stencil-chat2": "0.0.2",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

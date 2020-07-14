@@ -16,6 +16,7 @@ import {
   providedIn: 'root',
 })
 export class StoreService {
+  constructor(private apiLayerService: ApiLayerService) {}
   public dialogVisible = false;
 
   public profileVisible = false;
@@ -77,7 +78,7 @@ export class StoreService {
     this.messages
   );
 
-  constructor(private apiLayerService: ApiLayerService) {}
+  public compThemeClass = 'comp';
 
   getDialogs() {
     return this.apiLayerService.getDialogs('');
@@ -135,25 +136,6 @@ export class StoreService {
     return this.contacts;
   }
 
-  compThemeClass = 'comp';
-
-  /**
-   * Поиск контактов
-   * */
-  public searchContact({ detail }): void {
-    // if (detail.data !== '' && detail.data !== null) {
-    //   this.dialogs = this.allDialogs.filter((item) => {
-    //     return typeof item.name === 'string'
-    //       ? item.name
-    //         .toLocaleLowerCase()
-    //         .includes(detail.data.toLowerCase())
-    //       : false;
-    //   })
-    // } else {
-    //   this.dialogs = this.allDialogs;
-    // }
-  }
-
   /**
    *
    */
@@ -167,16 +149,4 @@ export class StoreService {
       return allDialogs;
     }
   }
-  // public searchChatByDialog(input, allDialogs: ChatDialogInterface[]) {
-  //   console.log('input', input);
-  //   if (input !== '' && input !== null) {
-  //     allDialogs = allDialogs.filter((item) => {
-  //       return typeof item.name === 'string'
-  //         ? item.name.toLocaleLowerCase().includes(input.toLowerCase())
-  //         : false;
-  //     });
-  //   } else {
-  //     return allDialogs;
-  //   }
-  // }
 }

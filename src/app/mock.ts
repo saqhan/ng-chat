@@ -1,7 +1,11 @@
 import {
   ChatCategoryInterface,
   ChatContactInterface,
-  ChatDialogInterface, ChatMessage, ChatMessageDirectionEnum, ChatMessageTypeEnum,
+  ChatDialogInterface,
+  ChatMessage,
+  ChatMessageDirectionEnum,
+  ChatMessageTypeEnum,
+  ChatWritingUserInterface,
 } from 'stencil-chat';
 
 export const DialogsMock: ChatDialogInterface[] = [
@@ -144,7 +148,7 @@ export const CategoriesMock: ChatCategoryInterface[] = [
   },
 ];
 
-export const ContactsMock: ChatContactInterface[] =  [
+export const ContactsMock: ChatContactInterface[] = [
   {
     id: 1,
     img: 'https://via.placeholder.com/300x300?text=User',
@@ -295,7 +299,8 @@ export const MessageMock: ChatMessage[] = [
     },
   },
   {
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit',
     sender: {
       uid: 'test-id-1',
       icon: 'https://via.placeholder.com/60x60?text=User',
@@ -369,8 +374,8 @@ export const MessageMock: ChatMessage[] = [
     },
   },
   {
-
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit df sss',
     sender: {
       uid: 'test-id-2',
       icon: 'https://via.placeholder.com/60x60?text=User',
@@ -453,5 +458,14 @@ export const MessageMock: ChatMessage[] = [
     time: {
       created: new Date(),
     },
+  },
+];
+
+export const Writing: ChatWritingUserInterface[] = [
+  {
+    uid: 'test',
+    icon: 'https://via.placeholder.com/60x60?text=User',
+    name: '',
+    phone: '',
   },
 ];
