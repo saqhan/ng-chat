@@ -1,15 +1,16 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {take} from 'rxjs/operators';
-import {CategoriesMock, ContactsMock, MessageMock} from "./mock";
-import {ApiLayerService} from "./services/api-layer/api-layer.service";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { CategoriesMock, ContactsMock, MessageMock } from './mock';
+import { ApiLayerService } from './services/api-layer/api-layer.service';
 import {
   ChatCategoryInterface,
-  ChatContactInterface, ChatDialogInterface,
+  ChatContactInterface,
+  ChatDialogInterface,
   ChatMessage,
   ChatMessageDirectionEnum,
-  ChatMessageTypeEnum
-} from "stencil-chat";
+  ChatMessageTypeEnum,
+} from 'stencil-chat';
 
 @Injectable({
   providedIn: 'root',
@@ -153,7 +154,6 @@ export class StoreService {
     // }
   }
 
-
   /**
    *
    */
@@ -167,4 +167,16 @@ export class StoreService {
       return allDialogs;
     }
   }
+  // public searchChatByDialog(input, allDialogs: ChatDialogInterface[]) {
+  //   console.log('input', input);
+  //   if (input !== '' && input !== null) {
+  //     allDialogs = allDialogs.filter((item) => {
+  //       return typeof item.name === 'string'
+  //         ? item.name.toLocaleLowerCase().includes(input.toLowerCase())
+  //         : false;
+  //     });
+  //   } else {
+  //     return allDialogs;
+  //   }
+  // }
 }

@@ -8,8 +8,8 @@ export const DialogsMock: ChatDialogInterface[] = [
   {
     id: 1,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Anna Dalonzo',
-    mess: 'rebuild finished',
+    name: 'Даниил Копылов',
+    mess: 'Конфликтный гештальт',
     time: {
       created: new Date(),
     },
@@ -19,8 +19,8 @@ export const DialogsMock: ChatDialogInterface[] = [
   {
     id: 2,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Anna Dalonzo',
-    mess: 'generate lazy started',
+    name: 'Ярослав Кириллов',
+    mess: 'Реакция, по определению, доступна.',
     time: {
       created: new Date(),
     },
@@ -30,8 +30,8 @@ export const DialogsMock: ChatDialogInterface[] = [
   {
     id: 3,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Anna Dalonzo',
-    mess: 'generate lazy finished in 141 ms',
+    name: 'Марина Коновалова',
+    mess: 'Чем больше люди узнают друг друга, тем больше воспитание',
     time: {
       created: new Date(),
     },
@@ -41,8 +41,8 @@ export const DialogsMock: ChatDialogInterface[] = [
   {
     id: 4,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Anna Dalonzo',
-    mess: 'Hello everyone!!!',
+    name: 'Алина Брагина',
+    mess: 'Предсознательное стабильно. Рефлексия вызывает стимул. ',
     time: {
       created: new Date(),
     },
@@ -52,8 +52,8 @@ export const DialogsMock: ChatDialogInterface[] = [
   {
     id: 5,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Anna Dalonzo',
-    mess: 'transpile started',
+    name: 'Иван Степанович',
+    mess: 'Эскапизм осознаёт импульс.',
     time: {
       created: new Date(),
     },
@@ -63,8 +63,8 @@ export const DialogsMock: ChatDialogInterface[] = [
   {
     id: 6,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Anna Dalonzo',
-    mess: 'Hello everyone!!!',
+    name: 'Элеонора Тимофеевна',
+    mess: 'Психе выбирает закон. Психоз изменяем.',
     time: {
       created: new Date(),
     },
@@ -74,8 +74,8 @@ export const DialogsMock: ChatDialogInterface[] = [
   {
     id: 7,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Anna Dalonzo',
-    mess: 'Hello everyone!!!',
+    name: 'Александра Дмитриевна',
+    mess: 'Конформизм понимает психоз.',
     time: {
       created: new Date(),
     },
@@ -85,8 +85,8 @@ export const DialogsMock: ChatDialogInterface[] = [
   {
     id: 8,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Saqhan Dalonzo',
-    mess: 'Hello everyone!!!',
+    name: 'Вадим Тимофеевич',
+    mess: 'Как было показано выше, психоз притягивает',
     time: {
       created: new Date(),
     },
@@ -96,43 +96,51 @@ export const DialogsMock: ChatDialogInterface[] = [
   {
     id: 9,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Saqhan Chrome',
-    mess: 'Hello everyone!!! category',
+    name: 'Яков Даниилович',
+    mess: 'Придерживаясь жестких принципов социального Дарвинизма',
     time: {
       created: new Date(),
     },
-    category: 'friends',
+    category: 'interesting',
     online: false,
   },
   {
     id: 10,
     img: 'https://via.placeholder.com/300x300?text=User',
-    name: 'Saqhan Chrome',
-    mess: 'Generate lazy started',
+    name: 'Виктория Ильина',
+    mess: 'Предсознательное вызывает позитивистский генезис.',
     time: {
       created: new Date(),
     },
-    category: 'friends',
+    category: 'study',
     online: false,
   },
 ];
 
 export const CategoriesMock: ChatCategoryInterface[] = [
   {
-    name: 'All',
+    name: 'Все',
     id: 'all',
   },
   {
-    name: 'Work',
+    name: 'Работа',
     id: 'work',
   },
   {
-    name: 'Family',
+    name: 'Семья',
     id: 'family',
   },
   {
-    name: 'Friends',
+    name: 'Друзья',
     id: 'friends',
+  },
+  {
+    name: 'Учеба',
+    id: 'study',
+  },
+  {
+    name: 'Интересное',
+    id: 'interesting',
   },
 ];
 
@@ -156,7 +164,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     time: {
       created: new Date(),
     },
-    category: 'work',
+    category: 'interesting',
     online: true,
   },
   {
@@ -189,7 +197,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     time: {
       created: new Date(),
     },
-    category: 'work',
+    category: 'study',
     online: true,
   },
   {
@@ -269,7 +277,7 @@ export const ContactsMock: ChatContactInterface[] =  [
     category: 'work',
     online: true,
   },
-]
+];
 
 export const MessageMock: ChatMessage[] = [
   {
@@ -433,7 +441,7 @@ export const MessageMock: ChatMessage[] = [
     },
   },
   {
-    content: "",
+    content: '',
     sender: {
       uid: 'test-id-1',
       icon: 'https://via.placeholder.com/60x60?text=User',
