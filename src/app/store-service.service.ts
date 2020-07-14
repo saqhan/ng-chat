@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { CategoriesMock, ContactsMock, MessageMock } from './mock';
+import { CategoriesMock, ContactsMock, MessageMock, Writing } from './mock';
 import { ApiLayerService } from './services/api-layer/api-layer.service';
 import {
   ChatCategoryInterface,
@@ -87,6 +87,7 @@ export class StoreService {
   getPersonalMessage() {
     return this.messages;
   }
+
   public getMessage$(): Observable<ChatMessage[]> {
     return this.messages$;
   }
