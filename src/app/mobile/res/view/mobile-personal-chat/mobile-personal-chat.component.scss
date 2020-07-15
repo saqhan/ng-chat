@@ -15,3 +15,131 @@
 .personal-wrapper .personal-footer .footer-wrapper {
   border-radius: 15px 15px 0px 0px;
 }
+
+// personal
+
+
+.drop-down {
+  position: absolute;
+  right: 20px;
+  padding: 10px;
+  background-color: #dadada8f;
+  border-radius: 10px 0px 10px 10px;
+}
+
+.drop-down ul li{
+  list-style: none;
+}
+
+.searchPersonalmess {
+  padding: 20px 15px 20px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.searchPersonalmess input {
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+  background-color: #eaeaea;
+  width: 80%;
+  padding: 5px;
+  height: 40px;
+  font-size: 16px;
+  outline: none;
+}
+
+.cancel-search {
+  padding: 5px;
+}
+
+.users-nav div {
+  cursor: pointer;
+}
+
+.search-wrapper .user-name-personal {
+  font-weight: 600;
+  color: #4c567d;
+  text-align: center;
+  margin-top: 20px;
+  height: 22px;
+}
+
+
+.personal-header {
+  padding: 20px 20px 20px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-nav span i {
+  color: #979eab;
+  transition: 0.3s ease;
+}
+.header-nav span i:hover{
+  cursor: pointer;
+  color: rgb(87, 128, 247);
+
+}
+
+.header-nav .user-name-personal {
+  font-weight: 600;
+  color: #4c567d;
+}
+
+.users-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.img-user-other {
+  text-align: center;
+  border-radius: 50%;
+}
+
+.img-user-other .img {
+  width: 30px;
+  height: 30px;
+  margin: 3px;
+  border-radius: 50%;
+  background-image: url("https://via.placeholder.com/300x300?text=User");
+  background-size: cover;
+  background-position: center;
+}
+
+.img-user-current {
+  text-align: center;
+  border: 2px solid #4c567d;
+  border-radius: 50%;
+}
+
+.img-user-current .img {
+  width: 35px;
+  height: 35px;
+  margin: 3px;
+  border-radius: 50%;
+  background-image: url("https://via.placeholder.com/300x300?text=User");
+  background-size: cover;
+  background-position: center;
+}
+
+.mobile .personal-message {
+  height: calc(100vh - 185px);
+}
+
+.mobile .personal-message {
+  padding: 20px;
+}

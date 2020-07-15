@@ -18,12 +18,30 @@ export class MobilePersonalChatComponent implements OnInit {
 
   mobileTheme = 'mobile';
 
+  public showInputSearch = false;
+  public showDropDown = false;
+
   public messages = this.storeMessage.getMessages();
 
   ngOnInit(): void {}
 
   getMessages() {
     return this.messages;
+  }
+
+  public onClickMenuDots() {
+    this.showDropDown = !this.showDropDown;
+  }
+
+  public turnOffShowInputSearch() {
+    this.showInputSearch = false;
+  }
+  /**
+   * переключение показа инпута поиски в личных сообщениях
+   * */
+  public toggleShowInputSearch() {
+    this.showInputSearch = !this.showInputSearch;
+    this.showDropDown = false;
   }
 
   public cancelSearchPersonal() {

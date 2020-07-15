@@ -57,28 +57,7 @@ export class MobileComponent implements OnInit {
     );
   }
 
-  // клик по ссылке
-  public clickToLink(detail: ChatClickToLinkEmit) {
-    this.animSRVC.slideToLEFT();
-    this.router.navigate(['app-mobile-personal-chat']);
-    // if (detail.place === ChatLinkTypeEnum.showPersonalDialog) {
-    //   this.animSRVC.slideToLEFT();
-    //   this.router.navigate(['app-mobile-personal-chat']);
-    // }
-    // if (detail.place === ChatLinkTypeEnum.contacts) {
-    //   this.animSRVC.slideToLEFT();
-    //   this.router.navigate(['contacts']);
-    // }
-    // if (detail.place === 'menu-bar') {
-    //   console.log('menu-bar');
-    // }
-  }
-
-  // Поиск контактов
-  public cancelSearchPersonal() {
-    this.dialogs = this.allDialogs;
-  }
-
+  // поиск диалогов
   public searchDialogs({ detail }): void {
     if (detail !== '' && detail !== null) {
       this.dialogs = this.allDialogs.filter((item) => {
@@ -90,6 +69,10 @@ export class MobileComponent implements OnInit {
       this.dialogs = this.allDialogs;
     }
   }
+  // Поиск контактов
+  public cancelSearchPersonal() {
+    this.dialogs = this.allDialogs;
+  }
 
   // on click dialog
   public clickToDialog($event) {
@@ -97,20 +80,6 @@ export class MobileComponent implements OnInit {
     this.animSRVC.slideToLEFT();
     this.router.navigate(['app-mobile-personal-chat']);
   }
-  // Поиск контактов
-
-  // public searchContact({detail}) {
-  //   console.log('searchMessage 1 ', detail.data);
-  //   return (this.messages =
-  //     detail.data !== '' && detail.data !== null
-  //       ? this.messages
-  //         .filter((item) => {
-  //           return (typeof item.content === 'string' )
-  //             ? (item.content).toLowerCase().includes(detail.data.toLowerCase())
-  //             : false;
-  //         } )
-  //       : this.storeMessage.getMessages() );
-  // }
 
   public clickToShowDialogs() {
     this.animSRVC.slideToLEFT();
