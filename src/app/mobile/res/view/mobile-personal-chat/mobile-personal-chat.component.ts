@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../../../store-service.service';
 import { Router } from '@angular/router';
 import { AnimationService } from '../../../../services/common/animation.service';
-// import {type} from "os";
 
 @Component({
   selector: 'app-mobile-personal-chat',
@@ -23,6 +22,11 @@ export class MobilePersonalChatComponent implements OnInit {
 
   public messages = this.storeMessage.getMessages();
 
+  public getWriting() {
+    return this.storeMessage.writing;
+    console.log(this.storeMessage.writing);
+  }
+
   ngOnInit(): void {}
 
   getMessages() {
@@ -38,7 +42,7 @@ export class MobilePersonalChatComponent implements OnInit {
   }
   /**
    * переключение показа инпута поиски в личных сообщениях
-   * */
+   **/
   public toggleShowInputSearch() {
     this.showInputSearch = !this.showInputSearch;
     this.showDropDown = false;

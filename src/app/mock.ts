@@ -6,6 +6,7 @@ import {
   ChatMessageDirectionEnum,
   ChatMessageTypeEnum,
   ChatWritingUserInterface,
+  chatConvertWritingStatusToMessage
 } from 'stencil-chat';
 
 export const DialogsMock: ChatDialogInterface[] = [
@@ -17,6 +18,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 4,
     category: 'work',
     online: true,
   },
@@ -28,6 +30,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 0,
     category: 'family',
     online: true,
   },
@@ -39,6 +42,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 3,
     category: 'friends',
     online: false,
   },
@@ -50,6 +54,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 0,
     category: 'friends',
     online: true,
   },
@@ -61,6 +66,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 1,
     category: 'work',
     online: false,
   },
@@ -72,6 +78,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 2,
     category: 'work',
     online: true,
   },
@@ -83,6 +90,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 1,
     category: 'work',
     online: false,
   },
@@ -94,6 +102,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 0,
     category: 'family',
     online: true,
   },
@@ -105,6 +114,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 1,
     category: 'interesting',
     online: false,
   },
@@ -116,6 +126,7 @@ export const DialogsMock: ChatDialogInterface[] = [
     time: {
       created: new Date(),
     },
+    newMessage: 0,
     category: 'study',
     online: false,
   },

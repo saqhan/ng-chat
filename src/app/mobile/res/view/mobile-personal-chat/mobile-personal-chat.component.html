@@ -1,20 +1,22 @@
 <div class="personal-wrapper">
-    <personal-header
-      (searchContact)="searchContact($event)"
-      (clickToShowDialogs)="clickToShowDialogs()"
-      (clickToUserProfile)="clickToUserProfile()"
-      (searchPersonalMessages)="searchPersonalMessages($event)"
-      (cancelSearchPersonal)="cancelSearchPersonal()"
-      [message]="getMessages()"
-    ></personal-header>
-      <div class="mobile">
-        <div class="personal-message">
-          <div *ngFor="let message of getMessages()">
-            <message-from [message]="message"></message-from>
-
-          </div>
-        </div>
+  <personal-header
+    (searchContact)="searchContact($event)"
+    (clickToShowDialogs)="clickToShowDialogs()"
+    (clickToUserProfile)="clickToUserProfile()"
+    (searchPersonalMessages)="searchPersonalMessages($event)"
+    (cancelSearchPersonal)="cancelSearchPersonal()"
+    [message]="getMessages()"
+  ></personal-header>
+  <div class="mobile">
+    <div class="personal-message">
+      <div *ngFor="let message of getMessages()">
+        <message-from [message]="message"></message-from>
       </div>
-<!--  <personal-message [message]="getMessages()"></personal-message>-->
+      <div *ngIf="this.getWriting().length">
+<!--        <message-from [message]="chatConvertWritingStatusToMessage(this.getWriting[0])"></message-from>-->
+      </div>
+    </div>
+  </div>
+  <!--  <personal-message [message]="getMessages()"></personal-message>-->
   <personal-footer [theme]="mobileTheme"></personal-footer>
 </div>

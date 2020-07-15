@@ -100,4 +100,11 @@ export class CompComponent implements OnInit {
   public resetMessagesFilter() {
     this.messages = this.chatStore.getMessages();
   }
+
+  /**
+   *
+   */
+  public getWriting() {
+    return this.chatStore.writing;
+  }
 }
