@@ -9,7 +9,12 @@ import {
   trigger,
 } from '@angular/animations';
 import { Observable } from 'rxjs';
-import { ChatCategoryInterface, ChatDialogInterface } from 'stencil-chat';
+import {
+  ChatCategoryInterface,
+  chatConvertWritingStatusToMessage,
+  ChatDialogInterface,
+  ChatWritingUserInterface,
+} from 'stencil-chat';
 
 @Component({
   selector: 'app-comp',
@@ -104,7 +109,9 @@ export class CompComponent implements OnInit {
   /**
    *
    */
-  public getWriting() {
-    return this.chatStore.writing;
+  public getWriting = this.chatStore.writing;
+
+  public chatConvertWritingStatusToMessage() {
+    return chatConvertWritingStatusToMessage(this.getWriting[0]);
   }
 }

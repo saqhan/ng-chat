@@ -6,6 +6,7 @@ import {
   ChatMessageDirectionEnum,
   ChatMessageTypeEnum,
   ChatWritingUserInterface,
+
 } from 'stencil-chat';
 
 export const DialogsMock: ChatDialogInterface[] = [
@@ -455,3 +456,4 @@ export const Writing: ChatWritingUserInterface[] = [
     phone: '',
   },
 ];
+

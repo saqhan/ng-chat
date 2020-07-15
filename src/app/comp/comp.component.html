@@ -1,4 +1,3 @@
-
 <div class="main-wrapper">
   <main>
     <div class="container">
@@ -10,8 +9,7 @@
           ></s-adam-navigate>
         </div>
         <div class="col-3">
-          <app-comp-contacts>
-          </app-comp-contacts>
+          <app-comp-contacts> </app-comp-contacts>
         </div>
         <div class="col white-col">
           <section class="chat">
@@ -22,13 +20,17 @@
                 (visibleUserProfile)="visibleProfile()"
                 (searchPersonalMessage)="searchPersonalMessage($event)"
                 (resetMessagesFilter)="resetMessagesFilter()"
-
               >
               </s-adam-personal-header>
               <div class="chat-messages">
                 <div *ngFor="let message of getMessages()">
                   <message-from [message]="message"></message-from>
                 </div>
+                <message-from
+                  *ngIf="getWriting?.length"
+                  [message]="chatConvertWritingStatusToMessage()"
+                ></message-from>
+                <div *ngIf="!getWriting?.length"></div>
               </div>
               <personal-footer></personal-footer>
             </div>
