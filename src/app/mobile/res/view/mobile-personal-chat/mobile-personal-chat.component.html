@@ -12,9 +12,10 @@
       <div *ngFor="let message of getMessages()">
         <message-from [message]="message"></message-from>
       </div>
-      <div *ngIf="this.getWriting().length">
-<!--        <message-from [message]="chatConvertWritingStatusToMessage(this.getWriting[0])"></message-from>-->
-      </div>
+      <message-from
+        *ngIf="getWriting?.length"
+        [message]="chatConvertWritingStatusToMessage()"
+      ></message-from>
     </div>
   </div>
   <!--  <personal-message [message]="getMessages()"></personal-message>-->
