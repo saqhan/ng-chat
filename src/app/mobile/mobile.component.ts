@@ -1,19 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
-import { StoreService } from '../store-service.service';
-import { Router } from '@angular/router';
-import { AnimationService } from '../services/common/animation.service';
-import {
-  ChatCategoryInterface,
-  ChatDialogInterface,
-  ChatClickToLinkEmit,
-} from 'stencil-chat';
-// import {ChatClickToLinkEmit} from "stencil-chat";
-// import {ChatClickToLinkEmit, ChatLinkTypeEnum} from "../../../../stencil-chat/src";
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit,} from '@angular/core';
+import {StoreService} from '../store-service.service';
+import {Router} from '@angular/router';
+import {AnimationService} from '../services/common/animation.service';
+import {ChatCategoryInterface, ChatDialogInterface,} from 'stencil-chat';
 
 @Component({
   selector: 'app-mobile',

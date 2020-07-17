@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
-import {CategoriesMock, DialogsMock} from "../../mock";
+import {CategoriesMock, ContactsMock, DialogsMock} from "../../mock";
 import {delay} from "rxjs/operators";
-import {ChatCategoryInterface, ChatDialogInterface} from "stencil-chat";
+import {ChatCategoryInterface, ChatContactInterface, ChatDialogInterface} from "stencil-chat";
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,20 @@ export class ApiLayerService {
       CategoriesMock
     ).pipe(
       delay(2000)
+    )
+  }
+
+  /**
+   *
+   * */
+  public getContacts (
+    uid: string
+  ): Observable<ChatContactInterface[]>
+  {
+    return of(
+      ContactsMock
+    ).pipe(
+      delay(1000)
     )
   }
 }
