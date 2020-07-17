@@ -41,6 +41,11 @@ export class CompComponent implements OnInit {
   ngOnInit(): void {}
 
   /**
+   * Стейт для показа контактов или диалогов
+   */
+  public showContactsOrDialogs = true;
+
+  /**
    * Иконки навигации
    */
   getNavItems() {
@@ -113,5 +118,13 @@ export class CompComponent implements OnInit {
 
   public chatConvertWritingStatusToMessage() {
     return chatConvertWritingStatusToMessage(this.getWriting[0]);
+  }
+
+  /**
+   * Метод для переключения на контакты
+   */
+  public showContactsOrDialogsToggle() {
+    this.showContactsOrDialogs = !this.showContactsOrDialogs;
+    console.log(this.showContactsOrDialogs)
   }
 }

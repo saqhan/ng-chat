@@ -13,6 +13,7 @@ import { ModuleComponent } from './module/module.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ContactsComponent } from './mobile/res/view/contacts/contacts.component';
+import { CompDialogsComponent } from './comp/res/view/comp-dialogs/comp-dialogs.component';
 import { CompContactsComponent } from './comp/res/view/comp-contacts/comp-contacts.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CompContactsComponent } from './comp/res/view/comp-contacts/comp-contac
     UserProfileComponent,
     ModuleComponent,
     ContactsComponent,
+    CompDialogsComponent,
     CompContactsComponent,
   ],
   imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, MatSliderModule, MatSidenavModule],

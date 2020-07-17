@@ -1,70 +1,63 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
-import { StoreService } from '../../../../store-service.service';
-import { Router } from '@angular/router';
-import { ChatCategoryInterface, ChatDialogInterface } from 'stencil-chat';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChatContactInterface, filterContactBySearchValue,} from "stencil-chat";
+import {StoreService} from "../../../../store-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-comp-contacts',
   templateUrl: './comp-contacts.component.html',
-  styleUrls: ['./comp-contacts.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./comp-contacts.component.scss']
 })
 export class CompContactsComponent implements OnInit {
-  // public dialogs$: Observable<ChatDialogInterface[]>;
-
-  public dialogs: ChatDialogInterface[] = [];
-
-  public categories: ChatCategoryInterface[] = [];
-
-  private allDialogs: ChatDialogInterface[] = [];
 
   constructor(
     private chatStore: StoreService,
     private router: Router,
     private cdRef: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.chatStore.getDialogs().subscribe((dataFromSever) => {
-      this.allDialogs = this.dialogs = dataFromSever;
-      this.cdRef.markForCheck();
-    });
-    this.chatStore.getCategories().subscribe((dataFromSever) => {
-      this.categories = dataFromSever;
-      this.cdRef.markForCheck();
-    });
-  }
 
-  public compTheme() {
-    return this.chatStore.compThemeClass;
-  }
-
-  public searchDialogs({ detail }): void {
-    if (detail.data !== '' && detail.data !== null) {
-      this.dialogs = this.allDialogs.filter((item) => {
-        return typeof item.name === 'string'
-          ? item.name.toLocaleLowerCase().includes(detail.data.toLowerCase())
-          : false;
-      });
-    } else {
-      this.dialogs = this.allDialogs;
-    }
   }
 
   /**
-   *   клик по кнопке категорий для фильтрации диалогов
+   *
    */
-    public clickToCategory(input: ChatCategoryInterface) {
-    this.dialogs = this.chatStore.filterChatsByCategory(input, this.allDialogs);
+ public contactsFiltered: ChatContactInterface[] = [];
+
+  /**
+   *
+   */
+  public lastSearchValue: string;
+
+  /**
+   * Тема для модульного/мобильного чата
+   * */
+  public theme: "mobile" | "module" | "comp" = "comp";
+
+  /**
+   *
+   */
+  public getContacts() {
+    return this.chatStore.getContacts();
   }
 
-  public toggleChat() {
-    console.log(this.chatStore.dialogVisible);
-    this.chatStore.dialogVisible = true;
+  /**
+   *
+   */
+
+  public disableInnerSearchContactState: boolean;
+
+  /**
+   *
+   * */
+  public filterContacts(
+    value: string,
+    allContacts: ChatContactInterface[] = this.getContacts()
+  ) {
+    this.lastSearchValue = value;
+    if (!this.disableInnerSearchContactState) {
+      this.contactsFiltered = filterContactBySearchValue(value, allContacts);
+    }
   }
 }
