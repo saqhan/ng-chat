@@ -1,43 +1,42 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {CompComponent} from './comp/comp.component';
-import {MobileComponent} from './mobile/mobile.component';
-import {MobilePersonalChatComponent} from './mobile/res/view/mobile-personal-chat/mobile-personal-chat.component';
-import {UserProfileComponent} from './mobile/res/view/user-profile/user-profile.component';
-import {ModuleComponent} from './module/module.component';
-import {ContactsComponent} from './mobile/res/view/contacts/contacts.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {CompComponent} from "./comp.component";
 
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'chat',
+    pathMatch: 'prefix',
+    data: {
+      view: 'all-chats'
+    },
+    // runGuardsAndResolvers: "pathParamsOrQueryParamsChange",
+    component: CompComponent,
+    // children: [
+    //   {
+    //     path: ':chatId',
+    //     data: {
+    //       view: 'personal'
+    //     },
+    //     component: CompComponent,
+    //   },
+    // ]
+  },
+  {
+    path: 'chat/:chatId',
+    data: {
+      view: 'personal'
+    },
     component: CompComponent,
   },
   // {
-  //   path: 'module',
-  //   component: ModuleComponent,
-  // },
-  // {
-  //   path: 'mobile',
-  //   component: MobileComponent,
-  // },
-
-  // {
   //   path: 'contacts',
-  //   component: ContactsComponent,
-  // },
-  // {
-  //   path: 'profile',
-  //   component: UserProfileComponent,
-  // },
-  // {
-  //   path: 'app-mobile-personal-chat',
-  //   component: MobilePersonalChatComponent,
-  // },
-  // {
-  //   path: '**',
   //   component: CompComponent,
-  // }
+  // },
+  {
+    path: '**',
+    redirectTo: 'chat'
+  }
 ];
 
 @NgModule({

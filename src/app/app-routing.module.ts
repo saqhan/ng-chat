@@ -1,18 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {CompComponent} from './comp/comp.component';
-import {MobileComponent} from './mobile/mobile.component';
-import {MobilePersonalChatComponent} from './mobile/res/view/mobile-personal-chat/mobile-personal-chat.component';
-import {UserProfileComponent} from './mobile/res/view/user-profile/user-profile.component';
-import {ModuleComponent} from './module/module.component';
-import {ContactsComponent} from './mobile/res/view/contacts/contacts.component';
-
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    component: CompComponent,
-  },
+    loadChildren: () => import('./comp/comp.module').then(m => m.CompModule)
+  }
+  // {
+  //   path: '',
+  //   component: CompComponent,
+  // },
   // {
   //   path: 'module',
   //   component: ModuleComponent,
@@ -21,7 +18,7 @@ const routes: Routes = [
   //   path: 'mobile',
   //   component: MobileComponent,
   // },
-
+  //
   // {
   //   path: 'contacts',
   //   component: ContactsComponent,

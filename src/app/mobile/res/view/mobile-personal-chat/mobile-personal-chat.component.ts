@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../../../../store-service.service';
 import { Router } from '@angular/router';
 import { AnimationService } from '../../../../services/common/animation.service';
-// import {type} from "os";
+import {
+  ChatCategoryInterface,
+  chatConvertWritingStatusToMessage,
+  ChatDialogInterface,
+  ChatWritingUserInterface,
+} from 'stencil-chat';
 
 @Component({
   selector: 'app-mobile-personal-chat',
@@ -23,6 +28,12 @@ export class MobilePersonalChatComponent implements OnInit {
 
   public messages = this.storeMessage.getMessages();
 
+  public getWriting = this.storeMessage.writing;
+
+  public chatConvertWritingStatusToMessage() {
+    return chatConvertWritingStatusToMessage(this.getWriting[0]);
+  }
+
   ngOnInit(): void {}
 
   getMessages() {
@@ -38,7 +49,7 @@ export class MobilePersonalChatComponent implements OnInit {
   }
   /**
    * переключение показа инпута поиски в личных сообщениях
-   * */
+   **/
   public toggleShowInputSearch() {
     this.showInputSearch = !this.showInputSearch;
     this.showDropDown = false;

@@ -6,6 +6,7 @@ import {
   ChatMessageDirectionEnum,
   ChatMessageTypeEnum,
   ChatWritingUserInterface,
+  chatConvertWritingStatusToMessage
 } from 'stencil-chat';
 
 export const DialogsMock: ChatDialogInterface[] = [
@@ -567,20 +568,6 @@ export const MessageMock: ChatMessage[] = [
       created: new Date(),
     },
   },
-  {
-    content: '',
-    sender: {
-      uid: 'test-id-1',
-      icon: 'https://via.placeholder.com/60x60?text=User',
-      name: 'Сайхан',
-      phone: '79291234567',
-    },
-    type: ChatMessageTypeEnum.loading,
-    direction: ChatMessageDirectionEnum.toMe,
-    time: {
-      created: new Date(),
-    },
-  },
 ];
 
 export const Writing: ChatWritingUserInterface[] = [
@@ -591,3 +578,4 @@ export const Writing: ChatWritingUserInterface[] = [
     phone: '',
   },
 ];
+
