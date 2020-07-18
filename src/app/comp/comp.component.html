@@ -4,12 +4,13 @@
       <div class="row">
         <div class="col-1 white-col">
           <s-adam-navigate
+            (visibleContacts)="showContactsOrDialogsToggle()"
             [logo]="getLogo()"
-            [navItems]="getNavItems()"
           ></s-adam-navigate>
         </div>
         <div class="col-3">
-          <app-comp-contacts> </app-comp-contacts>
+          <app-comp-dialogs *ngIf="showContactsOrDialogs"> </app-comp-dialogs>
+          <app-comp-contacts *ngIf="!showContactsOrDialogs"></app-comp-contacts>
         </div>
         <div class="col white-col">
           <section class="chat">
