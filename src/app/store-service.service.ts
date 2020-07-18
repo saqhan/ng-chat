@@ -1,7 +1,8 @@
+
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {take} from 'rxjs/operators';
-import {MessageMock} from './mock';
+import {ContactsMock, MessageMock, Writing} from './mock';
 import {ApiLayerService} from './services/api-layer/api-layer.service';
 import {
   ChatCategoryInterface,
@@ -10,6 +11,7 @@ import {
   ChatMessage,
   ChatMessageDirectionEnum,
   ChatMessageTypeEnum,
+  ChatWritingUserInterface,
 } from 'stencil-chat';
 
 @Injectable({
@@ -22,26 +24,30 @@ export class StoreService {
   public profileVisible = false;
 
   /**
-   * */
-  // public dialogs: ChatDialogInterface[] = DialogsMock;
-
-  /**
-   * */
-  // public categories: ChatCategoryInterface[] = CategoriesMock;
-
+   *
+   */
   public logo = {
     id: 'logo',
     logo: 'https://via.placeholder.com/100x100?text=Text',
   };
-
+  /**
+   * Иконки навигации комп версии
+   */
   public titleModule = {
     title: 'Модульный чат',
   };
 
   /**
-   *
-   * */
+   * Иконки навигации комп версии
+   */
+  public contacts: ChatContactInterface[] = ContactsMock;
+
   // public contacts: ChatContactInterface[] = ContactsMock;
+
+  /**
+   *
+   */
+  public writing: ChatWritingUserInterface[] = Writing;
 
   /**
    * Иконки навигации комп версии
@@ -71,7 +77,7 @@ export class StoreService {
 
   /**
    *
-   * */
+   */
   private messages: ChatMessage[] = MessageMock;
 
   private messages$: BehaviorSubject<ChatMessage[]> = new BehaviorSubject(
@@ -87,6 +93,7 @@ export class StoreService {
   getPersonalMessage() {
     return this.messages;
   }
+
   public getMessage$(): Observable<ChatMessage[]> {
     return this.messages$;
   }
@@ -115,7 +122,8 @@ export class StoreService {
   }
 
   /**
-   * */
+   *
+   */
   public getCategories(): Observable<ChatCategoryInterface[]> {
     return this.apiLayerService.getCategories('');
   }

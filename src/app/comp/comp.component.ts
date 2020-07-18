@@ -9,7 +9,12 @@ import {
   trigger,
 } from '@angular/animations';
 import { Observable } from 'rxjs';
-import { ChatCategoryInterface, ChatDialogInterface } from 'stencil-chat';
+import {
+  ChatCategoryInterface,
+  chatConvertWritingStatusToMessage,
+  ChatDialogInterface,
+  ChatWritingUserInterface,
+} from 'stencil-chat';
 
 @Component({
   selector: 'app-comp',
@@ -34,6 +39,11 @@ export class CompComponent implements OnInit {
   constructor(private chatStore: StoreService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  /**
+   * Стейт для показа контактов или диалогов
+   */
+  public showContactsOrDialogs = true;
 
   /**
    * Иконки навигации
@@ -99,5 +109,22 @@ export class CompComponent implements OnInit {
    */
   public resetMessagesFilter() {
     this.messages = this.chatStore.getMessages();
+  }
+
+  /**
+   *
+   */
+  public getWriting = this.chatStore.writing;
+
+  public chatConvertWritingStatusToMessage() {
+    return chatConvertWritingStatusToMessage(this.getWriting[0]);
+  }
+
+  /**
+   * Метод для переключения на контакты
+   */
+  public showContactsOrDialogsToggle() {
+    this.showContactsOrDialogs = !this.showContactsOrDialogs;
+    console.log(this.showContactsOrDialogs)
   }
 }
