@@ -38,7 +38,8 @@ export class CompContactsComponent implements OnInit {
    *
    */
   public getContacts() {
-    return this.chatStore.getContacts();
+    // return this.chatStore.getContacts();
+    return [];
   }
 
   /**

@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
-import { CategoriesMock, ContactsMock, MessageMock, Writing } from './mock';
-import { ApiLayerService } from './services/api-layer/api-layer.service';
+
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {take} from 'rxjs/operators';
+import {ContactsMock, MessageMock, Writing} from './mock';
+import {ApiLayerService} from './services/api-layer/api-layer.service';
 import {
   ChatCategoryInterface,
   ChatContactInterface,
@@ -40,6 +41,8 @@ export class StoreService {
    * Иконки навигации комп версии
    */
   public contacts: ChatContactInterface[] = ContactsMock;
+
+  // public contacts: ChatContactInterface[] = ContactsMock;
 
   /**
    *
@@ -124,6 +127,11 @@ export class StoreService {
   public getCategories(): Observable<ChatCategoryInterface[]> {
     return this.apiLayerService.getCategories('');
   }
+  /**
+   * */
+  public getContacts(): Observable<ChatContactInterface[]> {
+    return this.apiLayerService.getContacts('');
+  }
 
   getMessages() {
     return this.messages;
@@ -137,9 +145,9 @@ export class StoreService {
     return this.logo;
   }
 
-  getContacts() {
-    return this.contacts;
-  }
+  // getContacts() {
+  //   return this.contacts;
+  // }
 
   /**
    *

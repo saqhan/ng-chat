@@ -131,6 +131,118 @@ export const DialogsMock: ChatDialogInterface[] = [
     online: false,
   },
 ];
+// export const DialogsMock: ChatDialogInterface[] = [
+//   {
+//     id: 1,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Даниил Копылов',
+//     mess: 'Конфликтный гештальт',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'work',
+//     online: true,
+//   },
+//   {
+//     id: 2,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Ярослав Кириллов',
+//     mess: 'Реакция, по определению, доступна.',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'family',
+//     online: true,
+//   },
+//   {
+//     id: 3,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Марина Коновалова',
+//     mess: 'Чем больше люди узнают друг друга, тем больше воспитание',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'friends',
+//     online: false,
+//   },
+//   {
+//     id: 4,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Алина Брагина',
+//     mess: 'Предсознательное стабильно. Рефлексия вызывает стимул. ',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'friends',
+//     online: true,
+//   },
+//   {
+//     id: 5,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Иван Степанович',
+//     mess: 'Эскапизм осознаёт импульс.',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'work',
+//     online: false,
+//   },
+//   {
+//     id: 6,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Элеонора Тимофеевна',
+//     mess: 'Психе выбирает закон. Психоз изменяем.',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'work',
+//     online: true,
+//   },
+//   {
+//     id: 7,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Александра Дмитриевна',
+//     mess: 'Конформизм понимает психоз.',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'work',
+//     online: false,
+//   },
+//   {
+//     id: 8,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Вадим Тимофеевич',
+//     mess: 'Как было показано выше, психоз притягивает',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'family',
+//     online: true,
+//   },
+//   {
+//     id: 9,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Яков Даниилович',
+//     mess: 'Придерживаясь жестких принципов социального Дарвинизма',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'interesting',
+//     online: false,
+//   },
+//   {
+//     id: 10,
+//     img: 'https://via.placeholder.com/300x300?text=User',
+//     name: 'Виктория Ильина',
+//     mess: 'Предсознательное вызывает позитивистский генезис.',
+//     time: {
+//       created: new Date(),
+//     },
+//     category: 'study',
+//     online: false,
+//   },
+// ];
 
 export const CategoriesMock: ChatCategoryInterface[] = [
   {

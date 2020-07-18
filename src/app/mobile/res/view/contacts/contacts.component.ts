@@ -54,14 +54,15 @@ export class ContactsComponent implements OnInit {
 
   public searchContact({ detail }) {
     // console.log('searchContact', detail.data);
-    return (this.contacts =
-      detail.data !== '' && detail.data !== null
-        ? this.contacts.filter((item) => {
-            return typeof item.name === 'string'
-              ? item.name.toLowerCase().includes(detail.data.toLowerCase())
-              : false;
-          })
-        : this.storeMessage.getContacts());
+    return [];
+    // return (this.contacts =
+      // detail.data !== '' && detail.data !== null
+      //   ? this.contacts.filter((item) => {
+      //       return typeof item.name === 'string'
+      //         ? item.name.toLowerCase().includes(detail.data.toLowerCase())
+      //         : false;
+      //     })
+      //   : this.storeMessage.getContacts());
   }
 
   // Поиск контактов

@@ -1,6 +1,20 @@
-<s-saqhan-chat-wrapper
+<!--<s-saqhan-chat-wrapper-->
+<!--  [categories]="categories"-->
+<!--  [dialogs]="dialogs"-->
+<!--  [titleModule]="getTitleModule()"-->
+<!--  [message]="getMessages()"-->
+<!--&gt;</s-saqhan-chat-wrapper>-->
+
+<cnt-module-chat
+  #moduleChat
   [categories]="categories"
   [dialogs]="dialogs"
-  [titleModule]="getTitleModule()"
-  [message]="getMessages()"
-></s-saqhan-chat-wrapper>
+  [contacts]="contacts"
+  [dictionary]="null"
+  [message]="this.getMessages()"
+  [disableInnerSearchDialogsState]="false"
+  [disableInnerSearchMessagesState]="false"
+  (clickToDialog)="clickToDialog($event)"
+  (sendTextMessage)="sendTextMessage($event)"
+  (showFullChat)="showFullChat($event)"
+></cnt-module-chat>
