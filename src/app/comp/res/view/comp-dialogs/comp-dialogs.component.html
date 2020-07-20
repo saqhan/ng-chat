@@ -1,5 +1,6 @@
 <div class="contacts-column">
-  <s-adam-search-contact (searchDialogs)="searchDialogs($event.detail)"></s-adam-search-contact>
+  <contacts-list-header (searchContact)="searchDialogs($event.detail)"     [theme]="theme"
+  ></contacts-list-header>
   <dialog-categories (clickToCategory)="clickToCategory($event.detail)" [categories]="categories"></dialog-categories>
   <div class="contacts" >
     <div *ngFor="let dialog of dialogs">
