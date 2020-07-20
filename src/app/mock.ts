@@ -1,12 +1,11 @@
 import {
   ChatCategoryInterface,
   ChatContactInterface,
-  ChatDialogInterface,
   ChatMessage,
   ChatMessageDirectionEnum,
   ChatMessageTypeEnum,
   ChatWritingUserInterface,
-  chatConvertWritingStatusToMessage
+  chatConvertWritingStatusToMessage, ChatDialogInterface
 } from 'stencil-chat';
 
 export const DialogsMock: ChatDialogInterface[] = [
