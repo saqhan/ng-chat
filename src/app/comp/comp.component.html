@@ -10,7 +10,7 @@
         </div>
         <div class="col-3">
           <app-comp-dialogs
-          *ngIf="showContactsOrDialogs"
+            *ngIf="showContactsOrDialogs"
             (openDialog)="navigateToPersonalChat($event)"
           >
           </app-comp-dialogs>
@@ -48,8 +48,17 @@
           </section>
         </div>
         <!--        <div class="col-3" @flyInOut *ngIf="getProfileVisible()">-->
-        <!--          <s-adam-profile></s-adam-profile>-->
+        <!--          <s-adam-profile clickToShowFolders={() => this.clickToShowFoldersHandler()}></s-adam-profile>-->
         <!--        </div>-->
+
+        <!--        <user-folders-->
+        <!--          clickToUserProfile={() => this.clickOnUserProfile()}-->
+        <!--        createFolder={(e: CustomEvent<ChatCreateFolderOutputInterface>) =>-->
+        <!--              this.createFolderHandler(e.detail)-->
+        <!--        }-->
+        <!--        dialogs={dialogs}-->
+        <!--        theme={"comp"}-->
+        <!--        ></user-folders>-->
       </div>
     </div>
   </main>

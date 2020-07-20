@@ -160,6 +160,13 @@ export class CompComponent implements OnInit {
   }
 
   /**
+   *
+   */
+  public clickToShowFoldersHandler() {
+    console.log("показать папки");
+  }
+
+  /**
    * Поиск сообщений
    * @param detail
    */
