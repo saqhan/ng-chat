@@ -2,11 +2,14 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 import {StoreService} from '../store-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {animate, state, style, transition, trigger,} from '@angular/animations';
-import {chatConvertWritingStatusToMessage, ChatDialogInterface, ChatMessage,} from 'stencil-chat';
+import {
+  chatConvertWritingStatusToMessage,
+  ChatDialogInterface,
+  ChatMessageDirectionEnum,
+  ChatMessageTypeEnum, ChatUserActionStatusState, ChatUserPresenceState,
+} from 'stencil-chat';
 import {ChatViewEnum} from "./res/enum/common.enum";
 import {map} from "rxjs/operators";
-import {ChatMessageDirectionEnum, ChatMessageTypeEnum} from "../../../../stencil-chat/src";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-comp',

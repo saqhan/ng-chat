@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ChatContactInterface, filterContactBySearchValue } from 'stencil-chat';
+import { ChatContactInterface } from 'stencil-chat';
 import { StoreService } from '../../../../store-service.service';
 import { Router } from '@angular/router';
 
@@ -57,7 +57,7 @@ export class CompContactsComponent implements OnInit {
   ) {
     this.lastSearchValue = value;
     if (!this.disableInnerSearchContactState) {
-      this.contactsFiltered = filterContactBySearchValue(value, allContacts);
+      // this.contactsFiltered = filterContactBySearchValue(value, allContacts);
     }
   }
 }
