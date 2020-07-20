@@ -6,7 +6,13 @@
 .personal-message {
   padding: 20px 0px;
   height: calc(100vh - 185px);
-  overflow: auto;
+  overflow: hidden;
+
+  .personal-message-inner
+  {
+    height: 100%;
+    overflow-y: auto;
+  }
 }
 
 .personal-wrapper .footer-wrapper {

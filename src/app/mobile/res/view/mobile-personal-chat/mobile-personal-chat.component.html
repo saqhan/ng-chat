@@ -1,23 +1,27 @@
-<div class="personal-wrapper">
-  <personal-header
-    (searchContact)="searchContact($event)"
-    (clickToShowDialogs)="clickToShowDialogs()"
-    (clickToUserProfile)="clickToUserProfile()"
-    (searchPersonalMessages)="searchPersonalMessages($event)"
-    (cancelSearchPersonal)="cancelSearchPersonal()"
-    [message]="getMessages()"
-  ></personal-header>
-  <div class="mobile">
-    <div class="personal-message">
-      <div *ngFor="let message of getMessages()">
-        <message-from [message]="message"></message-from>
+<ng-container [ngSwitch]="showProfile">
+  <div class="personal-wrapper" *ngSwitchCase="false">
+    <personal-header
+      [chatActionState]="this.chatActionState"
+      [chatPresenceState]="this.chatPresenceState"
+      [openedDialog]="openedDialog"
+      (searchContact)="searchContact($event)"
+      (clickToShowDialogs)="clickToShowDialogs()"
+      (clickToUserProfile)="clickToUserProfile()"
+      (searchPersonalMessages)="searchPersonalMessage($event.detail)"
+      (cancelSearchPersonal)="resetMessagesFilter()"
+    ></personal-header>
+    <div class="mobile">
+      <div class="personal-message">
+        <div class="personal-message-inner" #chatMessagesContainer lifecycle (afterViewInit)="this.scrollToBot($event.el)">
+          <div *ngFor="let message of getMessages()">
+            <message-from [message]="message"></message-from>
+          </div>
+        </div>
       </div>
-      <message-from
-        *ngIf="getWriting?.length"
-        [message]="chatConvertWritingStatusToMessage()"
-      ></message-from>
     </div>
+    <!--  <personal-message [message]="getMessages()"></personal-message>-->
+    <personal-footer (sendTextMessage)="sendTextMessage($event.detail)" [theme]="mobileTheme"></personal-footer>
   </div>
-  <!--  <personal-message [message]="getMessages()"></personal-message>-->
-  <personal-footer [theme]="mobileTheme"></personal-footer>
-</div>
+
+  <s-adam-profile *ngSwitchCase="true" (clickToShowDialogs)="visibleProfile(false)" (clickToShowFolders)="null" theme="mobile" [categories]="categories"></s-adam-profile>
+</ng-container>

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {ContactsMock, Writing} from './mock';
+import {ContactsMock} from './mock';
 import {ApiLayerService} from './services/api-layer/api-layer.service';
 import {
   ChatCategoryInterface,
@@ -35,13 +35,6 @@ export class StoreService {
    * Иконки навигации комп версии
    */
   public contacts: ChatContactInterface[] = ContactsMock;
-
-  // public contacts: ChatContactInterface[] = ContactsMock;
-
-  /**
-   *
-   */
-  public writing: ChatWritingUserInterface[] = Writing;
 
   /**
    * Иконки навигации комп версии
@@ -89,8 +82,8 @@ export class StoreService {
   }
   /**
    * */
-  public getMessages() {
-    return this.apiLayerService.getMessages('');
+  public getMessages$() {
+    return this.apiLayerService.getMessages$('');
   }
 
   /**
@@ -177,5 +170,22 @@ export class StoreService {
     } else {
       return allDialogs;
     }
+  }
+
+  /**
+   * */
+  public sendTextMessage (
+    content: string
+  )
+  {
+    this.apiLayerService.sendTextMessage(
+      content,
+      {
+        uid: "test-id-2",
+        icon: "https://via.placeholder.com/60x60?text=User",
+        name: "Адам",
+        phone: "79291234567",
+      }
+    )
   }
 }

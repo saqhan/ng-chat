@@ -8,6 +8,7 @@ import {
   ChatDialogInterface,
   ChatMessage,
 } from 'stencil-chat';
+import {map, share} from "rxjs/operators";
 
 @Component({
   selector: 'app-module',
@@ -32,14 +33,16 @@ export class ModuleComponent implements OnInit {
 
   private allDialogs: ChatDialogInterface[] = [];
 
-  public messages = this.storeMessage.getMessages();
+  public messages: ChatMessage[] = [];
+  // public messages$: Observable<ChatMessage[]>;
 
-  public getMessages() {
-    return this.messages;
-  }
+  // public getMessages() {
+  //   return this.messages;
+  // }
 
   ngOnInit(): void {
     window['ngRef'] = this.moduleChat.nativeElement;
+    this.startSyncMessage();
     this.storeMessage.getDialogs().subscribe((dataFromSever) => {
       this.dialogs = dataFromSever;
       this.cdRef.markForCheck();
@@ -58,14 +61,30 @@ export class ModuleComponent implements OnInit {
     });
   }
 
+  public startSyncMessage (): void
+  {
+    this.storeMessage.getMessages$().subscribe(
+      (messagesFromServer) => {
+        this.messages =  [...messagesFromServer];
+        this.cdRef.markForCheck();
+      }
+    )
+    // this.messages$ = this.storeMessage.getMessages$().pipe(
+    //   share(),
+    //   map(
+    //     (messages) => [...messages]
+    //   )
+    // )
+  }
+
   public getTitleModule() {
     return this.storeMessage.titleModule;
   }
 
-  getPersonalMessage$(): Observable<ChatMessage[]> {
-    // return this.storeMessage.getPersonalMessage();
-    return this.storeMessage.getMessage$();
-  }
+  // getPersonalMessage$(): Observable<ChatMessage[]> {
+  //   // return this.storeMessage.getPersonalMessage();
+  //   // return this.storeMessage.getMessage$();
+  // }
 
   // public clickToDialog (ev: any) {}
   // public sendTextMessage (ev: any) {}
@@ -110,6 +129,9 @@ export class ModuleComponent implements OnInit {
   {
   console.log(
     'sendTextMessage [2]',
+    message
+  );
+  this.storeMessage.sendTextMessage(
     message
   );
   // this.messages = [

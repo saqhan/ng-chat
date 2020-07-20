@@ -1,19 +1,22 @@
-<div class="m-chat-wrapper">
-  <m-chat-header
-    [categories]="categories"
-    (clickToCategory)="clickToCategory($event.detail)"
-    (clickToAddDialog)="clickToAddDialog()"
-    (cancelSearchPersonal)="cancelSearchPersonal()"
-    (searchDialogs)="searchDialogs($event.detail)"
-  ></m-chat-header>
-  <div class="m-chat-dialogs">
-    <div *ngFor="let dialog of dialogs">
-      <dialog-card (clickToDialog)="clickToDialog($event)" [mess]="dialog"></dialog-card>
+<ng-container [ngSwitch]="showDialogs">
+  <div class="m-chat-wrapper" *ngSwitchCase="true">
+    <m-chat-header
+      [categories]="categories"
+      (clickToCategory)="clickToCategory($event.detail)"
+      (clickToAddDialog)="clickToAddDialog()"
+      (cancelSearchPersonal)="cancelSearchPersonal()"
+      (searchDialogs)="searchDialogs($event.detail)"
+    ></m-chat-header>
+    <div class="m-chat-dialogs">
+      <div *ngFor="let dialog of dialogs">
+        <dialog-card (clickToDialog)="clickToDialog($event.detail)" [mess]="dialog"></dialog-card>
+      </div>
     </div>
+    <m-chat-footer
+      (clickToShowDialogs)="clickToShowDialogs()"
+      (clickToShowContacts)="clickToShowContacts()"
+      (clickToShowMenuBar)="clickToShowMenuBar()"
+    ></m-chat-footer>
   </div>
-  <m-chat-footer
-    (clickToShowDialogs)="clickToShowDialogs()"
-    (clickToShowContacts)="clickToShowContacts()"
-    (clickToShowMenuBar)="clickToShowMenuBar()"
-  ></m-chat-footer>
-</div>
+  <app-contacts [contacts]="contacts" *ngSwitchCase="false"></app-contacts>
+</ng-container>

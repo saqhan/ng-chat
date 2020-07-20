@@ -26,12 +26,20 @@ main {
 .white-col {
   background-color: #fdfdfd;
 }
+
 .chat-messages {
   padding: 40px 20px;
-  overflow-y: auto;
   height: calc(100vh - 168px);
   position: relative;
+  overflow: hidden;
+
+  .chat-messages-inner
+  {
+    height: 100%;
+    overflow-y: auto;
+  }
 }
+
 ::-webkit-scrollbar { /* chrome based */
   width: 0px; /* ширина scrollbar'a */
   background: transparent; /* опционально */

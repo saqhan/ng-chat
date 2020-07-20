@@ -4,6 +4,7 @@ import {CompContactsComponent} from "./res/view/comp-contacts/comp-contacts.comp
 import {CommonModule} from "@angular/common";
 import {CompRoutingModule} from "./comp-routing.module";
 import {CompDialogsComponent} from "./res/view/comp-dialogs/comp-dialogs.component";
+import {SharedModule} from "../res/module/shared.module";
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {CompDialogsComponent} from "./res/view/comp-dialogs/comp-dialogs.compone
   ],
   imports: [
     CommonModule,
+    SharedModule,
     CompRoutingModule,
   ],
   providers: [],

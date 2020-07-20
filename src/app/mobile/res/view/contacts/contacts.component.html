@@ -1,10 +1,10 @@
 <div class="contacts-list-wrapper">
   <contacts-list-header
     (clickToShowDialogs)="clickToShowDialogs()"
-    (searchContact)="searchContact($event)"
+    (searchContact)="filterContacts($event.detail)"
   ></contacts-list-header>
   <contacts-list-body
-    [contacts]="getContacts()"
+    [contacts]="contacts"
     (clickToContact)="clickToContact($event)"
 
   ></contacts-list-body>

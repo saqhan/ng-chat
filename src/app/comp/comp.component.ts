@@ -1,15 +1,21 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {StoreService} from '../store-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {animate, state, style, transition, trigger,} from '@angular/animations';
 import {
-  chatConvertWritingStatusToMessage,
+  ChatCategoryInterface,
+  ChatContactInterface,
   ChatDialogInterface,
-  ChatMessageDirectionEnum,
-  ChatMessageTypeEnum, ChatUserActionStatusState, ChatUserPresenceState,
+  ChatMessage,
+  ChatUserActionStatusState,
+  ChatUserPresenceState,
+  filterMessageBySearchValue,
+  scrollToBot
 } from 'stencil-chat';
 import {ChatViewEnum} from "./res/enum/common.enum";
-import {map} from "rxjs/operators";
+import {ChatNavigateService} from "../chat-navigate.service";
+
+// import {createTextMessage} from "../../../../stencil-chat/src";
 
 @Component({
   selector: 'app-comp',
@@ -30,9 +36,35 @@ import {map} from "rxjs/operators";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CompComponent implements OnInit {
+  @ViewChild('chatMessages') chatMessagesContainer: ElementRef<HTMLElement>;
+
   /**
    * */
-  public messages = [];
+  public messages: ChatMessage[] = [];
+
+  /**
+   * */
+  public contacts: ChatContactInterface[] = [];
+
+  /**
+   * */
+  public allMessages: ChatMessage[] = [];
+
+  /**
+   * */
+  public allDialogs: ChatDialogInterface[] = [];
+
+  /**
+   * */
+  public openedDialog: ChatDialogInterface;
+
+  /**
+   * */
+  public categories: ChatCategoryInterface[] = [];
+
+  /**
+   * */
+  public showProfile = true;
 
   /**
    *
@@ -47,7 +79,7 @@ export class CompComponent implements OnInit {
   /**
    * Стейт для показа контактов или диалогов
    */
-  public showContactsOrDialogs = true;
+  public showDialogs = true;
 
   /**
    *
@@ -61,12 +93,14 @@ export class CompComponent implements OnInit {
 
   constructor(
     private chatStore: StoreService,
+    private chatNavigateService: ChatNavigateService,
     private router: Router,
     private cdRef: ChangeDetectorRef,
     private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
+    this.startSyncMessage();
     this.activatedRoute.data.subscribe(
       (data) => {
         console.log(
@@ -76,51 +110,68 @@ export class CompComponent implements OnInit {
       }
     );
 
+    this.activatedRoute.queryParams.subscribe(
+      (params) => {
+        this.showProfile = params['profile'] === 'show'
+        this.showDialogs = params['contact'] !== 'show'
+      }
+    )
+
+
+    this.chatStore.getDialogs().subscribe((dataFromSever) => {
+      this.allDialogs = dataFromSever;
+      this.cdRef.markForCheck();
+    });
+
+    this.chatStore.getContacts().subscribe((dataFromSever) => {
+      this.contacts = dataFromSever;
+      this.cdRef.markForCheck();
+    });
+
     this.activatedRoute.params.subscribe(
       (params) => {
-        console.log(
-          'route params',
-          params
-        );
         if (params['chatId']) {
           this.chatStore.getDialog(parseInt(params['chatId'] , 10)).subscribe(
             (dialogFromServer) => {
               if (dialogFromServer) {
+                this.openedDialog = dialogFromServer;
                 this.chatView = ChatViewEnum.personal;
-                this.downloadMessage(dialogFromServer);
+                this.setChatState(dialogFromServer.online);
+
+                // this.scrollToBot(5000);
+                this.cdRef.markForCheck();
               }
             }
           )
         }
       }
     )
+
+    this.chatStore.getCategories().subscribe((dataFromSever) => {
+      this.categories = dataFromSever;
+      this.cdRef.markForCheck();
+    });
   }
 
-  public downloadMessage (
-    dialog: ChatDialogInterface
-  ): void
+  /**
+   * */
+  private setChatState (
+    online: boolean
+  )
   {
-      this.chatStore.getMessages().pipe(
-        map(
-          (messages) => {
-            return messages?.map(
-              (message) => {
-                return {
-                  ...message,
-                  content: (
-                    message.direction !== ChatMessageDirectionEnum.center &&
-                    message.type === ChatMessageTypeEnum.text
-                  )
-                    ? `${dialog.name}> ${message.content}`
-                    : message.content
-                }
-              }
-            )
-          }
-        )
-      ).subscribe(
+    this.chatActionState = !online ? undefined : ChatUserActionStatusState.writing;
+    this.chatPresenceState = this.chatActionState !== undefined ? ChatUserPresenceState.online : ChatUserPresenceState.offline;
+  }
+
+  private setOnlinePer ()
+  {
+  }
+
+  public startSyncMessage (): void
+  {
+      this.chatStore.getMessages$().subscribe(
         (messagesFromServer) => {
-          this.messages = messagesFromServer;
+          this.messages = this.allMessages =  messagesFromServer;
           this.cdRef.markForCheck();
         }
       )
@@ -140,26 +191,17 @@ export class CompComponent implements OnInit {
     return this.messages;
   }
 
-  // /**
-  //  * Стейт для переключения личного профиля
-  //  */
-  // public getProfileVisible() {
-  //   return this.chatStore.profileVisible;
-  // }
-  //
-  // /**
-  //  * Стейт для переключения личного на личный чат
-  //  */
-  // public getDialogVisible() {
-  //   return this.chatStore.dialogVisible;
-  // }
-
   /**
    * Показ профиля юзера
    * @param detail
    */
-  public visibleProfile() {
-    this.chatStore.profileVisible = !this.chatStore.profileVisible;
+  public visibleProfile(
+    open: boolean
+  ) {
+    this.chatNavigateService.controlChatProfile(
+      this.openedDialog.id,
+      open
+    );
   }
 
   /**
@@ -173,51 +215,68 @@ export class CompComponent implements OnInit {
    * Поиск сообщений
    * @param detail
    */
-  public searchPersonalMessage({ detail }) {
-    console.log('searchMessage 1 ', detail.data);
-    // return (this.messages =
-    //   detail.data !== '' && detail.data !== null
-    //     ? this.messages.filter((item) => {
-    //         return typeof item.content === 'string'
-    //           ? item.content.toLowerCase().includes(detail.data.toLowerCase())
-    //           : false;
-    //       })
-    //     : this.chatStore.getMessages());
+  public searchPersonalMessage(value: string) {
+    console.log('searchMessage 1 ', value);
+    this.messages = filterMessageBySearchValue(
+      value,
+      this.allMessages
+    );
   }
 
   /**
    * Сброс поика сообщений
    */
   public resetMessagesFilter() {
-    // this.messages = this.chatStore.getMessages();
+    this.messages = this.allMessages;
   }
-
-  /**
-   *
-   */
-  public getWriting = this.chatStore.writing;
-
-  public chatConvertWritingStatusToMessage() {
-    return chatConvertWritingStatusToMessage(this.getWriting[0]);
-  }
-
   /**
    * Метод для переключения на контакты
    */
-  public showContactsOrDialogsToggle() {
-    this.showContactsOrDialogs = !this.showContactsOrDialogs;
-    console.log(this.showContactsOrDialogs)
+  public showDialogsOrDialogsToggle() {
+    // this.showDialogsOrDialogs = !this.showDialogsOrDialogs;
+    // console.log(this.showDialogsOrDialogs)
+    this.chatNavigateService.navigateToContact()
   }
 
   /**
    * */
   public navigateToPersonalChat (
-    id: number
+    dialog: ChatDialogInterface
   )
   {
-    this.router.navigate(
-      [`/chat/${id}`]
+    this.chatNavigateService.navigateToPersonalChat(
+      dialog.id
     );
+    // this.router.navigate(
+    //   [`/chat/${id}`]
+    // );
+  }
 
+  /**
+   * */
+  public sendTextMessage (
+    message: string
+  )
+  {
+    this.chatStore.sendTextMessage(
+      message
+    );
+    this.scrollToBot();
+  }
+
+  /**
+   *
+   * */
+  public scrollToBot (
+    el = this.chatMessagesContainer,
+    timer = 50
+  )
+  {
+    scrollToBot(
+      el.nativeElement,
+      {
+        timer: timer
+      }
+    )
   }
 }

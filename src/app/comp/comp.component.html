@@ -4,17 +4,22 @@
       <div class="row">
         <div class="col-1 white-col">
           <s-adam-navigate
-            (visibleContacts)="showContactsOrDialogsToggle()"
+            (visibleContacts)="showDialogsOrDialogsToggle()"
             [logo]="getLogo()"
           ></s-adam-navigate>
         </div>
         <div class="col-3">
           <app-comp-dialogs
-            *ngIf="showContactsOrDialogs"
+            *ngIf="showDialogs"
+            [allDialogs]="allDialogs"
+            [categories]="categories"
             (openDialog)="navigateToPersonalChat($event)"
           >
           </app-comp-dialogs>
-          <app-comp-contacts *ngIf="!showContactsOrDialogs"></app-comp-contacts>
+          <app-comp-contacts
+            *ngIf="!showDialogs"
+            [contacts]="contacts"
+          ></app-comp-contacts>
         </div>
         <div class="col white-col">
           <section class="chat" [ngSwitch]="chatView">
@@ -27,29 +32,26 @@
               <s-adam-personal-header
                 [chatActionState]="this.chatActionState"
                 [chatPresenceState]="this.chatPresenceState"
-                [message]="messages"
-                (visibleUserProfile)="visibleProfile()"
-                (searchPersonalMessage)="searchPersonalMessage($event)"
-                (resetMessagesFilter)="resetMessagesFilter()"
-              >
+                [openedDialog]="openedDialog"
+                (visibleUserProfile)="visibleProfile(true)"
+                (searchPersonalMessage)="searchPersonalMessage($event.detail)"
+                (resetMessagesFilter)="resetMessagesFilter()">
               </s-adam-personal-header>
               <div class="chat-messages">
-                <div *ngFor="let message of getMessages()">
-                  <message-from [message]="message"></message-from>
+                <div class="chat-messages-inner" #chatMessages lifecycle (afterViewInit)="this.scrollToBot($event.el)">
+                  <div *ngFor="let message of getMessages()">
+                    <message-from [message]="message"></message-from>
+                  </div>
                 </div>
-                <message-from
-                  *ngIf="getWriting?.length"
-                  [message]="chatConvertWritingStatusToMessage()"
-                ></message-from>
-                <div *ngIf="!getWriting?.length"></div>
               </div>
-              <personal-footer></personal-footer>
+              <personal-footer (sendTextMessage)="sendTextMessage($event.detail)"></personal-footer>
             </div>
           </section>
         </div>
-        <!--        <div class="col-3" @flyInOut *ngIf="getProfileVisible()">-->
-        <!--          <s-adam-profile clickToShowFolders=""></s-adam-profile>-->
-        <!--        </div>-->
+<!--        @flyInOut-->
+        <div class="col-3" *ngIf="showProfile">
+          <s-adam-profile (clickToShowDialogs)="visibleProfile(false)" (clickToShowFolders)="null" theme="mobile" [categories]="categories"></s-adam-profile>
+        </div>
 
         <!--        <user-folders-->
         <!--          clickToUserProfile=""-->

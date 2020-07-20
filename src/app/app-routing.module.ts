@@ -1,18 +1,23 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {ModuleComponent} from "./module/module.component";
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   loadChildren: () => import('./comp/comp.module').then(m => m.CompModule)
+  // }
+  {
+    path: 'module',
+    component: ModuleComponent,
+  },
   {
     path: '',
-    loadChildren: () => import('./comp/comp.module').then(m => m.CompModule)
-  }
+    loadChildren: () => import('./mobile/mobile.module').then(m => m.MobileModule)
+  },
   // {
   //   path: '',
   //   component: CompComponent,
-  // },
-  // {
-  //   path: 'module',
-  //   component: ModuleComponent,
   // },
   // {
   //   path: 'mobile',

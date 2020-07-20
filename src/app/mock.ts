@@ -569,12 +569,12 @@ export const MessageMock: ChatMessage[] = [
   },
 ];
 
-export const Writing: ChatWritingUserInterface[] = [
-  {
-    uid: 'test',
-    icon: 'https://via.placeholder.com/60x60?text=User',
-    name: '',
-    phone: '',
-  },
-];
+// export const Writing: ChatWritingUserInterface[] = [
+//   {
+//     uid: 'test',
+//     icon: 'https://via.placeholder.com/60x60?text=User',
+//     name: '',
+//     phone: '',
+//   },
+// ];
 

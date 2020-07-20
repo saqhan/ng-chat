@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ChatContactInterface } from 'stencil-chat';
+import {ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {ChatContactInterface, filterContactBySearchValue} from 'stencil-chat';
 import { StoreService } from '../../../../store-service.service';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,14 @@ import { Router } from '@angular/router';
   templateUrl: './comp-contacts.component.html',
   styleUrls: ['./comp-contacts.component.scss'],
 })
-export class CompContactsComponent implements OnInit {
+export class CompContactsComponent implements OnInit, OnChanges {
+
+  @Input() contacts: ChatContactInterface[] = [];
+
+  /**
+   * */
+  public allContacts: ChatContactInterface[] = [];
+
   constructor(
     private chatStore: StoreService,
     private router: Router,
@@ -16,6 +23,12 @@ export class CompContactsComponent implements OnInit {
   ) {}
 
   ngOnInit(): Promise<void> | void {
+    this.filterContacts(this.lastSearchValue);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // this.allContacts = this.contacts;
+    this.allContacts = this.contacts;
     this.filterContacts(this.lastSearchValue);
   }
 
@@ -38,7 +51,6 @@ export class CompContactsComponent implements OnInit {
    *
    */
   public getContacts() {
-    // return this.chatStore.getContacts();
     return [];
   }
 
@@ -52,12 +64,11 @@ export class CompContactsComponent implements OnInit {
    *
    * */
   public filterContacts(
-    value: string,
-    allContacts: ChatContactInterface[] = this.getContacts()
+    value: string
   ) {
-    this.lastSearchValue = value;
-    if (!this.disableInnerSearchContactState) {
-      // this.contactsFiltered = filterContactBySearchValue(value, allContacts);
-    }
+    this.contacts = filterContactBySearchValue(
+      value,
+      this.allContacts
+    )
   }
 }

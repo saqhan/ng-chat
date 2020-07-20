@@ -1,9 +1,10 @@
 <div class="contacts-column">
   <contacts-list-header
+    (searchContact)="filterContacts($event.detail)"
     [theme]="theme"
   ></contacts-list-header>
   <div class="contacts">
-    <div *ngFor="let dialog of contactsFiltered">
+    <div *ngFor="let dialog of contacts">
     <contact-card [theme]="theme" [contact]="dialog"></contact-card>
   </div>
 </div>

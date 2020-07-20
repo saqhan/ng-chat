@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {
   CategoriesMock,
   ContactsMock,
@@ -11,13 +11,21 @@ import {
   ChatCategoryInterface,
   ChatContactInterface,
   ChatDialogInterface,
-  ChatMessage,
+  ChatMessage, ChatMessageSenderInterface, createTextMessage,
 } from 'stencil-chat';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiLayerService {
+  /**
+   * */
+  private lastMessages: ChatMessage[] = MessageMock;
+
+  /**
+   * */
+  private messages$: BehaviorSubject<ChatMessage[]> = new BehaviorSubject(this.lastMessages);
+
   constructor() {}
 
   /**
@@ -51,10 +59,28 @@ export class ApiLayerService {
   public getContacts(uid: string): Observable<ChatContactInterface[]> {
     return of(ContactsMock).pipe(delay(1000));
   }
+
   /**
    *
    * */
-  public getMessages(uid: string): Observable<ChatMessage[]> {
-    return of(MessageMock).pipe(delay(150));
+  public getMessages$(uid: string): Observable<ChatMessage[]> {
+    return this.messages$;
+  }
+
+  /**
+   *
+   * */
+  public sendTextMessage (
+    content: string,
+    sender: ChatMessageSenderInterface
+  )
+  {
+    this.lastMessages.push(
+      createTextMessage(
+        content,
+        sender
+      )
+    )
+    this.messages$.next(this.lastMessages)
   }
 }

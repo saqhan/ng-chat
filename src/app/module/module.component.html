@@ -11,10 +11,10 @@
   [dialogs]="dialogs"
   [contacts]="contacts"
   [dictionary]="null"
-  [message]="this.getMessages()"
+  [message]="messages"
   [disableInnerSearchDialogsState]="false"
   [disableInnerSearchMessagesState]="false"
   (clickToDialog)="clickToDialog($event)"
-  (sendTextMessage)="sendTextMessage($event)"
+  (sendTextMessage)="sendTextMessage($event.detail)"
   (showFullChat)="showFullChat($event)"
 ></cnt-module-chat>
