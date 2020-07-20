@@ -9,16 +9,25 @@
           ></s-adam-navigate>
         </div>
         <div class="col-3">
-          <app-comp-dialogs *ngIf="showContactsOrDialogs" (openDialog)="navigateToPersonalChat($event)"> </app-comp-dialogs>
+          <app-comp-dialogs
+            *ngIf="showContactsOrDialogs"
+            (openDialog)="navigateToPersonalChat($event)"
+          >
+          </app-comp-dialogs>
           <app-comp-contacts *ngIf="!showContactsOrDialogs"></app-comp-contacts>
         </div>
         <div class="col white-col">
           <section class="chat" [ngSwitch]="chatView">
             <s-adam-no-chat *ngSwitchCase="chatViewEnum.empty"></s-adam-no-chat>
-            <div  @flyInOut *ngSwitchCase="chatViewEnum.personal" class="direct-comp">
+            <div
+              @flyInOut
+              *ngSwitchCase="chatViewEnum.personal"
+              class="direct-comp"
+            >
               <s-adam-personal-header
+                [chatActionState]="this.chatActionState"
+                [chatPresenceState]="this.chatPresenceState"
                 [message]="messages"
-                [dialog]="dialog"
                 (visibleUserProfile)="visibleProfile()"
                 (searchPersonalMessage)="searchPersonalMessage($event)"
                 (resetMessagesFilter)="resetMessagesFilter()"
@@ -38,9 +47,18 @@
             </div>
           </section>
         </div>
-<!--        <div class="col-3" @flyInOut *ngIf="getProfileVisible()">-->
-<!--          <s-adam-profile></s-adam-profile>-->
-<!--        </div>-->
+        <!--        <div class="col-3" @flyInOut *ngIf="getProfileVisible()">-->
+        <!--          <s-adam-profile clickToShowFolders={() => this.clickToShowFoldersHandler()}></s-adam-profile>-->
+        <!--        </div>-->
+
+        <!--        <user-folders-->
+        <!--          clickToUserProfile={() => this.clickOnUserProfile()}-->
+        <!--        createFolder={(e: CustomEvent<ChatCreateFolderOutputInterface>) =>-->
+        <!--              this.createFolderHandler(e.detail)-->
+        <!--        }-->
+        <!--        dialogs={dialogs}-->
+        <!--        theme={"comp"}-->
+        <!--        ></user-folders>-->
       </div>
     </div>
   </main>
