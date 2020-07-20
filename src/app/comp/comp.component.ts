@@ -41,6 +41,21 @@ export class CompComponent implements OnInit {
    * */
   public chatView = ChatViewEnum.empty;
 
+  /**
+   * Стейт для показа контактов или диалогов
+   */
+  public showContactsOrDialogs = true;
+
+  /**
+   *
+   */
+  public chatActionState: ChatUserActionStatusState;
+
+  /**
+   *
+   */
+  public chatPresenceState: ChatUserPresenceState;
+
   constructor(
     private chatStore: StoreService,
     private router: Router,
@@ -106,18 +121,6 @@ export class CompComponent implements OnInit {
           this.cdRef.markForCheck();
         }
       )
-  }
-
-  /**
-   * Стейт для показа контактов или диалогов
-   */
-  public showContactsOrDialogs = true;
-
-  /**
-   * Иконки навигации
-   */
-  public getNavItems() {
-    return this.chatStore.getNavItems();
   }
 
   /**

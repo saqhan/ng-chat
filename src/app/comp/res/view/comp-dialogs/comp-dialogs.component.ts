@@ -7,6 +7,8 @@ import {
 import { StoreService } from '../../../../store-service.service';
 import { Router } from '@angular/router';
 import { ChatCategoryInterface, ChatDialogInterface } from 'stencil-chat';
+import {filter} from "rxjs/operators";
+import { filterDialogsBySearchValue } from '../../../../../../../stencil-chat/src';
 
 @Component({
   selector: 'app-comp-dialogs',
@@ -52,17 +54,17 @@ export class CompDialogsComponent implements OnInit {
     return this.chatStore.compThemeClass;
   }
 
-  public searchDialogs({ detail }): void {
-    if (detail.data !== '' && detail.data !== null) {
-      this.dialogs = this.allDialogs.filter((item) => {
-        return typeof item.name === 'string'
-          ? item.name.toLocaleLowerCase().includes(detail.data.toLowerCase())
-          : false;
-      });
-    } else {
-      this.dialogs = this.allDialogs;
-    }
-  }
+  // public searchDialogs({ detail }): void {
+  //   if (detail.data !== '' && detail.data !== null) {
+  //     this.dialogs = this.allDialogs.filter((item) => {
+  //       return typeof item.name === 'string'
+  //         ? item.name.toLocaleLowerCase().includes(detail.data.toLowerCase())
+  //         : false;
+  //     });
+  //   } else {
+  //     this.dialogs = this.allDialogs;
+  //   }
+  // }
 
   /**
    *   клик по кнопке категорий для фильтрации диалогов
