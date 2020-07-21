@@ -1,7 +1,7 @@
 <div class="contacts-column">
   <contacts-list-header (searchContact)="searchDialogs($event.detail)"     [theme]="theme"
   ></contacts-list-header>
-  <dialog-categories (clickToCategory)="clickToCategory($event.detail)" [categories]="categories"></dialog-categories>
+  <dialog-categories *ngIf="categories.length" (clickToCategory)="clickToCategory($event.detail)" [categories]="categories"></dialog-categories>
   <div class="contacts" >
     <div *ngFor="let dialog of dialogs">
       <dialog-card (clickToDialog)="openChat($event.detail)" [theme]="compTheme()" [mess]="dialog" ></dialog-card>
