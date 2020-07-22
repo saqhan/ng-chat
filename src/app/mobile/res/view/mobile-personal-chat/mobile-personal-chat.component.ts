@@ -160,7 +160,7 @@ export class MobilePersonalChatComponent implements OnInit {
 
   public clickToUserProfile() {
     this.animSRVC.slideToLEFT();
-    this.visibleProfile(true)
+    this.visibleProfile(true);
     // this.router.navigate(['profile']);
   }
 

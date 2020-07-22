@@ -31,6 +31,11 @@ export class CompDialogsComponent implements OnInit, OnChanges {
    * */
   public dialogs: ChatDialogInterface[] = [];
 
+  /**
+   * Тема для модульного/мобильного чата
+   * */
+  public theme: 'mobile' | 'module' | 'comp' = 'comp';
+
   constructor(
     private chatStore: StoreService,
     private router: Router,

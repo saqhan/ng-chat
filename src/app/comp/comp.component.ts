@@ -103,10 +103,6 @@ export class CompComponent implements OnInit {
     this.startSyncMessage();
     this.activatedRoute.data.subscribe(
       (data) => {
-        console.log(
-          'data',
-          data
-        );
       }
     );
 
@@ -208,7 +204,6 @@ export class CompComponent implements OnInit {
    *
    */
   public clickToShowFoldersHandler() {
-    console.log("показать папки");
   }
 
   /**
@@ -216,7 +211,6 @@ export class CompComponent implements OnInit {
    * @param detail
    */
   public searchPersonalMessage(value: string) {
-    console.log('searchMessage 1 ', value);
     this.messages = filterMessageBySearchValue(
       value,
       this.allMessages
@@ -234,8 +228,7 @@ export class CompComponent implements OnInit {
    */
   public showDialogsOrDialogsToggle() {
     // this.showDialogsOrDialogs = !this.showDialogsOrDialogs;
-    // console.log(this.showDialogsOrDialogs)
-    this.chatNavigateService.navigateToContact()
+    this.chatNavigateService.navigateToContact();
   }
 
   /**
