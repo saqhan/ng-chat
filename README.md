@@ -1,3 +1,14 @@
+
+
+# Чат приложение в 3-версиях
+- Десктопная версия
+- [Мобильная версия](https://saqhan.github.io/ng-module-chat/)
+- Модульный чат
+
+В ходе разработки приложение компоненты создавались в StencilJS и подключались в Angular как вебкомпоненты.
+Логика прописана в Angular
+Верстка и дизайн компонентов в StencilJS
+
 # NgChat
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
